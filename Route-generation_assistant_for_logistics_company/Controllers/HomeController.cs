@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 
+//dodatek w commit'cie 2
+
 /*
 
 System wspierający generowanie tras w firmie logistycznej
