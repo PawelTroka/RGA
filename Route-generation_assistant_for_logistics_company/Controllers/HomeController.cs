@@ -49,13 +49,15 @@ Zaleca się przyrostowe wytwarzanie systemu metodyką Scrum.
 */
 
 
-namespace Routegeneration_assistant_for_logistics_company.Controllers
+namespace RouteGeneration_assistant_for_logistics_company.Controllers
 {
 	public class HomeController : Controller
 	{
 		public ActionResult Index ()
 		{
 			var mvcName = typeof(Controller).Assembly.GetName ();
+			double x = Math.Sin (10);
+
 			var isMono = Type.GetType ("Mono.Runtime") != null;
 
 			ViewData ["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;

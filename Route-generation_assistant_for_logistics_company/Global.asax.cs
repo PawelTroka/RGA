@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Routegeneration_assistant_for_logistics_company
+namespace RouteGeneration_assistant_for_logistics_company
 {
 	public class MvcApplication : System.Web.HttpApplication
 	{
