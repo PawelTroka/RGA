@@ -56,13 +56,13 @@ namespace RouteGeneration_assistant_for_logistics_company.Controllers
 		public ActionResult Index ()
 		{
 			var mvcName = typeof(Controller).Assembly.GetName ();
-			double x = Math.Sin (10);
+			double x = Math.Sin (1);
 
 			var isMono = Type.GetType ("Mono.Runtime") != null;
 
 			ViewData ["Version"] = mvcName.Version.Major + "." + mvcName.Version.Minor;
 			ViewData ["Runtime"] = isMono ? "Mono" : ".NET";
-
+			ViewData ["sin1"] = x;
 			return View ();
 		}
 	}
