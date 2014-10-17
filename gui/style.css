@@ -1,0 +1,98 @@
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: "Droid Sans";
+    font-size: 1em;
+    color: #111111;
+}
+
+a
+{
+    text-decoration: none;
+    color: #2e4fd1;
+}
+
+.horizontal-panel
+{
+    margin: 1%;
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    background: linear-gradient(#eeeeee, #dddddd);
+}
+#container header a
+{
+    color: #222222;
+}
+#container header a:hover
+{
+    color: #333333;
+}
+#container header h1
+{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+#container header h2
+{
+    font-size: 1em;
+    font-weight: normal;
+}
+
+.menu
+{
+    margin: 1%;
+    border-radius: 5px;
+    border: 1px solid #bbbbbb;
+    background-color: #eeeeee;
+}
+.menu ul
+{
+    list-style-type: none;
+}
+.menu ul ul
+{
+    /* display: none; // domyslnie podmenu powinny byc ukryte */
+}
+
+.menu ul ul a
+{
+    text-indent: 5%;
+}
+
+.menu a
+{
+    display: block;
+    padding: 10px;
+    color: #222222;
+    border-bottom: 1px solid #bbbbbb;
+}
+
+.menu a.active
+{
+    font-weight: bold;
+}
+
+.menu a:hover
+{
+    background-color: #dddddd;
+    color: #333333;
+}
+
+#container .menu
+{
+    width: 18%;
+    float: left;
+}
+
+#container main
+{
+    width: 77%;
+    margin: 1%;
+    float: right;
+}
