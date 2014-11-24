@@ -12,8 +12,9 @@ namespace RGA.Controllers
         // GET: ManageUsers
             [Authorize(Roles = "Admin")]
         public ActionResult Index()
-        {
-            return View("Index");
+            {
+                var model = new ManageUsersViewModel();
+            return View("Index",model);
         }
 
         // GET: ManageUsers/Details/5

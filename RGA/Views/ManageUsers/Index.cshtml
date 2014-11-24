@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Edytuj użytkowników";
     //Layout = "_Layout";
-    var model = new ManageUsersViewModel();
+    //var model = new ManageUsersViewModel();
 }
 
 <h2>Edytuj użytkowników</h2>
@@ -21,7 +21,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in model.users)
+        @foreach (var item in Model.users)
         {
             <tr>
                 <td>
