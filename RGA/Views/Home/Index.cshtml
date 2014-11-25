@@ -1,31 +1,54 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "A route-generation assistant for logistics company";
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <h1>RGA - system wspierający generowanie tras w firmie logistycznej</h1>
+    <p class="lead">Każde przedsiębiorstwo nastawione jest na minimalizowanie kosztów. Aplikacja,
+którą Państwo widziecie daje taką możliwość poprzez wyznaczanie
+najkrótszych tras łączących wszystkie punkty docelowe. Wygenerowana trasa
+jest potem zwizualizowana w jednym z dostępnych systemów map online.
+Zastosowano przyrostowe wytwarzanie systemu metodyką Scrum.</p>
+    <p>@Html.ActionLink("Załóż konto już dziś!","Register","Account")</p>
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
+        <h2>Cel projektu</h2>
         <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
+            Celem projektu jest stworzenie oprogramowania wspierającego pracowników firmy
+            z branży logistycznej (np. kurierzy) w tworzeniu dziennych tras dla kierowców.
+            System powinien umożliwiać definiowanie i generowanie tras dla pracowników
+            centrali, a także ich przeglądanie i drukowanie dla kierowców. Aplikacja powinna
+            umożliwiać optymalizację trasy wg odległości (najkrótsza trasa) oraz kosztów
+            (omijanie dróg płatnych).
         </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p></p>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <h2>Zadania do wykonania</h2>
+        <p>1. Zebranie wymagań</p>
+            <p>2. Wybór technologii i ogólny projekt systemu</p>
+            <p>3. Iteracyjna implementacja, testowanie i prezentacja systemu</p>
+            <p>4. Opracowanie dokumentacji projektu i instrukcji użytkownika</p>
+        <p></p>
     </div>
+    
+    
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <h2>Źródła</h2>
+        <p>1. Dokumentacja API systemów map online</p>
+        <p> 2. K. Schwaber, J. Sutherland, The Scrum Guide, Przewodnik po Scrumie: Reguły
+    Gry, Scrum.org, 2013</p>3. Dokumentacja wybranych technologii3. Iteracyjna implementacja, testowanie i prezentacja systemu</p>
+        <p>4. Wymagania zebrane od opiekuna</p>
+        <p></p>
+    </div>    
+    
+    
+
+    <div class="col-md-4">
+        <h2>Opiekun pracy</h2>
+        <p>mgr inż. Tomasz Gawron.</p>
+        <p><a class="btn btn-default" href="http://galaxy.eti.pg.gda.pl/katedry/kio/pracownicy/Tomasz.Gawron/">Zobacz &raquo;</a></p>
     </div>
 </div>

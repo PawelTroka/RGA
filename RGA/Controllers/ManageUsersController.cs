@@ -1,92 +1,118 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using RGA.Models;
 
 namespace RGA.Controllers
 {
     public class ManageUsersController : Controller
     {
+        private ManageUsersViewModel model = new ManageUsersViewModel();
+        private ApplicationDbContext context = ApplicationDbContext.Create();
+
+
         // GET: ManageUsers
-            [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
+        {
+            
+            return View("Index", model);
+        }
+
+
+
+        private ApplicationUserManager _userManager;
+
+        public ApplicationUserManager UserManager
+        {
+            get
             {
-                var model = new ManageUsersViewModel();
-            return View("Index",model);
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
-        // GET: ManageUsers/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: ManageUsers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: ManageUsers/Create
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(ManageUsersViewModel model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
+                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, PhoneNumber = model.Phone };
+                var result = await UserManager.CreateAsync(user, model.Password);
 
-                return RedirectToAction("Index");
+
+               
+
+
+
+                if (result.Succeeded)
+                {
+
+                    var roleStore = new RoleStore<IdentityRole>(context);
+                    var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+                    var userStore = new UserStore<ApplicationUser>(context);
+                    var userManager = new UserManager<ApplicationUser>(userStore);
+                    userManager.AddToRole(user.Id, model.Role);
+                    // await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //return RedirectToAction("Index", "Home");
+                 ///   model = new ManageUsersViewModel();
+                    return View("Index", model);
+                }
+                AddErrors(result);
             }
-            catch
+
+            // If we got this far, something failed, redisplay form
+            return View("Index", model);
+        }
+
+        private void AddErrors(IdentityResult result)
+        {
+            foreach (var error in result.Errors)
             {
-                return View();
+                ModelState.AddModelError("", error);
             }
         }
 
-        // GET: ManageUsers/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: ManageUsers/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
+        [Authorize(Roles = "Admin")]
         // GET: ManageUsers/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
-        }
+            //var model = new ManageUsersViewModel();
+           // var dbContext = ApplicationDbContext.Create();
+         //   dbContext.Users.Remove(dbContext.Users.Find(id));
+            var user = UserManager.FindById(id);
+            var result = UserManager.Delete(user);
 
-        // POST: ManageUsers/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+           /// model = new ManageUsersViewModel();
+            if (result.Succeeded)
             {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return View("Index", model);
             }
-            catch
-            {
-                return View();
-            }
+            AddErrors(result);
+            
+            return View("Index",model);
         }
     }
 }
