@@ -104,7 +104,7 @@ namespace RGA.Controllers
             var user = UserManager.FindById(id);
             var result = UserManager.Delete(user);
 
-           /// model = new ManageUsersViewModel();
+           // model = new ManageUsersViewModel();
             if (result.Succeeded)
             {
 

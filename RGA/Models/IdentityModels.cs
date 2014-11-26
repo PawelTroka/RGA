@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -11,14 +12,16 @@ namespace RGA.Models
     public class ApplicationUser : IdentityUser
     {
 
+
+        public List<ApplicationUser> Divers { get; set; } //jeżeli jest pracownikiem to ma podlegajcych mu kierowców 
         public IdentityRole Role
         {
             get
             {
-                if (Roles.Count == 0)
-                {
-                    Roles.Add(new IdentityUserRole() { RoleId = "1", UserId = this.Id });
-                }
+              //  if (Roles.Count == 0)
+              //  {
+              //      Roles.Add(new IdentityUserRole() { RoleId = "3", UserId = this.Id });
+               // }
                 return ApplicationDbContext.Create().Roles.Find(Roles.First().RoleId);
             }
         }
