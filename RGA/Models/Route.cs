@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
@@ -9,8 +10,8 @@ namespace RGA.Models
 {
     public class Route
     {
-
-
+        [Key]
+        public string Id { get; set; }
         public byte[] Image { get; set; } //jpeg
         public string Summary { get; set; }
         public List<string> Notes { get; set; }

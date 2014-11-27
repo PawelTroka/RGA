@@ -1,0 +1,59 @@
+﻿@model RGA.Models.ViewModels.RoutesViewModel
+
+@{
+    ViewBag.Title = "Wygenerowane trasy";
+}
+
+<h2>Wygenerowane trasy</h2>
+
+
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Data</td>
+                <td>Pracownik</td>
+                <td>Kierowca</td>
+                <td>Podsumowanie</td>
+                <td>Długość</td>
+                <td>Czas trwania</td>
+                <td> </td>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.AllRoutes != null)
+            {
+                foreach (var route in Model.AllRoutes)
+                {
+                    <tr>
+                        <td>
+                            @Html.Encode(route.StartDateTime)
+                        </td>
+
+
+                        <td>
+                            @Html.Encode(route.Worker.UserName)
+                        </td>
+
+                        <td>
+                            @Html.Encode(route.Driver.UserName)
+                        </td>
+                        <td>
+                            @Html.Encode(route.Summary)
+                        </td>
+                        <td>
+                            @Html.Encode((route.Distance/1000.0))km
+                        </td>
+
+                        <td>
+                            @Html.Encode(route.Duaration)
+                        </td>
+
+                        <td>
+                            @Html.ActionLink("Szczegóły", "Route", new {route.Id})
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

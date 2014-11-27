@@ -1,0 +1,53 @@
+﻿@using System.Web.Script.Services
+@model RGA.Models.ViewModels.CouriersViewModel
+
+@{
+    ViewBag.Title = "Zarządzaj kierowcami";
+}
+
+<h2>Kierowcy z którymi współpracujesz</h2>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Nazwa</td>
+            <td>E-mail</td>
+            <td>Numer telefonu</td>
+            <td> </td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.drivers != null)
+        {
+            foreach (var item in Model.drivers)
+             {
+                 <tr>
+                     <td>
+                         @Html.Encode(item.Id)
+                     </td>
+
+                     <td>
+                         @Html.Encode(item.UserName)
+                     </td>
+
+                     <td>
+                         @Html.Encode(item.Email)
+                     </td>
+
+                     <td>
+                         @Html.Encode(item.PhoneNumber)
+                     </td>
+                     <td>
+                         @Html.ActionLink("Kalendarz", "Calendar", new {item.Id})
+                     </td>
+                 </tr>
+             }
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

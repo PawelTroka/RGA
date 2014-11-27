@@ -1,0 +1,36 @@
+﻿@model RGA.Models.ViewModels.CouriersViewModel
+
+@{
+    ViewBag.Title = "Kalendarz kierowcy "+Model.SelectedDriver.UserName;
+}
+
+<h2>Kalendarz dla kierowcy @Model.SelectedDriver.UserName</h2>
+
+
+
+
+
+<div id="datepicker"></div>
+
+
+<p>
+    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new { Model.SelectedDriver.Id, DateTime.Now }, new { id="generateRoute",@class = "btn btn-default" })
+</p>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<script>
+    $(function () {
+        $("#datepicker").datepicker($.datepicker.regional["pl"], {
+            beforeShow: function () {
+                $(".ui-datepicker").css('font-size', 32);
+            },
+            onSelect: function(dateText, inst) { 
+            //$("#generateRoute")//window.location = 'http://mysite/events/Pages/default.aspx?dt=' + dateText;
+        }
+        });
+    });
+</script>

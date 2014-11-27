@@ -178,21 +178,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CalendarController.cs" />
+    <Compile Include="Controllers\CouriersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageUsersController.cs" />
+    <Compile Include="Controllers\RoutesController.cs" />
+    <Compile Include="Models\ViewModels\RoutesModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Initializers.cs" />
     <Compile Include="Helpers\RouteGenerator.cs" />
     <Compile Include="Helpers\HeldKarpTSPSolver.cs" />
     <Compile Include="Helpers\RouteOptimizationAlgorithm.cs" />
     <Compile Include="Helpers\RouteOptimizationProvider.cs" />
     <Compile Include="Helpers\RouteOptimizationType.cs" />
     <Compile Include="Helpers\TSPSolver.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Route.cs" />
     <Compile Include="Models\ViewModels\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ViewModels\CouriersViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageUsersViewModel.cs" />
     <Compile Include="Models\ViewModels\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -303,9 +310,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\ManageUsers\Index.cshtml" />
+    <Content Include="Views\Couriers\Index.cshtml" />
+    <Content Include="Views\Couriers\Calendar.cshtml" />
+    <Content Include="Views\Routes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Calendar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
