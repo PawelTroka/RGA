@@ -7,14 +7,14 @@ namespace RGA.Models.ViewModels
 {
     public class RoutesViewModel
     {
-        private RouteDBContext routeDbContext = RouteDBContext.Create();
+        private ApplicationDbContext routeDbContext = ApplicationDbContext.Create();
 
-        public ApplicationUser Worker { get; set; }
+        public User Worker { get; set; }
         public Route Route { get; set; }
 
         public IEnumerable<Route> AllRoutes { get { return routeDbContext.Routes; } } 
 
-        public ApplicationUser Driver { get; set; }
+        public User Driver { get; set; }
         public DateTime Date { get; set; }
     }
 }

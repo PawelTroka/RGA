@@ -39,7 +39,7 @@
                                         
                     @if (User.IsInRole("Admin"))
                     {
-                        <li>@Html.ActionLink("Zarządzaj użytkownikami", "Index", "ManageUsers")</li>
+                        <li>@Html.ActionLink("Zarządzaj użytkownikami", "Index", "Users")</li>
                     }
                     <li>@Html.ActionLink("O nas", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,38 +15,20 @@ namespace RGA.Models
         public string Id { get; set; }
         public byte[] Image { get; set; } //jpeg
         public string Summary { get; set; }
-        public List<string> Notes { get; set; }
+        public virtual ICollection<Note> Notes { get; set; }
 
-        public List<Leg> Sections { get; set; }
+      //  public virtual List<Leg> Sections { get; set; }// public virtual ICollection
 
         public DateTime StartDateTime { get; set; }
 
-        public ApplicationUser Driver { get; set; } //driver who drives that route
+        public virtual User Driver { get; set; } //driver who drives that route
 
-        public ApplicationUser Worker { get; set; } //worker who created that route
+        public virtual User Worker { get; set; } //worker who created that route
 
         public string StartAddress { get; set; }
-        public List<string> Addresses { get; set; }
+        public virtual ICollection<string> Addresses { get; set; }
 
         public TimeSpan Duaration { get; set; }
         public long Distance { get; set; }
-    }
-
-
-
-    public class RouteDBContext : DbContext
-    {
-        public RouteDBContext()
-            : base("DefaultConnection")
-        {
-            
-        }
-
-        public static RouteDBContext Create()
-        {
-            return new RouteDBContext();
-        }
-
-        public DbSet<Route> Routes { get; set; }
     }
 }

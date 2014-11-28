@@ -184,6 +184,9 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
     <Compile Include="Models\ViewModels\RoutesModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -313,6 +316,11 @@
     <Content Include="Views\Couriers\Index.cshtml" />
     <Content Include="Views\Couriers\Calendar.cshtml" />
     <Content Include="Views\Routes\Index.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
+    <Content Include="Views\Users\Delete.cshtml" />
+    <Content Include="Views\Users\Details.cshtml" />
+    <Content Include="Views\Users\Edit.cshtml" />
+    <Content Include="Views\Users\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

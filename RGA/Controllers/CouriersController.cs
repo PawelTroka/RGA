@@ -25,8 +25,8 @@ namespace RGA.Controllers
         [Authorize(Roles = "Pracownik")]
         public ActionResult Calendar(string id)
         {
-            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
-            var userManager = new UserManager<ApplicationUser>(store);
+            var store = new UserStore<User>(new ApplicationDbContext());
+            var userManager = new UserManager<User>(store);
             model.SelectedDriver = userManager.FindByIdAsync(id).Result;
 
             return View(model);

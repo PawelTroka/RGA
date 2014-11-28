@@ -49,7 +49,7 @@ namespace RGA.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Username, Email = model.Email, PhoneNumber = model.Phone };
+                var user = new User { UserName = model.Username, Email = model.Email, PhoneNumber = model.Phone };
                 var result = await UserManager.CreateAsync(user, model.Password);
 
 
@@ -63,8 +63,8 @@ namespace RGA.Controllers
                     var roleStore = new RoleStore<IdentityRole>(context);
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
 
-                    var userStore = new UserStore<ApplicationUser>(context);
-                    var userManager = new UserManager<ApplicationUser>(userStore);
+                    var userStore = new UserStore<User>(context);
+                    var userManager = new UserManager<User>(userStore);
                     userManager.AddToRole(user.Id, model.Role);
                     // await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 

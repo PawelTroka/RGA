@@ -49,9 +49,9 @@ namespace RGA.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
+        [DataType(DataType.Text)]
+        [Display(Name = "Nazwa użytkownika")]
+        public string Username { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

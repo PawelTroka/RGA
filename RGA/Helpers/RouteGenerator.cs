@@ -43,7 +43,7 @@ namespace RGA.Helpers
             var directions = getDirections();
 
             route.Summary = directions.Routes.First().Summary;
-            route.Sections = new List<Leg>(directions.Routes.First().Legs);
+         //   route.Sections = new List<Leg>(directions.Routes.First().Legs);
 
             if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
                 SortThingsAccordingToWaypointOrder(directions.Routes.First().WaypointOrder);
@@ -104,8 +104,8 @@ namespace RGA.Helpers
             for (int i = 1; i < orderOfSections.Count; i++)
                 orderOfSections[i]++;
             orderOfSections.Add(0);
-            route.Sections.Sort(
-                (s1, s2) => orderOfSections[route.Sections.IndexOf(s1)].CompareTo(orderOfSections[route.Sections.IndexOf(s2)]));
+         //   route.Sections.Sort(
+             //   (s1, s2) => orderOfSections[route.Sections.IndexOf(s1)].CompareTo(orderOfSections[route.Sections.IndexOf(s2)]));
         }
 
 

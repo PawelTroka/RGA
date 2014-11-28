@@ -1,0 +1,51 @@
+﻿@model RGA.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Usuń użytkownika</h2>
+
+<h3>Czy na pewno chcesz usunąć tego użytkownika?</h3>
+<div>
+    <h4>Użytkownik</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+ 
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do listy", "Index")
+        </div>
+    }
+</div>

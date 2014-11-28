@@ -11,20 +11,20 @@ namespace RGA.Models.ViewModels
     public class CouriersViewModel
     {
         private ApplicationDbContext dbContext = ApplicationDbContext.Create();
-        private ApplicationUser user;
+        private User user;
 
-        public ApplicationUser SelectedDriver { get; set; }
+        public User SelectedDriver { get; set; }
 
         public CouriersViewModel()
         {
-            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
-            var userManager = new UserManager<ApplicationUser>(store);
+            var store = new UserStore<User>(new ApplicationDbContext());
+            var userManager = new UserManager<User>(store);
             user = userManager.FindByNameAsync(HttpContext.Current.User.Identity.Name).Result;
         }
 
-        public IEnumerable<ApplicationUser> drivers
+        public IEnumerable<User> drivers
         {
-            get { return user.Divers; }
+            get { return user.Drivers; }
         }
     }
 }

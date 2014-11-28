@@ -23,8 +23,8 @@ namespace RGA.Controllers
         public ActionResult GenerateRoute(string id, DateTime now)
         {
             model.Date = now;
-            var store = new UserStore<ApplicationUser>(new ApplicationDbContext());
-            var userManager = new UserManager<ApplicationUser>(store);
+            var store = new UserStore<User>(new ApplicationDbContext());
+            var userManager = new UserManager<User>(store);
             model.Driver = userManager.FindByIdAsync(id).Result;
             model.Worker = userManager.FindByIdAsync(User.Identity.GetUserId()).Result;
 

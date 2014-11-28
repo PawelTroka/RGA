@@ -17,8 +17,8 @@ namespace RGA
         {
             Database.SetInitializer<ApplicationDbContext>(new UsersInitializer());
 
-           // ApplicationDbContext db = new ApplicationDbContext();
-         //   db.Database.Initialize(true);
+            ApplicationDbContext db = new ApplicationDbContext();
+            db.Database.Initialize(true);
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
