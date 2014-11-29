@@ -9,13 +9,23 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace RGA.Models
 {
-    public class ManageUsersViewModel : RegisterViewModel
+    public class CreateUserViewModel : RegisterViewModel
     {
         private ApplicationDbContext dbContext = ApplicationDbContext.Create();
 
 
-        public ManageUsersViewModel()
+        public CreateUserViewModel()
         {
+            SelectedDrivers = new List<string>();
+            RolesSelectList =
+                new SelectList(
+                    new List<SelectListItem>()
+                    {
+                        new SelectListItem() {Value = "Kierowca", Text = "Kierowca"},
+                        new SelectListItem() {Value = "Pracownik", Text = "Pracownik"},
+                        new SelectListItem() {Value = "Admin", Text = "Admin"}
+                    }, "Value", "Text");
+
             var users = dbContext.Users;
 
             
@@ -42,25 +52,14 @@ namespace RGA.Models
         }
 
 
-        // [Required]
-        //[DataType(DataType.)]
+
+        [Required]
         [Display(Name = "Rola")]
         public string Role { get; set; }
 
         [Display(Name = "Przydzieleni kierowcy")]
-        public ICollection<User> Drivers { get; set; }
-
-
-        public SelectList RolesSelectList =
-            new SelectList(
-                new List<SelectListItem>()
-                {
-                    new SelectListItem() {Value = "Kierowca", Text = "Kierowca"},
-                    new SelectListItem() {Value = "Pracownik", Text = "Pracownik"},
-                    new SelectListItem() {Value = "Admin", Text = "Admin"}
-                }, "Value", "Text");
-
-
+        public List<string> SelectedDrivers { get; set; }
+        public SelectList RolesSelectList { get; set; }
         public MultiSelectList DriversSelectList { get; set; }
     }
 }

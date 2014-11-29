@@ -14,7 +14,7 @@ namespace RGA.Controllers
 {
     public class ManageUsersController : Controller
     {
-        private ManageUsersViewModel model = new ManageUsersViewModel();
+        private CreateUserViewModel model = new CreateUserViewModel();
         private ApplicationDbContext context = ApplicationDbContext.Create();
 
 
@@ -45,7 +45,7 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(ManageUsersViewModel model)
+        public async Task<ActionResult> Register(CreateUserViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -75,7 +75,7 @@ namespace RGA.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //return RedirectToAction("Index", "Home");
-                 ///   model = new ManageUsersViewModel();
+                 ///   model = new CreateUserViewModel();
                     return View("Index", model);
                 }
                 AddErrors(result);
@@ -98,13 +98,13 @@ namespace RGA.Controllers
         // GET: ManageUsers/Delete/5
         public ActionResult Delete(string id)
         {
-            //var model = new ManageUsersViewModel();
+            //var model = new CreateUserViewModel();
            // var dbContext = ApplicationDbContext.Create();
          //   dbContext.Users.Remove(dbContext.Users.Find(id));
             var user = UserManager.FindById(id);
             var result = UserManager.Delete(user);
 
-           // model = new ManageUsersViewModel();
+           // model = new CreateUserViewModel();
             if (result.Succeeded)
             {
 

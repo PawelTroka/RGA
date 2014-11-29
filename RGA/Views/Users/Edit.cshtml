@@ -15,49 +15,51 @@
         <h4>Użytkownik</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.UserModel.Id)
+        @Html.HiddenFor(model => model.UserId)
         
         
         <div class="form-group">
-            @Html.LabelFor(model => model.UserModel.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UserModel.UserName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserModel.UserName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.UserModel.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.UserModel.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserModel.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.UserModel.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UserModel.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UserModel.PhoneNumber, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
             </div>
         </div>
 
 
         <div class="form-group">
-            @Html.LabelFor(m => m.ManageUsersViewModel.Role, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(m => m.ManageUsersViewModel.Role,Model.ManageUsersViewModel.RolesSelectList,
+                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.Role, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(m => m.Role,Model.RolesSelectList,
                     new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Role, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        @if (Model.UserModel.Role.Name==("Pracownik"))
+        @if (Model.Role==("Pracownik"))
         {
             <div class="form-group">
-                @Html.LabelFor(m => m.UserModel.Drivers, new {@class = "col-md-2 control-label"})
+                @Html.LabelFor(m => m.SelectedDrivers, new {@class = "col-md-2 control-label"})
                 <div class="col-md-10">
-                    @Html.ListBoxFor(m => m.SelectedDriversItems, Model.ManageUsersViewModel.DriversSelectList, new {@class = "form-control"})
+                    @Html.ListBoxFor(m => m.SelectedDrivers, Model.DriversSelectList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SelectedDrivers, "", new { @class = "text-danger" })
                 </div>
             </div>
         }

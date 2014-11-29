@@ -64,8 +64,7 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            var model = new ManageUsersViewModel();
-            model.Drivers = new List<User>();
+            var model = new CreateUserViewModel();
             return View(model);
         }
 
@@ -75,40 +74,56 @@ namespace RGA.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Create(ManageUsersViewModel usersViewModel)
+        public async Task<ActionResult> Create(CreateUserViewModel usersViewModel)
         {
+            if (usersViewModel.SelectedDrivers.Any() && usersViewModel.Role != "Pracownik")
+            {
+                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+                ModelState.AddModelError("Role", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+            }
+
+
+            var roleStore = new RoleStore<IdentityRole>(db);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            var userStore = new UserStore<User>(db);
+            var userManager = new UserManager<User>(userStore);
+
+
+
+            if (usersViewModel.SelectedDrivers.Any(n => userManager.FindByName(n).SupervisorEmployee != null))
+                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców, którzy już są do kogoś innego przydzieleni");
+
+            
+
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = usersViewModel.Username, Email = usersViewModel.Email, PhoneNumber = usersViewModel.Phone };
 
-
-
                 var result = await UserManager.CreateAsync(user, usersViewModel.Password);
-
 
                 if (result.Succeeded)
                 {
-
-                    var roleStore = new RoleStore<IdentityRole>(db);
-                    var roleManager = new RoleManager<IdentityRole>(roleStore);
-
-                    var userStore = new UserStore<User>(db);
-                    var userManager = new UserManager<User>(userStore);
+                    user = userManager.FindByName(usersViewModel.Username);
                     userManager.AddToRole(user.Id, usersViewModel.Role);
 
 
                     if (usersViewModel.Role == "Pracownik")
                     {
-                        if (user.Drivers == null)
-                            user.Drivers = new List<User>();
-                        foreach (var driver in usersViewModel.Drivers)
+                        user.Drivers = new List<User>();
+                        foreach (var driver in usersViewModel.SelectedDrivers)
                         {
-                            user.Drivers.Add(userManager.FindById(driver.Id));
+                            var drv = userManager.FindByName(driver);
+                            if (drv.SupervisorEmployee == null)
+                            {
+                                drv.SupervisorEmployee = user;
+                                user.Drivers.Add(drv);
+                            }
                         }
-
+                        //db.Entry(user).State = EntityState.Modified;
                     }
-
-                    return View("Index", db.Users.ToList());
+                    db.SaveChanges();
+                    return RedirectToAction("Index", db.Users.ToList());
                 }
                 AddErrors(result);
             }
@@ -130,7 +145,8 @@ namespace RGA.Controllers
             {
                 return HttpNotFound();
             }
-            editUserViewModel = new EditUserViewModel() { UserModel = user };
+
+            editUserViewModel = new EditUserViewModel() { User = user };
             return View(editUserViewModel);
         }
 
@@ -142,26 +158,42 @@ namespace RGA.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EditUserViewModel editUser)
         {
-            var user = editUser.UserModel;
+            if (editUser.SelectedDrivers.Any() && editUser.Role != "Pracownik")
+            {
+                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+                ModelState.AddModelError("Role", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+            }
+
+
+            var roleStore = new RoleStore<IdentityRole>(db);
+            var roleManager = new RoleManager<IdentityRole>(roleStore);
+
+            var userStore = new UserStore<User>(db);
+            var userManager = new UserManager<User>(userStore);
+
+            var user = userManager.FindById(editUser.UserId);//db.Users.Find(editUser.UserId);
+
+
+            if (editUser.SelectedDrivers.Any(n => userManager.FindByName(n).SupervisorEmployee != null && userManager.FindByName(n).SupervisorEmployee !=user))
+                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców, którzy już są do kogoś innego przydzieleni");
+
+            
+
             if (ModelState.IsValid)
             {
                 db.Users.Attach(user);
-                user.Roles.Clear();
 
-                var roleStore = new RoleStore<IdentityRole>(db);
-                var roleManager = new RoleManager<IdentityRole>(roleStore);
+                var currentRole = userManager.GetRoles(user.Id).First();
 
-                var userStore = new UserStore<User>(db);
-                var userManager = new UserManager<User>(userStore);
-
-                if (user.Role.Name != editUser.ManageUsersViewModel.Role)
+                if (currentRole != editUser.Role)
                 {
-                    userManager.RemoveFromRole(user.Id, user.Role.Name);
-                    userManager.AddToRole(user.Id, editUser.ManageUsersViewModel.Role);
+                    userManager.RemoveFromRole(user.Id, currentRole);
+                    userManager.AddToRole(user.Id, editUser.Role);
                 }
 
 
-                if (editUser.ManageUsersViewModel.Role == "Pracownik")
+
+                if (user.Drivers != null)
                 {
                     foreach (var driver in user.Drivers)
                     {
@@ -169,8 +201,11 @@ namespace RGA.Controllers
                     }
                     user.Drivers.Clear();
                     db.SaveChanges();
-
-                    foreach (var driver in editUser.SelectedDriversItems)
+                }
+                if (editUser.Role == "Pracownik")
+                {
+                    user.Drivers = new List<User>();
+                    foreach (var driver in editUser.SelectedDrivers)
                     {
                         var drv = userManager.FindByName(driver);
                         if (drv.SupervisorEmployee == null)
@@ -178,13 +213,11 @@ namespace RGA.Controllers
                             drv.SupervisorEmployee = user;
                             user.Drivers.Add(drv);
                         }
-
                     }
-
                 }
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
-                return View("Index", db.Users.ToList());
+                return RedirectToAction("Index", db.Users.ToList());
             }
             return View(editUser);
         }
@@ -212,6 +245,9 @@ namespace RGA.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             User user = db.Users.Find(id);
+            user.SupervisorEmployee = null;
+            user.Drivers.Clear();
+            db.SaveChanges();
             db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
