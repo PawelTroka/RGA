@@ -84,7 +84,7 @@ namespace RGA.Models.ViewModels
         [Required]
         [Display(Name = "Przesyłki")]
        // [DataType(DataType.Custom)]
-        public IEnumerable<Shipment> Shipments { get; set; }
+        public IList<Shipment> Shipments { get; set; }
 
 
         [Display(Name = "Notatki do trasy")]

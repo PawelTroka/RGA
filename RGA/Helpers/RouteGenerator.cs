@@ -23,12 +23,16 @@ namespace RGA.Helpers
         private TspSolver tspSolver;
         private string browserAPIKey = "AIzaSyCBup_64x3U1wfm3NTiu1mO_8tyz1GAM6Q";
         private string serverAPIKey = "AIzaSyDPhoaf5psgGK27m6FWKTyLiTf-aIiHiWs";
-        public RouteGenerator()
+        public RouteGenerator(RGA.Models.Route route)
         {
             Addresses = new List<string>();
-            route = new RGA.Models.Route();
+            this.route = route;
+            this.BaseAddress = route.StartAddress;
+            route.Shipments.ForEach(s => this.Addresses.Add(s.DestinationAddress));
+            this.routeOptimizationAlgorithm = route.RouteOptimizationAlgorithm;
+            this.routeOptimizationProvider = route.RouteOptimizationProvider;
+            this.routeOptimizationType = route.RouteOptimizationType;
         }
-
         public RouteOptimizationProvider routeOptimizationProvider { get; set; }
         public RouteOptimizationAlgorithm routeOptimizationAlgorithm { get; set; }
         public RouteOptimizationType routeOptimizationType { get; set; }
@@ -130,7 +134,8 @@ namespace RGA.Helpers
                 WaypointsOrigin = waypoints,
                 WaypointsDestination = waypoints,
                 Units = Units.metric,
-                Mode = TravelMode.driving
+                Mode = TravelMode.driving,
+                Sensor = false
             };
 
 
@@ -182,6 +187,7 @@ namespace RGA.Helpers
                 //MapType = Mapt
                 Format = GMapsImageFormats.JPG,
                 Path = new Path(locations),
+                Sensor = false
                 // Size = new Size(600,600)
             };
             //route.Sections.First().Steps.First().

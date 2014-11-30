@@ -1,4 +1,4 @@
-﻿@model IEnumerable<RGA.Models.Shipment>
+﻿@model IList<RGA.Models.Shipment>
 @{
     AjaxOptions options = new AjaxOptions();
     options.HttpMethod = "POST";
@@ -12,9 +12,10 @@
     options.InsertionMode = InsertionMode.InsertAfter;
 }
 
-@foreach (var m in Model)
+@* ReSharper disable once ForCanBeConvertedToForeach *@
+@for(int i=0;i<Model.Count;i++)
 {
-    @Html.EditorFor(mod => m, "Shipment")
+    @Html.EditorFor(mod => Model[i], "Shipment")
 }
 <div id="items"></div>
 

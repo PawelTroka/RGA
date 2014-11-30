@@ -7,14 +7,15 @@ using System.Web.Security;
 using Google.Maps.Internal;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using RGA.Helpers;
 using RGA.Models;
 using RGA.Models.ViewModels;
 
 namespace RGA.Controllers
 {
     public class RoutesController : Controller
-    {        
-        private RoutesViewModel routesViewModel=new RoutesViewModel();
+    {
+        private RoutesViewModel routesViewModel = new RoutesViewModel();
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
@@ -42,7 +43,7 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult AddAddress()
         {
-            var shipment = new Shipment() {Id = Guid.NewGuid().ToString()};
+            var shipment = new Shipment() { Id = Guid.NewGuid().ToString() };
 
             return PartialView("EditorTemplates/Shipment", shipment);
         }
@@ -50,18 +51,54 @@ namespace RGA.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Admin, Pracownik")]
-        public ActionResult GenerateRoute(RoutesViewModel model)
+        public ActionResult GenerateRoute(GenerateRouteViewModel model)
         {
+            var db = ApplicationDbContext.Create();
 
-            string id = "1";
-            return RedirectToAction("Route",id);
+            var store = new UserStore<User>(db);
+            var userManager = new UserManager<User>(store);
+
+            var creator = userManager.FindById(model.WorkerId);
+
+            var driver = userManager.FindByName(model.DriverName);
+
+            var route =  new Route
+            {
+                Id = Guid.NewGuid().ToString(),
+                StartAddress = model.StartAddress,
+                Shipments = new List<Shipment>(model.Shipments),
+                Description = model.Description,
+                Notes = new List<Note>(),
+                RouteOptimizationAlgorithm = model.RouteOptimizationAlgorithm,
+                RouteOptimizationProvider = model.RouteOptimizationProvider,
+                RouteOptimizationType = model.RouteOptimizationType,
+                StartDateTime = model.StartDate,
+                State = RouteState.New,
+                Worker = creator,
+                Driver = driver
+            };
+            if (!string.IsNullOrEmpty(model.Note))
+                route.Notes.Add(new Note() { Id=Guid.NewGuid().ToString(), Content = model.Note, DateAdded = DateTime.Now, Creator = creator, Driver = driver });
+
+
+            var generator = new RouteGenerator(route);
+            route = generator.GenerateRoute();
+            
+
+            db.Routes.Add(route);
+            db.SaveChanges();
+
+            return RedirectToAction("Route", "Routes", route.Id);
         }
 
 
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult Route(string id)
         {
-            return View("Route", routesViewModel);
+            var db = ApplicationDbContext.Create();
+            var route = db.Routes.Find(id);
+
+            return View("Route", route);
         }
     }
 }

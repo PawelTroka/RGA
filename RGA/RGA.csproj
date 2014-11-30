@@ -330,6 +330,7 @@
     <Content Include="Views\Routes\GenerateRoute.cshtml" />
     <Content Include="Views\Routes\EditorTemplates\Shipments.cshtml" />
     <Content Include="Views\Routes\EditorTemplates\Shipment.cshtml" />
+    <Content Include="Views\Routes\Route.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
