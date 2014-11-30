@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RGA.Models.Shipment>
+@{
+    AjaxOptions options = new AjaxOptions();
+    options.HttpMethod = "POST";
+    options.Confirm = "Do you wish to submit this form?";
+    options.OnBegin = "OnBegin";
+    options.OnComplete = "OnComplete";
+    options.OnFailure = "OnFailure";
+    options.OnSuccess = "OnSuccess";
+    options.LoadingElementDuration = 1000;
+    options.UpdateTargetId = "divResponse";
+    options.InsertionMode = InsertionMode.InsertAfter;
+}
+
+@foreach (var m in Model)
+{
+    @Html.EditorFor(mod => m, "Shipment")
+}
+<div id="items"></div>
+
+@Ajax.ActionLink("Dodaj", "AddAddress", "Routes", new AjaxOptions()
+   {
+       UpdateTargetId = "items",
+       InsertionMode = InsertionMode.InsertBefore,
+       OnSuccess = "addGeocomplete()"
+   }, new { @class = "btn btn-default" })
+@*<div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Dodaj" class="btn btn-default" />
+        </div>
+    </div>*@

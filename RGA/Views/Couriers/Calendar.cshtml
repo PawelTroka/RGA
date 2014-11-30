@@ -1,7 +1,7 @@
 ﻿@model RGA.Models.ViewModels.CouriersViewModel
 
 @{
-    ViewBag.Title = "Kalendarz kierowcy "+Model.SelectedDriver.UserName;
+    ViewBag.Title = "Kalendarz kierowcy " + Model.SelectedDriver.UserName;
 }
 
 <h2>Kalendarz dla kierowcy @Model.SelectedDriver.UserName</h2>
@@ -12,25 +12,33 @@
 
 <div id="datepicker"></div>
 
-
+<br />
 <p>
-    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new { Model.SelectedDriver.Id, DateTime.Now }, new { id="generateRoute",@class = "btn btn-default" })
+    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new { Model.SelectedDriver.Id, date=DateTime.Today.ToShortDateString() }, new { id = "generateRoute", @class = "btn btn-primary btn-lg" })
 </p>
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-}
 
-<script>
-    $(function () {
-        $("#datepicker").datepicker($.datepicker.regional["pl"], {
-            beforeShow: function () {
-                $(".ui-datepicker").css('font-size', 32);
-            },
-            onSelect: function(dateText, inst) { 
-            //$("#generateRoute")//window.location = 'http://mysite/events/Pages/default.aspx?dt=' + dateText;
-        }
+    <script>
+        $(document).ready(function () {
+
+            $('#datepicker').datepicker({
+                regional: "pl",
+                dateFormat: 'yy-mm-dd',
+                minDate: 0,
+                showWeek: true,
+                firstDay: 1,
+                showButtonPanel: true,
+                onSelect: function (date) {
+                    // Your CSS changes, just in case you still need them
+                    $('#generateRoute').prop("href", $('#generateRoute').prop("href").substr(0, $('#generateRoute').prop("href").indexOf("?date=")) + "?date=" + date);
+                    //alert(date);
+                }
+            });
+
+            $("#datepicker").css({ 'font-size': 24 });
         });
-    });
-</script>
+    </script>
+}

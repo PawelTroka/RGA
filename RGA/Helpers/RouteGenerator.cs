@@ -51,7 +51,12 @@ namespace RGA.Helpers
             directions.Routes.First().Legs.ForEach(leg => route.Duaration += leg.Duration.Value);
             directions.Routes.First().Legs.ForEach(leg => route.Distance += leg.Distance.Value);
 
-            route.Addresses = Addresses;
+            //route.Shipments// = Addresses;
+
+            var shipments = new List<Shipment>(route.Shipments);
+            shipments.Sort((s1, s2) => Addresses.IndexOf(s1.DestinationAddress).CompareTo(Addresses.IndexOf(s2.DestinationAddress)));
+            route.Shipments = shipments;
+
             route.StartAddress = BaseAddress;
             route.Image = getImageBytes();
 
