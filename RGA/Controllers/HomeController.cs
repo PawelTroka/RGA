@@ -15,14 +15,14 @@ namespace RGA.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Ciekawe wyzwanie, rozwiązujące praktyczny problem.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Autorzy.";
 
             return View();
         }

@@ -38,7 +38,8 @@ namespace RGA
 
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      //"~/Content/bootstrap.css",
+                      "~/Content/rga/bootstrap.css",
                       "~/Content/site.css"));
 
 

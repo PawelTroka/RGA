@@ -92,15 +92,15 @@ namespace RGA.Models.ViewModels
         public string Note { get; set; }
 
         [Required]
-        [Display(Name = "Algorytm optymalizacji trasy")]
+        [Display(Name = "Algorytm optymalizacji")]
         public RouteOptimizationAlgorithm RouteOptimizationAlgorithm { get; set; }
 
         [Required]
-        [Display(Name = "Dostawca optymalizacji trasy")]
+        [Display(Name = "Dostawca optymalizacji")]
         public RouteOptimizationProvider RouteOptimizationProvider { get; set; }
 
         [Required]
-        [Display(Name = "Kryterium optymalizacji trasy")]
+        [Display(Name = "Kryterium optymalizacji")]
         public RouteOptimizationType RouteOptimizationType { get; set; }
     }
 }
