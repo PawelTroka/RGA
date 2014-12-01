@@ -185,6 +185,9 @@
     <Compile Include="Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\RoutesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Helpers\CollectionEditingHtmlExtensions.cs" />
+    <Compile Include="Helpers\FormResponseData.cs" />
+    <Compile Include="Helpers\JsonHtmlExtensions.cs" />
     <Compile Include="Helpers\RouteState.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Shipment.cs" />

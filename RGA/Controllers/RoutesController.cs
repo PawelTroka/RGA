@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using RGA.Helpers;
 using RGA.Models;
 using RGA.Models.ViewModels;
+using WebGrease.Css.Extensions;
 
 namespace RGA.Controllers
 {
@@ -62,11 +63,14 @@ namespace RGA.Controllers
 
             var driver = userManager.FindByName(model.DriverName);
 
+            var shipments = new List<Shipment>();
+            model.Shipments.ForEach(s => shipments.Add(new Shipment(){Id = Guid.NewGuid().ToString(),DestinationAddress = s.DestinationAddress,Number = s.Number}));
+
             var route =  new Route
             {
                 Id = Guid.NewGuid().ToString(),
                 StartAddress = model.StartAddress,
-                Shipments = new List<Shipment>(model.Shipments),
+                Shipments = shipments,
                 Description = model.Description,
                 Notes = new List<Note>(),
                 RouteOptimizationAlgorithm = model.RouteOptimizationAlgorithm,
@@ -88,7 +92,7 @@ namespace RGA.Controllers
             db.Routes.Add(route);
             db.SaveChanges();
 
-            return RedirectToAction("Route", "Routes", route.Id);
+            return RedirectToAction("Route", "Routes", new {id=route.Id});
         }
 
 
