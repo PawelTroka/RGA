@@ -48,7 +48,7 @@ namespace RGA.Helpers
 
             route.Summary = directions.Routes.First().Summary;
          //   route.Sections = new List<Leg>(directions.Routes.First().Legs);
-
+           // directions.Routes.First().Legs.First().Steps.First().;
             if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
                 SortThingsAccordingToWaypointOrder(directions.Routes.First().WaypointOrder);
 
@@ -62,7 +62,12 @@ namespace RGA.Helpers
             route.Shipments = shipments;
 
             route.StartAddress = BaseAddress;
-            route.Image = getImageBytes();
+
+            var locationsPoints = new List<Location>();
+ 
+            directions.Routes.First().OverviewPath.Points.ForEach(p=> locationsPoints.Add(new Location(p.LocationString)));
+
+            route.Image = getImageBytes(locationsPoints);
 
             return route;
         }
@@ -171,7 +176,7 @@ namespace RGA.Helpers
         }
 
 
-        private byte[] getImageBytes()
+        private byte[] getImageBytes(IEnumerable<Location> locationsPoints)
         {
             var locations = new List<Location>() { BaseAddress };
 
@@ -181,11 +186,16 @@ namespace RGA.Helpers
             }
             locations.Add(BaseAddress);
 
+            var markers = new MapMarkersCollection();
+            
+            locations.ForEach(markers.Add);
+
             var mapRequest = new Google.Maps.StaticMaps.StaticMapRequest()
             {
                 Language = "pl",
                 //MapType = Mapt
                 Format = GMapsImageFormats.JPG,
+                Markers = markers,
                 Path = new Path(locations),
                 Sensor = false
                 // Size = new Size(600,600)

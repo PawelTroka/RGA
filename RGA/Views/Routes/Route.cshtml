@@ -10,6 +10,68 @@
     <h4>Szczegóły trasy</h4>
     <hr />
     <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.UserName)
+        </dd>
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.UserName)
+        </dd>
+
+
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DynamicMapHtml)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DynamicMapHtml)
+        </dd>
+        
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipments)
+        </dt>
+        
+        @foreach (var shipment in Model.Shipments)
+        {
+            <dd>
+                @Html.DisplayFor(m=> shipment.DestinationAddress)
+            </dd>
+        }
+        
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndAddress)
+        </dd>
+        
+
         <dt>
             @Html.DisplayNameFor(model => model.Image)
         </dt>
@@ -42,21 +104,7 @@
             @Html.DisplayFor(model => model.StartDateTime)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartAddress)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndAddress)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Duaration)

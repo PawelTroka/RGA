@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Data.Entity;
 using GoogleMapsApi.Entities.Directions.Response;
@@ -63,5 +64,76 @@ namespace RGA.Models
 
         [Display(Name = "Kryterium optymalizacji")]
         public RouteOptimizationType RouteOptimizationType { get; set; }
+
+
+
+
+        [Display(Name = "Wizualizacja trasy w systemie map online")]
+        [DataType(DataType.Html)]
+        public string DynamicMapHtml
+        {
+            get
+            {
+                var template = new StringBuilder(@"<style>
+    #map-canvas425321423y78ydgf23t87 {
+        width: 500px;
+        height: 400px;
+    }
+</style>
+<script src=""https://maps.googleapis.com/maps/api/js""></script>
+<script>
+function initializeMap425321423y78ydgf23t87() {
+
+    var directionsService = new google.maps.DirectionsService();
+    var  directionsDisplay = new google.maps.DirectionsRenderer();
+    var gdansk = new google.maps.LatLng(54.371906, 18.616290);
+    var mapOptions = {
+        zoom: 6,
+        center: gdansk
+    }
+    var map = new google.maps.Map(document.getElementById('map-canvas425321423y78ydgf23t87'), mapOptions);
+    directionsDisplay.setMap(map);
+
+    var start = '{START_ADDRESS_STRING}';
+    var end = '{END_ADDRESS_STRING}';
+    var waypts = [{ADDRESSES_COMMA_SEPARATED_WAYPOINTS_STRINGS}];//{location: 'Krakow, Poland',stopover:true}
+
+    var request = {
+        origin: start,
+        destination: end,
+        waypoints: waypts,
+        optimizeWaypoints: false,
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    directionsService.route(request, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        }
+    });
+}
+google.maps.event.addDomListener(window, 'load', initializeMap425321423y78ydgf23t87);
+</script>
+<div id=""map-canvas425321423y78ydgf23t87""></div>");
+
+                template.Replace(@"{START_ADDRESS_STRING}", this.StartAddress);
+
+                template.Replace(@"{END_ADDRESS_STRING}",
+                    string.IsNullOrEmpty(this.EndAddress) ? this.StartAddress : this.EndAddress);
+
+                var waypoints = new StringBuilder();
+
+                const string str = @"{location: '{ADDRESS_HERE}',stopover:true},";
+                foreach (var shipment in Shipments)
+                {
+                    waypoints.Append(str.Replace("{ADDRESS_HERE}", shipment.DestinationAddress));
+                }
+                waypoints.Remove(waypoints.Length - 1, 1);//remove last comma
+
+                template.Replace(@"{ADDRESSES_COMMA_SEPARATED_WAYPOINTS_STRINGS}", waypoints.ToString());
+
+                return template.ToString();
+            }
+        }
     }
 }
