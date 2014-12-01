@@ -28,7 +28,7 @@
 @Ajax.ActionLink("Dodaj", "AddAddress", "Routes", new AjaxOptions()
    {
        UpdateTargetId = "editableItems",
-       InsertionMode = InsertionMode.InsertBefore,
+       InsertionMode = InsertionMode.InsertAfter,
        OnSuccess = "addGeocomplete()"
    }, new { @class = "btn btn-default" })
 @*<div class="form-group">

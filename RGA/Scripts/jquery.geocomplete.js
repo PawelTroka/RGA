@@ -40,6 +40,7 @@
     country: null,
     map: false,
     details: false,
+      language: 'pl', 
     detailsAttribute: "name",
     autoselect: true,
     location: false,

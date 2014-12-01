@@ -126,7 +126,7 @@
 
 
     @Scripts.Render("~/bundles/jqueryval")
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=pl&amp;libraries=places"></script>
     @Scripts.Render("~/bundles/jquerygeocomplete")
 
     <script type="text/javascript">
@@ -150,6 +150,7 @@
 
             $("#startAddress").geocomplete({
                 map: "#base_map"
+                //country: 'pl'
             });
             addGeocomplete();
         });

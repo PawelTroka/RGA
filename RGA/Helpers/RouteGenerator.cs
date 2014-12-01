@@ -111,7 +111,8 @@ namespace RGA.Helpers
 
         private void SortThingsAccordingToWaypointOrder(int[] order)
         {
-            Addresses.Sort((a1, a2) => order[Addresses.IndexOf(a1)].CompareTo(order[Addresses.IndexOf(a2)]));
+            var copyOfAddresses = new List<string>(Addresses);
+            Addresses.Sort((a1, a2) => order[copyOfAddresses.IndexOf(a1)].CompareTo(order[copyOfAddresses.IndexOf(a2)]));
 
             var orderOfSections = new List<int> { 0 };
             orderOfSections.AddRange(order);
@@ -132,6 +133,12 @@ namespace RGA.Helpers
                 waypoints.Add(i + 1, new Waypoint() { Address = Addresses[i] });
             }
 
+            /*
+             * Users of the free API:
+            100 elements per query.
+            100 elements per 10 seconds.
+            2 500 elements per 24 hour period.       
+             */
             var request = new Google.Maps.DistanceMatrix.DistanceMatrixRequest()
             {
                 Language = "pl",

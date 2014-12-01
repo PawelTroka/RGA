@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -49,9 +50,20 @@ namespace RGA.Models
 
         [Display(Name = "Czas trwania")]
         [DataType(DataType.Time)]
-        public TimeSpan Duaration { get; set; }
+        [NotMapped]
+        public TimeSpan Duaration
+        {
+            get { return TimeSpan.FromTicks(DuarationTicks); }
+            set { DuarationTicks = value.Ticks; }
+        }
+        public long DuarationTicks { get; set; }
+
+
+
         [Display(Name = "Dystans")]
         public long Distance { get; set; }
+
+
 
         [Display(Name = "Stan")]
         public RouteState State { get; set; }
