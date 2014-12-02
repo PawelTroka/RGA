@@ -1,65 +1,64 @@
-﻿@using Microsoft.AspNet.Identity
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Route Generation Assistant</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/themes/base/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - Route Generation Assistant</title>
+        @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/themes/base/css")
+        @Scripts.Render("~/bundles/modernizr")
 
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Route Generation Assistant", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @if (User.IsInRole("Kierowca"))
-                    {
-                        <li>@Html.ActionLink("Twój kalendarz", "Index", "Calendar")</li>
-                    }
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Route Generation Assistant", "Index", "Home", new {area = ""}, new {@class = "navbar-brand"})
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        @if (User.IsInRole("Kierowca"))
+                        {
+                            <li>@Html.ActionLink("Twój kalendarz", "Index", "Calendar")</li>
+                        }
 
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Wygenerowane trasy", "Index", "Routes")</li>
-                    }
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Wygenerowane trasy", "Index", "Routes")</li>
+                        }
                     
-                    @if (User.IsInRole("Pracownik"))
-                    {
-                        <li>@Html.ActionLink("Twoi kierowcy", "Index", "Couriers")</li>
-                    }
+                        @if (User.IsInRole("Pracownik"))
+                        {
+                            <li>@Html.ActionLink("Twoi kierowcy", "Index", "Couriers")</li>
+                        }
                                         
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li>@Html.ActionLink("Zarządzaj użytkownikami", "Index", "Users")</li>
-                    }
-                    <li>@Html.ActionLink("O nas", "About", "Home")</li>
-                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Zarządzaj użytkownikami", "Index", "Users")</li>
+                        }
+                        <li>@Html.ActionLink("O nas", "About", "Home")</li>
+                        <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
 
-                </ul>
-                @Html.Partial("_LoginPartial")
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Route Generation Assistant</p>
-        </footer>
-    </div>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Route Generation Assistant</p>
+            </footer>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", false)
+    </body>
 </html>

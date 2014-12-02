@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -14,32 +10,25 @@ namespace RGA.Controllers
 {
     public class ManageUsersController : Controller
     {
-        private CreateUserViewModel model = new CreateUserViewModel();
-        private ApplicationDbContext context = ApplicationDbContext.Create();
+        private readonly ApplicationDbContext context = ApplicationDbContext.Create();
+        private readonly CreateUserViewModel model = new CreateUserViewModel();
 
 
         // GET: ManageUsers
-        [Authorize(Roles = "Admin")]
-        public ActionResult Index()
-        {
-            
-            return View("Index", model);
-        }
-
 
 
         private ApplicationUserManager _userManager;
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            private set { _userManager = value; }
+        }
+
+        [Authorize(Roles = "Admin")]
+        public ActionResult Index()
+        {
+            return View("Index", model);
         }
 
         [Authorize(Roles = "Admin")]
@@ -49,17 +38,12 @@ namespace RGA.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Username, Email = model.Email, PhoneNumber = model.Phone };
-                var result = await UserManager.CreateAsync(user, model.Password);
-
-
-               
-
+                var user = new User {UserName = model.Username, Email = model.Email, PhoneNumber = model.Phone};
+                IdentityResult result = await UserManager.CreateAsync(user, model.Password);
 
 
                 if (result.Succeeded)
                 {
-
                     var roleStore = new RoleStore<IdentityRole>(context);
                     var roleManager = new RoleManager<IdentityRole>(roleStore);
 
@@ -75,7 +59,7 @@ namespace RGA.Controllers
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //return RedirectToAction("Index", "Home");
-                 ///   model = new CreateUserViewModel();
+                    ///   model = new CreateUserViewModel();
                     return View("Index", model);
                 }
                 AddErrors(result);
@@ -87,7 +71,7 @@ namespace RGA.Controllers
 
         private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors)
+            foreach (string error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }
@@ -99,20 +83,19 @@ namespace RGA.Controllers
         public ActionResult Delete(string id)
         {
             //var model = new CreateUserViewModel();
-           // var dbContext = ApplicationDbContext.Create();
-         //   dbContext.Users.Remove(dbContext.Users.Find(id));
-            var user = UserManager.FindById(id);
-            var result = UserManager.Delete(user);
+            // var dbContext = ApplicationDbContext.Create();
+            //   dbContext.Users.Remove(dbContext.Users.Find(id));
+            User user = UserManager.FindById(id);
+            IdentityResult result = UserManager.Delete(user);
 
-           // model = new CreateUserViewModel();
+            // model = new CreateUserViewModel();
             if (result.Succeeded)
             {
-
                 return View("Index", model);
             }
             AddErrors(result);
-            
-            return View("Index",model);
+
+            return View("Index", model);
         }
     }
 }

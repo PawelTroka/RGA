@@ -7,7 +7,7 @@ class Person {
         this.name = name;
     }
 
-    public getName() : string {
+    public getName(): string {
         return name;
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Owin;
 using Owin;
+using RGA;
 
-[assembly: OwinStartupAttribute(typeof(RGA.Startup))]
+[assembly: OwinStartup(typeof (Startup))]
+
 namespace RGA
 {
     public partial class Startup

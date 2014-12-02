@@ -14,7 +14,7 @@
 
 <br />
 <p>
-    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new { Model.SelectedDriver.Id, date=DateTime.Today.ToShortDateString() }, new { id = "generateRoute", @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new {Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString()}, new {id = "generateRoute", @class = "btn btn-primary btn-lg"})
 </p>
 
 
@@ -22,7 +22,7 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             $('#datepicker').datepicker({
                 regional: "pl",
@@ -31,7 +31,7 @@
                 showWeek: true,
                 firstDay: 1,
                 showButtonPanel: true,
-                onSelect: function (date) {
+                onSelect: function(date) {
                     // Your CSS changes, just in case you still need them
                     $('#generateRoute').prop("href", $('#generateRoute').prop("href").substr(0, $('#generateRoute').prop("href").indexOf("?date=")) + "?date=" + date);
                     //alert(date);

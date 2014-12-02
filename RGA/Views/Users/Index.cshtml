@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RGA.Models.User>
+﻿@using RGA.Models
+@model IEnumerable<RGA.Models.User>
 
 @{
     ViewBag.Title = "Zarządzaj użytkownikami";
@@ -21,49 +22,50 @@
         <th> </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
+    @foreach (User item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.PhoneNumber)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
         
-        <td>
-            @Html.DisplayFor(modelItem => item.Role.Name)
-        </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Name)
+            </td>
 
         
-        <td>
-            @if (item.Drivers != null && item.Drivers.Count > 0)
-            {
-                <ul>
-                    @foreach (var m in item.Drivers)
-                    {
-                        <li>
-                            @Html.Encode(m.UserName)
-                        </li>
-                    }
-                </ul>
-            }
-        </td>
+            <td>
+                @if (item.Drivers != null && item.Drivers.Count > 0)
+                {
+                    <ul>
+                        @foreach (User m in item.Drivers)
+                        {
+                            <li>
+                                @Html.Encode(m.UserName)
+                            </li>
+                        }
+                    </ul>
+                }
+            </td>
         
-        <td>
-            @Html.ActionLink("Szczegóły", "Details", new { id = item.Id })
-        </td>
-        <td>
-            @Html.ActionLink("Edytuj", "Edit", new { item.Id })
-        </td>
-        <td>
-            @Html.ActionLink("Usuń", "Delete", new { item.Id })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Szczegóły", "Details", new {id = item.Id})
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new {item.Id})
+            </td>
+            <td>
+                @Html.ActionLink("Usuń", "Delete", new {item.Id})
+            </td>
+        </tr>
+    }
 
 </table>
 

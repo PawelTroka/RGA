@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -12,12 +10,15 @@ namespace RGA.Models.ViewModels
 {
     public class RoutesViewModel
     {
-        private ApplicationDbContext routeDbContext = ApplicationDbContext.Create();
+        private readonly ApplicationDbContext routeDbContext = ApplicationDbContext.Create();
 
         public User Worker { get; set; }
         public Route Route { get; set; }
 
-        public IEnumerable<Route> AllRoutes { get { return routeDbContext.Routes; } }
+        public IEnumerable<Route> AllRoutes
+        {
+            get { return routeDbContext.Routes; }
+        }
 
         public User Driver { get; set; }
         public DateTime Date { get; set; }
@@ -26,33 +27,24 @@ namespace RGA.Models.ViewModels
 
     public class GenerateRouteViewModel
     {
-        private void init()
-        {
-            var store = new UserStore<User>(new ApplicationDbContext());
-            var userManager = new UserManager<User>(store);
-            var user = userManager.FindById(WorkerId);
-
-            var driversList = new List<SelectListItem>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach (var driver in user.Drivers)
-            {
-                driversList.Add(new SelectListItem() { Value = driver.UserName, Text = driver.UserName });
-            }
-
-            MyDriversList = new SelectList(driversList, "Value", "Text");
-        }
-
         public GenerateRouteViewModel()
         {
-            Shipments = new List<Shipment>() { new Shipment() { DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString() }, new Shipment() { DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString() } };
+            Shipments = new List<Shipment>
+            {
+                new Shipment {DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString()},
+                new Shipment {DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString()}
+            };
         }
 
         public GenerateRouteViewModel(string workerId)
         {
             WorkerId = workerId;
             init();
-            Shipments = new List<Shipment>() { new Shipment() { DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString() }, new Shipment() { DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString() } };
+            Shipments = new List<Shipment>
+            {
+                new Shipment {DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString()},
+                new Shipment {DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString()}
+            };
         }
 
         [HiddenInput(DisplayValue = false)]
@@ -74,7 +66,7 @@ namespace RGA.Models.ViewModels
         [Display(Name = "Adres bazy")]
         public string StartAddress { get; set; }
 
-       // [Required]
+        // [Required]
         [Display(Name = "Krótki opis trasy")]
         [DataType(DataType.MultilineText)]
         //public List<string> Addresses { get; set; }
@@ -83,7 +75,7 @@ namespace RGA.Models.ViewModels
 
         [Required]
         [Display(Name = "Przesyłki")]
-       // [DataType(DataType.Custom)]
+        // [DataType(DataType.Custom)]
         public IList<Shipment> Shipments { get; set; }
 
 
@@ -102,5 +94,22 @@ namespace RGA.Models.ViewModels
         [Required]
         [Display(Name = "Kryterium optymalizacji")]
         public RouteOptimizationType RouteOptimizationType { get; set; }
+
+        public void init()
+        {
+            var store = new UserStore<User>(new ApplicationDbContext());
+            var userManager = new UserManager<User>(store);
+            User user = userManager.FindById(WorkerId);
+
+            var driversList = new List<SelectListItem>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (User driver in user.Drivers)
+            {
+                driversList.Add(new SelectListItem {Value = driver.UserName, Text = driver.UserName});
+            }
+
+            MyDriversList = new SelectList(driversList, "Value", "Text");
+        }
     }
 }

@@ -1,6 +1,7 @@
-﻿@model IList<RGA.Models.Shipment>
+﻿@using RGA.Models
+@model IList<RGA.Models.Shipment>
 @{
-    AjaxOptions options = new AjaxOptions();
+    var options = new AjaxOptions();
     options.HttpMethod = "POST";
     options.Confirm = "Do you wish to submit this form?";
     options.OnBegin = "OnBegin";
@@ -18,19 +19,19 @@
     @Html.EditorFor(mod => Model[i], "Shipment")
 }*@
 <div id="editableItems">
-    @foreach (var shipment in Model)
+    @foreach (Shipment shipment in Model)
     {
         Html.RenderPartial("EditorTemplates/Shipment", shipment);
     }
 </div>
 <div id="items"></div>
 
-@Ajax.ActionLink("Dodaj", "AddAddress", "Routes", new AjaxOptions()
-   {
-       UpdateTargetId = "editableItems",
-       InsertionMode = InsertionMode.InsertAfter,
-       OnSuccess = "addGeocomplete()"
-   }, new { @class = "btn btn-default" })
+@Ajax.ActionLink("Dodaj", "AddAddress", "Routes", new AjaxOptions
+{
+    UpdateTargetId = "editableItems",
+    InsertionMode = InsertionMode.InsertAfter,
+    OnSuccess = "addGeocomplete()"
+}, new {@class = "btn btn-default"})
 @*<div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Dodaj" class="btn btn-default" />

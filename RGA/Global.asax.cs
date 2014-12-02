@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -11,13 +8,13 @@ using RGA.Models;
 
 namespace RGA
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
-            Database.SetInitializer<ApplicationDbContext>(new UsersInitializer());
+            Database.SetInitializer(new UsersInitializer());
 
-            ApplicationDbContext db = new ApplicationDbContext();
+            var db = new ApplicationDbContext();
             db.Database.Initialize(true);
 
             AreaRegistration.RegisterAllAreas();

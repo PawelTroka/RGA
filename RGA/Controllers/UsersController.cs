@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
@@ -19,22 +16,15 @@ namespace RGA.Controllers
     [Authorize(Roles = "Admin")]
     public class UsersController : Controller
     {
-        private EditUserViewModel editUserViewModel;
-
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ApplicationDbContext db = new ApplicationDbContext();
 
         private ApplicationUserManager _userManager;
+        private EditUserViewModel editUserViewModel;
 
         public ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get { return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>(); }
+            private set { _userManager = value; }
         }
 
         // GET: Users
@@ -78,8 +68,10 @@ namespace RGA.Controllers
         {
             if (usersViewModel.SelectedDrivers.Any() && usersViewModel.Role != "Pracownik")
             {
-                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
-                ModelState.AddModelError("Role", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+                ModelState.AddModelError("SelectedDrivers",
+                    "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+                ModelState.AddModelError("Role",
+                    "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
             }
 
 
@@ -90,17 +82,21 @@ namespace RGA.Controllers
             var userManager = new UserManager<User>(userStore);
 
 
-
             if (usersViewModel.SelectedDrivers.Any(n => userManager.FindByName(n).SupervisorEmployee != null))
-                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców, którzy już są do kogoś innego przydzieleni");
+                ModelState.AddModelError("SelectedDrivers",
+                    "Użytkownik nie może mieć przydzielonych kierowców, którzy już są do kogoś innego przydzieleni");
 
-            
 
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = usersViewModel.Username, Email = usersViewModel.Email, PhoneNumber = usersViewModel.Phone };
+                var user = new User
+                {
+                    UserName = usersViewModel.Username,
+                    Email = usersViewModel.Email,
+                    PhoneNumber = usersViewModel.Phone
+                };
 
-                var result = await UserManager.CreateAsync(user, usersViewModel.Password);
+                IdentityResult result = await UserManager.CreateAsync(user, usersViewModel.Password);
 
                 if (result.Succeeded)
                 {
@@ -111,9 +107,9 @@ namespace RGA.Controllers
                     if (usersViewModel.Role == "Pracownik")
                     {
                         user.Drivers = new List<User>();
-                        foreach (var driver in usersViewModel.SelectedDrivers)
+                        foreach (string driver in usersViewModel.SelectedDrivers)
                         {
-                            var drv = userManager.FindByName(driver);
+                            User drv = userManager.FindByName(driver);
                             if (drv.SupervisorEmployee == null)
                             {
                                 drv.SupervisorEmployee = user;
@@ -146,7 +142,7 @@ namespace RGA.Controllers
                 return HttpNotFound();
             }
 
-            editUserViewModel = new EditUserViewModel() { User = user };
+            editUserViewModel = new EditUserViewModel {User = user};
             return View(editUserViewModel);
         }
 
@@ -160,8 +156,10 @@ namespace RGA.Controllers
         {
             if (editUser.SelectedDrivers.Any() && editUser.Role != "Pracownik")
             {
-                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
-                ModelState.AddModelError("Role", "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+                ModelState.AddModelError("SelectedDrivers",
+                    "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
+                ModelState.AddModelError("Role",
+                    "Użytkownik nie może mieć przydzielonych kierowców jeżeli nie jest pracownikiem");
             }
 
 
@@ -171,19 +169,23 @@ namespace RGA.Controllers
             var userStore = new UserStore<User>(db);
             var userManager = new UserManager<User>(userStore);
 
-            var user = userManager.FindById(editUser.UserId);//db.Users.Find(editUser.UserId);
+            User user = userManager.FindById(editUser.UserId); //db.Users.Find(editUser.UserId);
 
 
-            if (editUser.SelectedDrivers.Any(n => userManager.FindByName(n).SupervisorEmployee != null && userManager.FindByName(n).SupervisorEmployee !=user))
-                ModelState.AddModelError("SelectedDrivers", "Użytkownik nie może mieć przydzielonych kierowców, którzy już są do kogoś innego przydzieleni");
+            if (
+                editUser.SelectedDrivers.Any(
+                    n =>
+                        userManager.FindByName(n).SupervisorEmployee != null &&
+                        userManager.FindByName(n).SupervisorEmployee != user))
+                ModelState.AddModelError("SelectedDrivers",
+                    "Użytkownik nie może mieć przydzielonych kierowców, którzy już są do kogoś innego przydzieleni");
 
-            
 
             if (ModelState.IsValid)
             {
                 db.Users.Attach(user);
 
-                var currentRole = userManager.GetRoles(user.Id).First();
+                string currentRole = userManager.GetRoles(user.Id).First();
 
                 if (currentRole != editUser.Role)
                 {
@@ -192,10 +194,9 @@ namespace RGA.Controllers
                 }
 
 
-
                 if (user.Drivers != null)
                 {
-                    foreach (var driver in user.Drivers)
+                    foreach (User driver in user.Drivers)
                     {
                         driver.SupervisorEmployee = null;
                     }
@@ -205,9 +206,9 @@ namespace RGA.Controllers
                 if (editUser.Role == "Pracownik")
                 {
                     user.Drivers = new List<User>();
-                    foreach (var driver in editUser.SelectedDrivers)
+                    foreach (string driver in editUser.SelectedDrivers)
                     {
-                        var drv = userManager.FindByName(driver);
+                        User drv = userManager.FindByName(driver);
                         if (drv.SupervisorEmployee == null)
                         {
                             drv.SupervisorEmployee = user;
@@ -265,7 +266,7 @@ namespace RGA.Controllers
 
         private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors)
+            foreach (string error in result.Errors)
             {
                 ModelState.AddModelError("", error);
             }

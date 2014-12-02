@@ -1,4 +1,5 @@
-﻿@model RGA.Models.Route
+﻿@using RGA.Models
+@model RGA.Models.Route
 
 @{
     ViewBag.Title = "Wygenerowana trasa";
@@ -54,10 +55,10 @@
             @Html.DisplayNameFor(model => model.Shipments)
         </dt>
         
-        @foreach (var shipment in Model.Shipments)
+        @foreach (Shipment shipment in Model.Shipments)
         {
             <dd>
-                @Html.DisplayFor(m=> shipment.DestinationAddress)
+                @Html.DisplayFor(m => shipment.DestinationAddress)
             </dd>
         }
         

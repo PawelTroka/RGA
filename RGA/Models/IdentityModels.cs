@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Security.Claims;
@@ -14,28 +13,29 @@ namespace RGA.Models
     {
         public User()
         {
-          //  userManager = new UserManager<User>(store);
+            //  userManager = new UserManager<User>(store);
             Drivers = new List<User>();
         }
 
 
-       // public bool IsBanned { get { UserStore<User> store = new UserStore<User>(new ApplicationDbContext());
-         //   UserManager<User> userManager; return userManager.IsLockedOut(this.Id); } }
+        // public bool IsBanned { get { UserStore<User> store = new UserStore<User>(new ApplicationDbContext());
+        //   UserManager<User> userManager; return userManager.IsLockedOut(this.Id); } }
 
         public virtual User SupervisorEmployee { get; set; } //jeżeli jest kierowcą to ma przełożonego pracownika
-        public virtual ICollection<User> Drivers { get; set; } //jeżeli jest pracownikiem to ma podlegajcych mu kierowców 
+        public virtual ICollection<User> Drivers { get; set; }
+        //jeżeli jest pracownikiem to ma podlegajcych mu kierowców 
+
         public IdentityRole Role
         {
             get
             {
-                var context = ApplicationDbContext.Create();
-                                    var userManager = new UserManager<User>(new UserStore<User>(context));
+                ApplicationDbContext context = ApplicationDbContext.Create();
+                var userManager = new UserManager<User>(new UserStore<User>(context));
                 context.Configuration.LazyLoadingEnabled = true;
                 if (Roles.Count == 0)
                 {
+                    userManager.AddToRole(Id, "Kierowca");
 
-                    userManager.AddToRole(this.Id, "Kierowca");
-                    
                     context.SaveChanges();
                 }
 
@@ -44,11 +44,12 @@ namespace RGA.Models
                 return roleManager.FindByName(userManager.GetRoles(Id).First());
             }
         }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
-            
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            ClaimsIdentity userIdentity =
+                await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
             return userIdentity;
         }
@@ -62,18 +63,17 @@ namespace RGA.Models
     public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", false)
         {
-            
         }
+
+        // public new System.Data.Entity.DbSet<RGA.Models.User> Users { get; set; }
+        public DbSet<Route> Routes { get; set; }
+        public DbSet<Note> Notes { get; set; }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-
-       // public new System.Data.Entity.DbSet<RGA.Models.User> Users { get; set; }
-        public DbSet<Route> Routes { get; set; }
-        public DbSet<Note> Notes { get; set; }
     }
 }

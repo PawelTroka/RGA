@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Web.Mvc;
-using System.Web.Security;
-using Google.Maps.Internal;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RGA.Helpers;
@@ -16,7 +12,8 @@ namespace RGA.Controllers
 {
     public class RoutesController : Controller
     {
-        private RoutesViewModel routesViewModel = new RoutesViewModel();
+        private readonly RoutesViewModel routesViewModel = new RoutesViewModel();
+
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
@@ -44,7 +41,7 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult AddAddress()
         {
-            var shipment = new Shipment() { Id = Guid.NewGuid().ToString() };
+            var shipment = new Shipment {Id = Guid.NewGuid().ToString()};
 
             return PartialView("EditorTemplates/Shipment", shipment);
         }
@@ -54,53 +51,96 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult GenerateRoute(GenerateRouteViewModel model)
         {
-            var db = ApplicationDbContext.Create();
+            for (int i = 0; i < model.Shipments.Count; i++)
+            {
+                if(string.IsNullOrEmpty(model.Shipments[i].DestinationAddress))
+                    ModelState.AddModelError("Shipments[" + i.ToString() + "].DestinationAddress", "Pole adres nie może być puste");
+
+
+                if (string.IsNullOrEmpty(model.Shipments[i].Number))
+                    ModelState.AddModelError("Shipments[" + i.ToString() + "].Number", "Pole numer nie może być puste");
+
+
+            }
+
+            if (model.StartDate.Date < DateTime.Now.Date)
+                ModelState.AddModelError("StartDate", "Data nie może być wartością w przeszłości");
+
+            ApplicationDbContext db = ApplicationDbContext.Create();
 
             var store = new UserStore<User>(db);
             var userManager = new UserManager<User>(store);
 
-            var creator = userManager.FindById(model.WorkerId);
+            User creator = userManager.FindById(model.WorkerId);
 
-            var driver = userManager.FindByName(model.DriverName);
+            User driver = userManager.FindByName(model.DriverName);
 
-            var shipments = new List<Shipment>();
-            model.Shipments.ForEach(s => shipments.Add(new Shipment(){Id = Guid.NewGuid().ToString(),DestinationAddress = s.DestinationAddress,Number = s.Number}));
 
-            var route =  new Route
+            if(creator==null)
+                ModelState.AddModelError("WorkerId", "Nieznany pracownik");
+
+            if (driver == null)
+                ModelState.AddModelError("DriverName", "Nieznany kierowca");
+
+            if (ModelState.IsValid)
             {
-                Id = Guid.NewGuid().ToString(),
-                StartAddress = model.StartAddress,
-                Shipments = shipments,
-                Description = model.Description,
-                Notes = new List<Note>(),
-                RouteOptimizationAlgorithm = model.RouteOptimizationAlgorithm,
-                RouteOptimizationProvider = model.RouteOptimizationProvider,
-                RouteOptimizationType = model.RouteOptimizationType,
-                StartDateTime = model.StartDate,
-                State = RouteState.New,
-                Worker = creator,
-                Driver = driver
-            };
-            if (!string.IsNullOrEmpty(model.Note))
-                route.Notes.Add(new Note() { Id=Guid.NewGuid().ToString(), Content = model.Note, DateAdded = DateTime.Now, Creator = creator, Driver = driver });
 
 
-            var generator = new RouteGenerator(route);
-            route = generator.GenerateRoute();
-            
+                var shipments = new List<Shipment>();
+                model.Shipments.ForEach(
+                    s =>
+                        shipments.Add(new Shipment
+                        {
+                            Id = Guid.NewGuid().ToString(),
+                            DestinationAddress = s.DestinationAddress,
+                            Number = s.Number
+                        }));
 
-            db.Routes.Add(route);
-            db.SaveChanges();
+                var route = new Route
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    StartAddress = model.StartAddress,
+                    Shipments = shipments,
+                    Description = model.Description,
+                    Notes = new List<Note>(),
+                    RouteOptimizationAlgorithm = model.RouteOptimizationAlgorithm,
+                    RouteOptimizationProvider = model.RouteOptimizationProvider,
+                    RouteOptimizationType = model.RouteOptimizationType,
+                    StartDateTime = model.StartDate,
+                    State = RouteState.New,
+                    Worker = creator,
+                    Driver = driver
+                };
+                if (!string.IsNullOrEmpty(model.Note))
+                    route.Notes.Add(new Note
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Content = model.Note,
+                        DateAdded = DateTime.Now,
+                        Creator = creator,
+                        Driver = driver
+                    });
 
-            return RedirectToAction("Route", "Routes", new {id=route.Id});
+
+                var generator = new RouteGenerator(route);
+                route = generator.GenerateRoute();
+
+
+                db.Routes.Add(route);
+                db.SaveChanges();
+
+                return RedirectToAction("Route", "Routes", new {id = route.Id});
+            }
+            model.init();
+            return View(model);
         }
 
 
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult Route(string id)
         {
-            var db = ApplicationDbContext.Create();
-            var route = db.Routes.Find(id);
+            ApplicationDbContext db = ApplicationDbContext.Create();
+            Route route = db.Routes.Find(id);
 
             return View("Route", route);
         }
