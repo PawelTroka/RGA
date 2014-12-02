@@ -10,6 +10,7 @@ using Google.Maps.Elevation;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
 using GoogleMapsApi.Entities.Directions.Response;
+using RGA.Helpers.TSP;
 using RGA.Models;
 using WebGrease.Css.Extensions;
 using Route = RGA.Models.Route;
@@ -47,8 +48,8 @@ namespace RGA.Helpers
             var directions = getDirections();
 
             route.Summary = directions.Routes.First().Summary;
-         //   route.Sections = new List<Leg>(directions.Routes.First().Legs);
-           // directions.Routes.First().Legs.First().Steps.First().;
+            //   route.Sections = new List<Leg>(directions.Routes.First().Legs);
+            // directions.Routes.First().Legs.First().Steps.First().;
             if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
                 SortThingsAccordingToWaypointOrder(directions.Routes.First().WaypointOrder);
 
@@ -64,8 +65,8 @@ namespace RGA.Helpers
             route.StartAddress = BaseAddress;
 
             var locationsPoints = new List<Location>();
- 
-            directions.Routes.First().OverviewPath.Points.ForEach(p=> locationsPoints.Add(new Location(p.LocationString)));
+
+            directions.Routes.First().OverviewPath.Points.ForEach(p => locationsPoints.Add(new Location(p.LocationString)));
 
             route.Image = getImageBytes(locationsPoints);
 
@@ -92,8 +93,19 @@ namespace RGA.Helpers
                 }
 
             }
+            switch (routeOptimizationAlgorithm)
+            {
+                case RouteOptimizationAlgorithm.BruteForce:
+                    tspSolver = new BruteForceTSPSolver(indices, costs);
+                    break;
+                case RouteOptimizationAlgorithm.HeldKarp:
+                    tspSolver = new HeldKarpTSPSolver(indices, costs);
+                    break;
 
-            tspSolver = new HeldKarpTSPSolver(indices, costs);
+                default:
+                    tspSolver = new HeldKarpTSPSolver(indices, costs);
+                    break;
+            }
 
             double cost;
 
@@ -119,8 +131,8 @@ namespace RGA.Helpers
             for (int i = 1; i < orderOfSections.Count; i++)
                 orderOfSections[i]++;
             orderOfSections.Add(0);
-         //   route.Sections.Sort(
-             //   (s1, s2) => orderOfSections[route.Sections.IndexOf(s1)].CompareTo(orderOfSections[route.Sections.IndexOf(s2)]));
+            //   route.Sections.Sort(
+            //   (s1, s2) => orderOfSections[route.Sections.IndexOf(s1)].CompareTo(orderOfSections[route.Sections.IndexOf(s2)]));
         }
 
 
@@ -194,7 +206,7 @@ namespace RGA.Helpers
             locations.Add(BaseAddress);
 
             var markers = new MapMarkersCollection();
-            
+
             locations.ForEach(markers.Add);
 
             var mapRequest = new Google.Maps.StaticMaps.StaticMapRequest()
