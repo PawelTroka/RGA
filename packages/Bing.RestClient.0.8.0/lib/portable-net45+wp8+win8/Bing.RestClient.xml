@@ -1,0 +1,775 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Bing.RestClient</name>
+    </assembly>
+    <members>
+        <member name="T:Bing.BingClientBase">
+            <summary>
+            The base for all Bing REST Clients in this library. Handles setting the UserAgent.
+            </summary>
+        </member>
+        <member name="M:Bing.BingClientBase.#ctor(System.String)">
+            <summary>
+            Sets the API Key and the UserAgent for the implemented Bing Clients.
+            </summary>
+            <param name="apiKey">The key registered to a given user to access the Bing APIs.</param>
+        </member>
+        <member name="P:Bing.BingClientBase.ApiKey">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Bing.Core.AddressBase">
+            <summary>
+            Details about a point on the Earth that has additional location information.
+            </summary>
+        </member>
+        <member name="P:Bing.Core.AddressBase.AddressLine">
+            <summary>
+            The official street line of an address relative to the area, as specified by the Locality, or PostalCode, properties.
+            </summary>
+            <remarks>
+            Typical use of this element would be to provide a street address or any official address.
+            </remarks>
+        </member>
+        <member name="P:Bing.Core.AddressBase.Locality">
+            <summary>
+            A string specifying the populated place for the address. </summary>
+            <remarks>
+            This typically refers to a city, but may refer to a suburb or a neighborhood in certain countries.
+            </remarks>
+        </member>
+        <member name="P:Bing.Core.AddressBase.AdminDistrict">
+            <summary>
+            A string specifying the subdivision name in the country or region for an address. 
+            </summary>
+            <remarks>
+            This element is typically treated as the first order administrative subdivision, 
+            but in some cases it is the second, third, or fourth order subdivision in a country, 
+            dependency, or region. 
+            </remarks>
+        </member>
+        <member name="P:Bing.Core.AddressBase.AdminDistrict2">
+            <summary>
+            A string specifying the subdivision name in the country or region for an address. 
+            </summary>
+            <remarks>
+            This element is used when there is another level of subdivision information for a location, such as the county.
+            </remarks>
+        </member>
+        <member name="P:Bing.Core.AddressBase.PostalCode">
+            <summary>
+            A string specifying the post code, postal code, or ZIP Code of an address.
+            </summary>
+        </member>
+        <member name="P:Bing.Core.AddressBase.CountryRegion">
+            <summary>
+            A string specifying the country or region name of an address.
+            </summary>
+        </member>
+        <member name="T:Bing.MapsClient">
+            <summary>
+            The Bing™ Maps REST Services Application Programming Interface (API) provides a 
+            Representational State Transfer (REST) interface to perform tasks such as creating a static map 
+            with pushpins, geocoding an address, retrieving imagery metadata, or creating a route.
+            </summary>
+        </member>
+        <member name="M:Bing.MapsClient.#ctor(System.String,System.String,Bing.Maps.UserContext)">
+            <summary>
+            Creates a new instance of the MapsClient.
+            </summary>
+            <param name="apiKey">The key registered to a given user to access the Bing APIs.</param>
+            <param name="culture">The culture code that map data should be localized to. Supported culture codes are listed here: http://msdn.microsoft.com/en-us/library/hh441729.aspx. </param>
+            <param name="context">A <see cref="P:Bing.MapsClient.UserContext"/> object containing information about the user to refine location results.</param>
+        </member>
+        <member name="M:Bing.MapsClient.CompressPoints(System.Collections.Generic.List{Bing.Maps.Point})">
+            <summary>
+            Implements the Point Compression Algorithm specified at http://msdn.microsoft.com/en-us/library/jj158958.aspx
+            </summary>
+            <param name="points">A List of <see cref="T:Bing.Maps.Point">Points</see> to compress.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.MapsClient.LocationQuery(Bing.Maps.Address,System.Int32,System.Boolean)">
+            <summary>
+            Get a location by specifying values such as a locality, postal code, and street address.
+            </summary>
+            <param name="address"></param>
+            <param name="maxResults">Specifies the maximum number of locations to return in the response.</param>
+            <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
+            <returns>A <see cref="T:Bing.Maps.MapsResponse`1"/> object with the results from Bing.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Bing.MapsClient.LocationQuery(Bing.Maps.Point,System.Boolean)">
+            <summary>
+            Get an location for a specified point (latitude and longitude).
+            </summary>
+            <param name="point">The coordinates of the location that you want to query.</param>
+            <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
+            <returns>A <see cref="T:Bing.Maps.MapsResponse`1"/> object with the results from Bing.</returns>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Bing.MapsClient.LocationQuery(System.Double,System.Double,System.Boolean)">
+            <summary>
+            Get an address for a specified point (latitude and longitude).
+            </summary>
+            <param name="latitude">The N-S coordinate for the point in question.</param>
+            <param name="longitude">The E-W coordinate for the point in question.</param>
+            <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
+            <returns>A <see cref="T:Bing.Maps.MapsResponse`1"/> object with the results from Bing.</returns>
+        </member>
+        <member name="M:Bing.MapsClient.LocationQuery(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Get location(s) for a given search term.
+            </summary>
+            <param name="query">A string that contains information about a location, such as an address or landmark name.</param>
+            <param name="maxResults">Specifies the maximum number of locations to return in the response.</param>
+            <param name="includeNeighborhood">Specifies to include the neighborhood in the response when it is available.</param>
+            <returns>A <see cref="T:Bing.Maps.MapsResponse`1"/> object with the results from Bing.</returns>
+            <remarks>
+            The strings "Space Needle" (a landmark) and "1 Microsoft Way Redmond WA" (an address) are examples of query strings with 
+            location information.
+            </remarks>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="P:Bing.MapsClient.Culture">
+            <summary>
+            For supported cultures, street names are localized to the local culture. For example, if you request a 
+            location in France, the street names are localized in French. For other localized data such as country 
+            names, the level of localization will vary for each culture. For example, there may not be a localized 
+            name for the "United States" for every culture code.
+            </summary>
+        </member>
+        <member name="P:Bing.MapsClient.UserContext">
+            <summary>
+            Use user context parameters to specify information about the user. You can increase the accuracy of a 
+            location result when you specify a user context parameter in your request URL.
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.UserContext">
+            <summary>
+            Used to provide more accurate results based on the user's locations
+            Typically only one of the properties will be set
+            </summary>
+        </member>
+        <member name="M:Bing.Maps.UserContext.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ip">The IPv4 address to search near.</param>
+        </member>
+        <member name="M:Bing.Maps.UserContext.#ctor(System.Double,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
+        <member name="M:Bing.Maps.UserContext.#ctor(Bing.Core.BoundingBox)">
+            <summary>
+            
+            </summary>
+            <param name="mapView">A rectangular area on the earth defined as a bounding box object.</param>
+            <exception cref="T:System.ArgumentNullException"></exception>
+        </member>
+        <member name="M:Bing.Maps.UserContext.#ctor(System.String,Bing.Maps.Point,Bing.Core.BoundingBox)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="ip">The user's ip address</param>
+            <param name="location">The user's location</param>
+            <param name="mapView">A rectangular area on the earth defined as a bounding box object.</param>
+        </member>
+        <member name="P:Bing.Maps.UserContext.IpAddress">
+            <summary>
+            The default address is the IPv4 address of the request.
+            </summary>
+            <remarks>
+            When you specify this parameter, the location associated with the IP address is 
+            taken into account in computing the results of a location query.
+            </remarks>
+        </member>
+        <member name="P:Bing.Maps.UserContext.Location">
+            <summary>
+            A point on the earth specified as a latitude and longitude. 
+            </summary>
+            <remarks>
+            When you specify this parameter, the user’s location is taken into account and 
+            the results returned may be more relevant to the user.
+            </remarks>
+        </member>
+        <member name="P:Bing.Maps.UserContext.MapView">
+            <summary>
+            A point on the earth specified as a latitude and longitude. 
+            </summary>
+            <remarks>
+            When you specify this parameter, the geographical area is taken into account when 
+            computing the results of a location query.
+            </remarks>
+        </member>
+        <member name="T:Bing.Maps.Address">
+            <summary>
+            Details about a point on the Earth that has additional location information.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Address.FormattedAddress">
+            <summary>
+            A string specifying the complete address. This address may not include the country or region.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Address.Neighborhood">
+            <summary>
+            A string specifying the neighborhood for an address.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Address.Landmark">
+            <summary>
+            A string specifying the name of the landmark when there is a landmark associated with an address.
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.Resource">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Resource.BoundingBox">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Resource.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Bing.Core.BoundingBox">
+            <summary>
+            A bounding box is defined by two latitudes and two longitudes that represent the four sides of a rectangular area on the Earth. 
+            </summary>
+        </member>
+        <member name="M:Bing.Core.BoundingBox.#ctor">
+            <summary>
+            The default constructor.
+            </summary>
+        </member>
+        <member name="M:Bing.Core.BoundingBox.#ctor(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Constructs a BoundingBox with the coordinates in the order they are specified in Bing queries (SWNE).
+            </summary>
+            <param name="southLatitude">The southern-most edge of the box.</param>
+            <param name="westLongitude">The western-most edge of the box.</param>
+            <param name="northLatitude">The northern-most edge of the box.</param>
+            <param name="eastLongitude">The eastern-most edge of the box.</param>
+        </member>
+        <member name="M:Bing.Core.BoundingBox.ToString">
+            <summary>
+            Outputs a BoundingBox with the coordinates in the order they are specified in Bing queries (SWNE).
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Bing.Core.BoundingBox.SouthLatitude">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Core.BoundingBox.WestLongitude">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Core.BoundingBox.NorthLatitude">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Core.BoundingBox.EastLongitude">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.Location">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Location.Name">
+            <summary>
+            The name of the resource.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Location.Point">
+            <summary>
+            The latitude and longitude coordinates of the location. 
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Location.EntityType">
+            <summary>
+            The classification of the geographic entity returned, such as Address.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Location.Address">
+            <summary>
+            The postal address for the location. An address can contain AddressLine, Neighborhood, Locality, 
+            AdminDistrict, AdminDistrict2, CountryRegion, FormattedAddress, PostalCode, and Landmark fields. 
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Location.Confidence">
+            <summary>
+            The level of confidence that the geocoded location result is a match. Use this value with the match code 
+            to determine for more complete information about the match. 
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Location.MatchCodes">
+            <summary>
+            The level of confidence that the geocoded location result is a match. Use this value with the match code to 
+            determine for more complete information about the match. 
+            </summary>
+            <remarks>
+            For example, a geocoded location with match codes of Good and Ambiguous means that more than one geocode location 
+            was found for the location information and that the geocode service did not have search up-hierarchy to find a match. 
+            <para>
+            Similarly, a geocoded location with match codes of Ambiguous and UpHierarchy means that a geocode location could not 
+            be found that matched all of the location information, so the geocode service had to search up-hierarchy and found 
+            multiple matches at that level. An example of up an Ambiguous and UpHierarchy result is when you provide complete 
+            address information, but the geocode service cannot locate a match for the street address and instead returns 
+            information for more than one RoadBlock value.
+            </para>
+            </remarks>
+        </member>
+        <member name="P:Bing.Maps.Location.GeocodePoints">
+            <summary>
+            A collection of geocoded points that differ in how they were calculated and their suggested use.
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.Point">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.Shape">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Shape.BoundingBox">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Bing.Maps.Point.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Bing.Maps.Point.#ctor(System.Double,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
+        <member name="M:Bing.Maps.Point.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Bing.Maps.Point.Type">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Point.Coordinates">
+            <summary>
+            The latitude and longitude coordinates of the geocode point.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Point.CalculationMethod">
+            <summary>
+            The method that was used to compute the geocode point. 
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.Point.UsageTypes">
+            <summary>
+            The best use for the geocode point.
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.ResourceSet`1">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.ResourceSet`1.EstimatedTotal">
+            <summary>
+            An estimate of the total number of resources in the ResourceSet.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.ResourceSet`1.Resources">
+            <summary>
+            A collection of one or more resources. The resources that are returned depend on the request. 
+            Information about resources is provided in the API reference for each Bing Maps REST Services API. 
+            </summary>
+        </member>
+        <member name="T:Bing.Maps.MapsResponse`1">
+            <summary>
+            The response to a Bing Maps REST Services URL request includes the status of the request and one or more 
+            resources that contain location, imagery, or route information. The resource information that is returned 
+            depends on the Bing Maps REST Services URL that is used and the parameter values that are provided with it. 
+            For example, a Locations API URL returns one or more Location resources that provide location information 
+            based on the values in the URL request. 
+            </summary>
+        </member>
+        <member name="M:Bing.Maps.MapsResponse`1.GetAddresses">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Maps.MapsResponse`1.GetCoordinates">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Maps.MapsResponse`1.GetLocations">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Maps.MapsResponse`1.GetFirstAddress">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Maps.MapsResponse`1.GetFirstAddress(System.Func{Bing.Maps.Address,System.String})">
+            <summary>
+            
+            </summary>
+            <param name="selector"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.Copyright">
+            <summary>
+            A copyright notice.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.BrandLogoUri">
+            <summary>
+            A URL that references a brand image to support contractual branding requirements.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.StatusCode">
+            <summary>
+            The HTTP Status code for the request.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.StatusDescription">
+            <summary>
+            A description of the HTTP status code.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.AuthenticationResultCode">
+            <summary>
+            A status code that offers additional information about authentication success or failure.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.ErrorDetails">
+            <summary>
+            A collection of error descriptions. For example, ErrorDetails can identify parameter values that are not valid or missing.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.TraceId">
+            <summary>
+            A unique identifier for the request.
+            </summary>
+        </member>
+        <member name="P:Bing.Maps.MapsResponse`1.ResourceSets">
+            <summary>
+            A collection of ResourceSet objects. A ResourceSet is a container of Resources returned by the request.
+            </summary>
+        </member>
+        <member name="T:Bing.Spatial.ListExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Bing.Spatial.ListExtensions.ToJsonArray(System.Collections.Generic.List{Bing.Spatial.PoiEntityTypes})">
+            <summary>
+            
+            </summary>
+            <param name="points"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Bing.Spatial.PoiEntityGroups">
+            <summary>
+            Common groups of related Points of Interest.
+            </summary>
+            <remarks>These were determined by AdvancedREI, not Bing.</remarks>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.BuildFilter(System.Collections.Generic.List{Bing.Spatial.PoiEntityTypes})">
+            <summary>
+            Converts a list of PoiEntityTypes to the format the Bing API requires.
+            </summary>
+            <param name="pointsOfInterest">The list of Points of Interest to search for.</param>
+            <returns>An Odata-formatted filter clause that can be passed to the Find() method.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Education">
+            <summary>
+            A list of all entities typically associated with Education.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Schools">
+            <summary>
+            A list of K-12 and Colleges.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Culture">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Entertainment">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.NightLife">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Vices">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Financial">
+            <summary>
+            Gets a list of all financial services entities.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent financial services entities.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.BanksAndATMs">
+            <summary>
+            Gets a list of all institutional financial services entities.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent institutional financial services entities.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.OtherFinancialServices">
+            <summary>
+            Gets a list of all other non-banking financial services.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent all other non-banking financial services.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Government">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.GovernmentServices">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Healthcare">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Religion">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Sports">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.ApplianceAndElectronicsStores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.ClothingStores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.GroceryStores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.HardwareStores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.HomeAndGardenStores">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Tourism">
+            <summary>
+            Gets a list of all vehicle parking facilities.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent vehicle parking facilities.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Parking">
+            <summary>
+            Gets a list of all vehicle parking facilities.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent vehicle parking facilities.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.PublicTransportation">
+            <summary>
+            Gets a list of all public transportation entities.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent public transportation entities.</returns>
+        </member>
+        <member name="M:Bing.Spatial.PoiEntityGroups.Transportation">
+            <summary>
+            Gets a list of all possible transportation-related entities.
+            </summary>
+            <returns>A List of PoiEntityTypes that represent transportation-related entities.</returns>
+        </member>
+        <member name="T:Bing.SpatialDataClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Bing.SpatialDataClient.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the SpatialDataClient.
+            </summary>
+            <param name="apiKey">The key registered to a given user to access the Bing APIs.</param>
+        </member>
+        <member name="M:Bing.SpatialDataClient.AddDataSource(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="url">The Url segment for the datasource. DO NOT use leading or trailing slashes.</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Bing.SpatialDataClient.AddDataSource(System.String,System.String,System.String,System.String)">
+            <summary>
+            Add a data source to the list of available datasources.
+            </summary>
+            <remarks>Use this overload if you don't want to worry about building the URL fragment yourself.</remarks>
+            <param name="name"></param>
+            <param name="accessId"></param>
+            <param name="dataSourceName"></param>
+            <param name="entityTypeName"></param>
+        </member>
+        <member name="M:Bing.SpatialDataClient.GetById``1(System.String,System.String,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TReturn"></typeparam>
+            <param name="dataSourceName"></param>
+            <param name="id"></param>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="skip"></param>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.SpatialDataClient.GetByIds``1(System.String,System.Collections.Generic.List{System.String},System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TReturn"></typeparam>
+            <param name="dataSourceName"></param>
+            <param name="ids"></param>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="skip"></param>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.SpatialDataClient.Find``1(System.String,Bing.Spatial.SearchRadius,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TReturn"></typeparam>
+            <param name="dataSourceName"></param>
+            <param name="searchRadius"></param>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="skip"></param>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.SpatialDataClient.Find``1(System.String,Bing.Core.BoundingBox,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TReturn"></typeparam>
+            <param name="dataSourceName"></param>
+            <param name="boundingBox"></param>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="skip"></param>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.SpatialDataClient.Find``1(System.String,System.String,System.Double,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <typeparam name="TReturn"></typeparam>
+            <param name="dataSourceName"></param>
+            <param name="address"></param>
+            <param name="distance"></param>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="skip"></param>
+            <param name="top"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.SpatialDataClient.ConvertMiToKm(System.Double)">
+            <summary>
+            Helper method to convert miles to kilometers.
+            </summary>
+            <param name="miles"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Bing.SpatialDataClient.PrepRequest(PortableRest.RestRequest@,System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Prepares the 
+            </summary>
+            <param name="request"></param>
+            <param name="filter"></param>
+            <param name="orderBy"></param>
+            <param name="skip"></param>
+            <param name="top"></param>
+        </member>
+        <member name="P:Bing.SpatialDataClient.DataSources">
+            <summary>
+            The DataSources that are available to the Spatial Data API
+            </summary>
+            <remarks>If you've added your own data sources through the Management APIs, you can add them with the AddDataSource method.</remarks>
+        </member>
+    </members>
+</doc>

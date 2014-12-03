@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using RGA.Helpers;
+using RGA.Helpers.RouteGeneration;
 
 namespace RGA.Models
 {
@@ -64,6 +65,9 @@ namespace RGA.Models
 
         [Display(Name = "Stan")]
         public RouteState State { get; set; }
+
+        [Display(Name = "Dostawca macierzy odległości")]
+        public DistanceMatrixProvider DistanceMatrixProvider { get; set; }
 
         [Display(Name = "Algorytm optymalizacji")]
         public RouteOptimizationAlgorithm RouteOptimizationAlgorithm { get; set; }

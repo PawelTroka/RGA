@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RGA.Helpers;
+using RGA.Helpers.RouteGeneration;
 using RGA.Models;
 using RGA.Models.ViewModels;
 using WebGrease.Css.Extensions;
@@ -51,6 +52,16 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult GenerateRoute(GenerateRouteViewModel model)
         {
+            if(model.Shipments.Count>8 && model.RouteOptimizationProvider==RouteOptimizationProvider.GoogleMaps)
+                ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (GoogleMaps) przyjmuje maksymalnie 8 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+
+            if (model.Shipments.Count > 25 && model.RouteOptimizationProvider == RouteOptimizationProvider.MapQuest)
+                ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (MapQuest) przyjmuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+
+            if (model.Shipments.Count > 25 && model.DistanceMatrixProvider == DistanceMatrixProvider.MapQuest)
+                ModelState.AddModelError("DistanceMatrixProvider", "Wybrany dostawca macierzy odległości (MapQuest) obsługuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+
+
             for (int i = 0; i < model.Shipments.Count; i++)
             {
                 if(string.IsNullOrEmpty(model.Shipments[i].DestinationAddress))
@@ -103,6 +114,7 @@ namespace RGA.Controllers
                     Shipments = shipments,
                     Description = model.Description,
                     Notes = new List<Note>(),
+                    DistanceMatrixProvider = model.DistanceMatrixProvider,
                     RouteOptimizationAlgorithm = model.RouteOptimizationAlgorithm,
                     RouteOptimizationProvider = model.RouteOptimizationProvider,
                     RouteOptimizationType = model.RouteOptimizationType,

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RGA.Helpers;
+using RGA.Helpers.RouteGeneration;
 
 namespace RGA.Models.ViewModels
 {
@@ -82,6 +83,10 @@ namespace RGA.Models.ViewModels
         [Display(Name = "Notatki do trasy")]
         [DataType(DataType.MultilineText)]
         public string Note { get; set; }
+
+        [Required]
+        [Display(Name = "Dostawca macierzy odległości")]
+        public DistanceMatrixProvider DistanceMatrixProvider { get; set; }
 
         [Required]
         [Display(Name = "Algorytm optymalizacji")]

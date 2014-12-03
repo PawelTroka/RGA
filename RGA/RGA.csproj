@@ -45,6 +45,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Bing.RestClient">
+      <HintPath>..\packages\Bing.RestClient.0.8.0\lib\portable-net45+wp8+win8\Bing.RestClient.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Maps">
       <HintPath>..\packages\gmaps-api-net.0.12.115\lib\net\Google.Maps.dll</HintPath>
     </Reference>
@@ -88,13 +91,52 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions.Desktop">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\net40\Microsoft.Threading.Tasks.Extensions.Desktop.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OsmSharp">
+      <HintPath>..\packages\OsmSharp.4.2.0.723\lib\net45\OsmSharp.dll</HintPath>
+      <Aliases>OSM</Aliases>
+    </Reference>
+    <Reference Include="OsmSharp.Osm">
+      <HintPath>..\packages\OsmSharp.4.2.0.723\lib\net45\OsmSharp.Osm.dll</HintPath>
+    </Reference>
+    <Reference Include="OsmSharp.Routing">
+      <HintPath>..\packages\OsmSharp.4.2.0.723\lib\net45\OsmSharp.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="OsmSharp.UI">
+      <HintPath>..\packages\OsmSharp.4.2.0.723\lib\net45\OsmSharp.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="OsmSharp.WinForms.UI">
+      <HintPath>..\packages\OsmSharp.4.2.0.723\lib\net45\OsmSharp.WinForms.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="PortableRest">
+      <HintPath>..\packages\PortableRest.3.0.0\lib\portable-net45+sl5+wp8+win8+wpa81+MonoTouch1+MonoAndroid1\PortableRest.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\packages\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.22\lib\net45\System.Net.Http.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -150,6 +192,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
     </Reference>
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.9.2\lib\portable-net4+sl4+wp71+win8\Zlib.Portable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -188,6 +233,8 @@
     <Compile Include="Helpers\HtmlHeplers\CollectionEditingHtmlExtensions.cs" />
     <Compile Include="Helpers\HtmlHeplers\FormResponseData.cs" />
     <Compile Include="Helpers\HtmlHeplers\JsonHtmlExtensions.cs" />
+    <Compile Include="Helpers\RouteGeneration\DistanceMatrixProvider.cs" />
+    <Compile Include="Helpers\RouteGeneration\MapQuestAPI.cs" />
     <Compile Include="Helpers\RouteGeneration\RouteState.cs" />
     <Compile Include="Helpers\RouteGeneration\TSP\BruteForceTSPSolver.cs" />
     <Compile Include="Models\Note.cs" />
@@ -266,6 +313,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Helpers\HtmlHeplers\XMLFile1.xml" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\DynamicMapExample.html" />
