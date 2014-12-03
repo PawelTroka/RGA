@@ -42,7 +42,7 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult AddAddress()
         {
-            var shipment = new Shipment {Id = Guid.NewGuid().ToString()};
+            var shipment = new Shipment { Id = Guid.NewGuid().ToString() };
 
             return PartialView("EditorTemplates/Shipment", shipment);
         }
@@ -52,7 +52,7 @@ namespace RGA.Controllers
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult GenerateRoute(GenerateRouteViewModel model)
         {
-            if(model.Shipments.Count>8 && model.RouteOptimizationProvider==RouteOptimizationProvider.GoogleMaps)
+            if (model.Shipments.Count > 8 && model.RouteOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
                 ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (GoogleMaps) przyjmuje maksymalnie 8 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
             if (model.Shipments.Count > 25 && model.RouteOptimizationProvider == RouteOptimizationProvider.MapQuest)
@@ -64,7 +64,7 @@ namespace RGA.Controllers
 
             for (int i = 0; i < model.Shipments.Count; i++)
             {
-                if(string.IsNullOrEmpty(model.Shipments[i].DestinationAddress))
+                if (string.IsNullOrEmpty(model.Shipments[i].DestinationAddress))
                     ModelState.AddModelError("Shipments[" + i.ToString() + "].DestinationAddress", "Pole adres nie może być puste");
 
 
@@ -87,7 +87,7 @@ namespace RGA.Controllers
             User driver = userManager.FindByName(model.DriverName);
 
 
-            if(creator==null)
+            if (creator == null)
                 ModelState.AddModelError("WorkerId", "Nieznany pracownik");
 
             if (driver == null)
@@ -135,13 +135,32 @@ namespace RGA.Controllers
 
 
                 var generator = new RouteGenerator(route);
-                route = generator.GenerateRoute();
 
+                try
+                {
+                    route = generator.GenerateRoute();
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, "Wystąpił błąd!\n" + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException : ""));
+                    model.init();
+                    return View(model);
+                }
 
                 db.Routes.Add(route);
-                db.SaveChanges();
 
-                return RedirectToAction("Route", "Routes", new {id = route.Id});
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception exception)
+                {
+                    ModelState.AddModelError(string.Empty, "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException : ""));
+                    model.init();
+                    return View(model);
+                }
+                return RedirectToAction("Route", "Routes", new { id = route.Id });
             }
             model.init();
             return View(model);
