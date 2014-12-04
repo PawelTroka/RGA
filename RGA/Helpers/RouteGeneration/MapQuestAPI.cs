@@ -12,6 +12,7 @@ using System.Web.Script.Serialization;
 using System.Web.UI.WebControls;
 using System.Xml;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WebGrease.Css.Extensions;
 
 namespace RGA.Helpers.RouteGeneration
@@ -32,11 +33,14 @@ namespace RGA.Helpers.RouteGeneration
         public double[,] getDistanceMatrix(List<string> addresses, RouteOptimizationType type)
         {
             var request = (HttpWebRequest)WebRequest.Create(distanceMatrixUrl);
-            request.ContentType = "text/json";
+            request.ContentType = "application/json";
             request.Method = "POST";
+          
             var arr = addresses.ToArray();
             for (int i = 0; i < arr.Length; i++)
-                arr[i] = RemoveDiacritics(arr[i]);
+                arr[i] =
+                    System.Text.Encoding.UTF8.GetString(
+                        System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(arr[i]));//RemoveDiacritics(arr[i]);
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
@@ -54,14 +58,28 @@ namespace RGA.Helpers.RouteGeneration
             {
                 var result = streamReader.ReadToEnd();
 
-                double[,] ret = new double[,] {};
+                double[,] ret = new double[addresses.Count, addresses.Count];
 
                 var dictionary = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
 
-                if(type==RouteOptimizationType.Distance)
-                    ret = JsonConvert.DeserializeObject<double[,]>(dictionary["distance"]);
-                else if(type==RouteOptimizationType.Time)
-                    ret = JsonConvert.DeserializeObject<double[,]>(dictionary["time"]);
+                dynamic jarrayOfJArrays = null;
+
+                if (type == RouteOptimizationType.Distance)
+                    jarrayOfJArrays = dictionary["distance"];
+
+                else if (type == RouteOptimizationType.Time)
+                    jarrayOfJArrays = dictionary["time"];
+
+
+                for (int i = 0; i < addresses.Count; i++)
+                {
+                    var jarray = (jarrayOfJArrays as JArray)[i] as JArray;
+
+                    for (int j = 0; j < addresses.Count; j++)
+                        ret[i, j] = (double)jarray[j].ToObject(typeof(double));
+                }
+
+                //ret = convertTo2DArray((double[][])JsonConvert.DeserializeObject<double[][]>(jarray),addresses.Count,addresses.Count);
 
                 return ret;
             }
@@ -72,7 +90,7 @@ namespace RGA.Helpers.RouteGeneration
         public int[] getOptimalRoute(List<string> addresses)
         {
             var request = (HttpWebRequest)WebRequest.Create(optimizeRouteUrl);
-            request.ContentType = "text/json";
+            request.ContentType = "application/json";
             request.Method = "POST";
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
@@ -80,7 +98,9 @@ namespace RGA.Helpers.RouteGeneration
                 var arr = addresses.ToArray();
 
                 for (int i = 0; i < arr.Length; i++)
-                    arr[i] = RemoveDiacritics(arr[i]);
+                    arr[i] =
+                        System.Text.Encoding.UTF8.GetString(
+                            System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(arr[i]));//RemoveDiacritics(arr[i]);
 
                 string json = new JavaScriptSerializer().Serialize(new
                 {
@@ -112,7 +132,27 @@ namespace RGA.Helpers.RouteGeneration
 
         }
 
+        /// <summary>
+        /// Converts the contents of a Jagged Array into a multidimensional array
+        /// </summary>
+        /// <param name="jaggedArray">The Jagged Array you wish to convert into a Multidimensional Array</param>
+        /// <param name="numOfColumns">number of columns</param>
+        /// <param name="numOfRows">number of rows</param>
+        /// <returns>Multidimensional Array representation of Jagged Array passed</returns>
+        private T[,] convertTo2DArray<T>(T[][] jaggedArray, int numOfColumns, int numOfRows)
+        {
+            T[,] temp2DArray = new T[numOfColumns, numOfRows];
 
+            for (int c = 0; c < numOfColumns; c++)
+            {
+                for (int r = 0; r < numOfRows; r++)
+                {
+                    temp2DArray[c, r] = jaggedArray[c][r];
+                }
+            }
+
+            return temp2DArray;
+        } 
 
         public static string RemoveDiacritics(string stIn)
         {

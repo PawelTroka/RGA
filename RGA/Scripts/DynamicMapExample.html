@@ -4,7 +4,7 @@
         width: 500px;
     }
 </style>
-<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false&language=pl"></script>
 <script>
     function initializeMap425321423y78ydgf23t87() {
 
@@ -27,10 +27,11 @@
             destination: end,
             waypoints: waypts,
             optimizeWaypoints: false,
+            avoidTolls: true,
             travelMode: google.maps.TravelMode.DRIVING
         };
 
-        directionsService.route(request, function(response, status) {
+        directionsService.route(request, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
             }

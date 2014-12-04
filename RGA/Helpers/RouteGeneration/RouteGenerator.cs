@@ -73,17 +73,18 @@ namespace RGA.Helpers
             }
 
 
-            DirectionsResponse directions = getDirections();
+            //DirectionsResponse directions = getDirections();
+            var responseRoute = getRoute();
 
-            route.Summary = directions.Routes.First().Summary;
+            route.Summary = responseRoute.Summary;
             //   route.Sections = new List<Leg>(directions.Routes.First().Legs);
             // directions.Routes.First().Legs.First().Steps.First().;
             if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
-                SortThingsAccordingToWaypointOrder(directions.Routes.First().WaypointOrder);
+                SortThingsAccordingToWaypointOrder(responseRoute.WaypointOrder);
 
 
-            directions.Routes.First().Legs.ForEach(leg => route.Duaration += leg.Duration.Value);
-            directions.Routes.First().Legs.ForEach(leg => route.Distance += leg.Distance.Value);
+            responseRoute.Legs.ForEach(leg => route.Duaration += leg.Duration.Value);
+            responseRoute.Legs.ForEach(leg => route.Distance += leg.Distance.Value);
 
             //route.Shipments// = Addresses;
 
@@ -94,12 +95,12 @@ namespace RGA.Helpers
 
             route.StartAddress = BaseAddress;
 
-            var locationsPoints = new List<Location>();
+         //   var locationsPoints = new List<Location>();
 
-            directions.Routes.First()
-                .OverviewPath.Points.ForEach(p => locationsPoints.Add(new Location(p.LocationString)));
+           // responseRoute
+             //   .OverviewPath.Points.ForEach(p => locationsPoints.Add(new Location(p.LocationString)));
 
-            route.Image = getImageBytes(locationsPoints);
+            route.Image = getImageBytes();
 
             return route;
         }
@@ -107,8 +108,7 @@ namespace RGA.Helpers
         private void SortThingsAccordingToCost()
         {
             var costs = new double[Addresses.Count + 1, Addresses.Count + 1];
-            var indices = new int[Addresses.Count + 1];
-
+            var indices = Enumerable.Range(0, Addresses.Count+1).ToArray();
 
 
             switch (distanceMatrixProvider)
@@ -117,8 +117,6 @@ namespace RGA.Helpers
                     var response = getDistanceMatrix();
 
                     for (int i = 0; i < response.Rows.Length; i++)
-                    {
-                        indices[i] = i;
                         for (int j = 0; j < response.Rows[i].Elements.Length; j++)
                         {
                             if (routeOptimizationType == RouteOptimizationType.Time)
@@ -127,7 +125,6 @@ namespace RGA.Helpers
                             else if (routeOptimizationType == RouteOptimizationType.Distance)
                                 costs[i, j] = long.Parse(response.Rows[i].Elements[j].distance.Value);
                         }
-                    }
                     break;
 
 
@@ -135,18 +132,21 @@ namespace RGA.Helpers
                     var mapQuest = new MapQuestAPI();
                     var listOfAllAddresses = new List<string>() { BaseAddress };
                     listOfAllAddresses.AddRange(Addresses);
-                    listOfAllAddresses.Add(BaseAddress);
+                    //listOfAllAddresses.Add(BaseAddress);
                     costs = mapQuest.getDistanceMatrix(listOfAllAddresses, routeOptimizationType);
                     break;
 
                 case DistanceMatrixProvider.BingMaps:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException("DistanceMatrixProvider.BingMaps" + " nie jest jeszcze zaimplementowany");
                     break;
 
                 case DistanceMatrixProvider.OpenStreetMap:
-                    throw new NotImplementedException();
+                    throw new NotImplementedException("DistanceMatrixProvider.OpenStreetMap" + " nie jest jeszcze zaimplementowany");
                     break;
 
+                default:
+                    throw new NotImplementedException(distanceMatrixProvider.ToString() + " nie jest jeszcze zaimplementowany");
+                    break;
             }
 
 
@@ -168,13 +168,8 @@ namespace RGA.Helpers
 
             IEnumerable<int> optimalRoute = tspSolver.Solve(out cost);
 
-            var tmpAddress = new List<string>();
+            var tmpAddress = (from item in optimalRoute where item != 0 select Addresses[item - 1]).ToList();
 
-            foreach (int item in optimalRoute)
-            {
-                if (item != 0)
-                    tmpAddress.Add(Addresses[item - 1]);
-            }
             Addresses = tmpAddress;
         }
 
@@ -228,6 +223,70 @@ namespace RGA.Helpers
             return response;
         }
 
+
+        private GoogleMapsApi.Entities.Directions.Response.Route getRoute()
+        {
+
+            GoogleMapsApi.Entities.Directions.Response.Route responseRoute=null;
+            DirectionsRequest directionsRequest = null;
+            DirectionsResponse directions = null;
+
+            var summaries="";
+            var legs = new List<Leg>();
+            var waypointsOrder = new List<int>();
+            var warnings = new List<string>();
+
+
+            var allAddresses = new List<string>(){BaseAddress};
+            allAddresses.AddRange(Addresses);
+            allAddresses.Add(BaseAddress);
+
+
+            for (int i = 0; i < allAddresses.Count-1; i += 9) //because free version of GoogleMaps Directions API is limited to maximum 8 waypoints per request
+            {
+
+                directionsRequest = new DirectionsRequest
+                {
+                    Origin = allAddresses[i],
+                    Destination = (i + 9 < allAddresses.Count) ? allAddresses[i + 9] : allAddresses.Last(),
+                    Waypoints = allAddresses.GetRange(i + 1, Math.Min(8, allAddresses.Count - i - 2)).ToArray(),
+                    Language = "pl",
+                    Avoid = AvoidWay.Tolls,
+                };
+
+                if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
+                    directionsRequest.OptimizeWaypoints = true;//solves TSP for us, but is limited to 8 points
+
+                directions = GoogleMaps.Directions.Query(directionsRequest);
+
+                if (directions.Status != DirectionsStatusCodes.OK)
+                    throw new Exception("Nie udało się wygenerować trasy!\nPowód: " + directions.StatusStr);
+                else
+                {
+                    legs.AddRange(directions.Routes.First().Legs);
+                    summaries += directions.Routes.First().Summary+Environment.NewLine;
+                                    if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
+                                        waypointsOrder.AddRange(directions.Routes.First().WaypointOrder);
+                    warnings.AddRange(directions.Routes.First().Warnings);
+                }
+            }
+
+
+            responseRoute = new GoogleMapsApi.Entities.Directions.Response.Route()
+            {
+                Legs = legs,
+                Summary = summaries,
+                Warnings = warnings.ToArray()
+            };
+
+            if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
+                responseRoute.WaypointOrder = waypointsOrder.ToArray();
+
+
+            return responseRoute;
+        }
+
+
         private DirectionsResponse getDirections()
         {
             var directionsRequest = new DirectionsRequest
@@ -246,6 +305,7 @@ namespace RGA.Helpers
 
             DirectionsResponse directions = GoogleMaps.Directions.Query(directionsRequest);
 
+
             if (directions.Status != DirectionsStatusCodes.OK)
                 throw new Exception("Nie udało się wygenerować trasy!\nPowód: " + directions.StatusStr);
 
@@ -253,14 +313,11 @@ namespace RGA.Helpers
         }
 
 
-        private byte[] getImageBytes(IEnumerable<Location> locationsPoints)
+        private byte[] getImageBytes()
         {
             var locations = new List<Location> { BaseAddress };
+            locations.AddRange(Addresses.Select(address => (Location) address));
 
-            foreach (string address in Addresses)
-            {
-                locations.Add(address);
-            }
             locations.Add(BaseAddress);
 
             var markers = new MapMarkersCollection();

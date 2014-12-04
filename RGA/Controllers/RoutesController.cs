@@ -142,7 +142,7 @@ namespace RGA.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, "Wystąpił błąd!\n" + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException : ""));
+                    ModelState.AddModelError(string.Empty, "Wystąpił błąd!\n" + exception.ToString() + ((exception.InnerException != null) ? "\n" + exception.InnerException : ""));
                     model.init();
                     return View(model);
                 }
@@ -156,7 +156,7 @@ namespace RGA.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException : ""));
+                    ModelState.AddModelError(string.Empty, "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.ToString() + ((exception.InnerException != null) ? "\n" + exception.InnerException.ToString() : ""));
                     model.init();
                     return View(model);
                 }
