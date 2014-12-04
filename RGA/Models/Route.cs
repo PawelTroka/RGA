@@ -44,6 +44,9 @@ namespace RGA.Models
         [Display(Name = "Przesyłki")]
         public virtual ICollection<Shipment> Shipments { get; set; }
 
+        [Display(Name = "Segmenty trasy")]
+        public virtual ICollection<Segment> Segments { get; set; }
+
         [Display(Name = "Adres końcowy")]
         public string EndAddress { get; set; }
 

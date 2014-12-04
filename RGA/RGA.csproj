@@ -239,7 +239,9 @@
     <Compile Include="Helpers\RouteGeneration\RouteState.cs" />
     <Compile Include="Helpers\RouteGeneration\TSP\BruteForceTSPSolver.cs" />
     <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\Segment.cs" />
     <Compile Include="Models\Shipment.cs" />
+    <Compile Include="Models\Step.cs" />
     <Compile Include="Models\ViewModels\EditUserViewModel.cs" />
     <Compile Include="Models\ViewModels\RoutesModel.cs" />
     <Compile Include="Global.asax.cs">

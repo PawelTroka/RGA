@@ -20,6 +20,7 @@ using RGA.Helpers.TSP;
 using RGA.Models;
 using WebGrease.Css.Extensions;
 using Route = RGA.Models.Route;
+using Step = RGA.Models.Step;
 using TravelMode = Google.Maps.TravelMode;
 
 
@@ -67,7 +68,7 @@ namespace RGA.Helpers
                 var optimalRoute = mapQuest.getOptimalRoute(listOfAllAddresses);
                 var waypointOrder = new List<int>();
 
-                for(int i=1;i<optimalRoute.Length-1;i++)
+                for (int i = 1; i < optimalRoute.Length - 1; i++)
                     waypointOrder.Add(optimalRoute[i]);
                 SortThingsAccordingToWaypointOrder(waypointOrder.ToArray());
             }
@@ -95,10 +96,38 @@ namespace RGA.Helpers
 
             route.StartAddress = BaseAddress;
 
-         //   var locationsPoints = new List<Location>();
+            //   var locationsPoints = new List<Location>();
 
-           // responseRoute
-             //   .OverviewPath.Points.ForEach(p => locationsPoints.Add(new Location(p.LocationString)));
+            // responseRoute
+            //   .OverviewPath.Points.ForEach(p => locationsPoints.Add(new Location(p.LocationString)));
+
+
+            var segments = new List<Segment>();
+            responseRoute.Legs.ForEach(
+                l =>
+                {
+                    segments.Add(new Segment()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Distance = l.Distance.Value,
+                        Duaration = l.Duration.Value,
+                        StartAddress = l.StartAddress,
+                        EndAddress = l.EndAddress,
+                        Steps = new List<Step>()
+                    });
+
+                    l.Steps.ForEach(s => segments.Last().Steps.Add(new Step()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Distance = s.Distance.Value,
+                        Duaration = s.Duration.Value,
+                        EndLocation = s.EndLocation.LocationString,
+                        HtmlInstructions = s.HtmlInstructions,
+                        StartLocation = s.StartLocation.LocationString
+                    }));
+                }
+                );
+
 
             route.Image = getImageBytes();
 
@@ -108,7 +137,7 @@ namespace RGA.Helpers
         private void SortThingsAccordingToCost()
         {
             var costs = new double[Addresses.Count + 1, Addresses.Count + 1];
-            var indices = Enumerable.Range(0, Addresses.Count+1).ToArray();
+            var indices = Enumerable.Range(0, Addresses.Count + 1).ToArray();
 
 
             switch (distanceMatrixProvider)
@@ -227,22 +256,22 @@ namespace RGA.Helpers
         private GoogleMapsApi.Entities.Directions.Response.Route getRoute()
         {
 
-            GoogleMapsApi.Entities.Directions.Response.Route responseRoute=null;
+            GoogleMapsApi.Entities.Directions.Response.Route responseRoute = null;
             DirectionsRequest directionsRequest = null;
             DirectionsResponse directions = null;
 
-            var summaries="";
+            var summaries = "";
             var legs = new List<Leg>();
             var waypointsOrder = new List<int>();
             var warnings = new List<string>();
 
 
-            var allAddresses = new List<string>(){BaseAddress};
+            var allAddresses = new List<string>() { BaseAddress };
             allAddresses.AddRange(Addresses);
             allAddresses.Add(BaseAddress);
 
 
-            for (int i = 0; i < allAddresses.Count-1; i += 9) //because free version of GoogleMaps Directions API is limited to maximum 8 waypoints per request
+            for (int i = 0; i < allAddresses.Count - 1; i += 9) //because free version of GoogleMaps Directions API is limited to maximum 8 waypoints per request
             {
 
                 directionsRequest = new DirectionsRequest
@@ -264,9 +293,9 @@ namespace RGA.Helpers
                 else
                 {
                     legs.AddRange(directions.Routes.First().Legs);
-                    summaries += directions.Routes.First().Summary+Environment.NewLine;
-                                    if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
-                                        waypointsOrder.AddRange(directions.Routes.First().WaypointOrder);
+                    summaries += directions.Routes.First().Summary + Environment.NewLine;
+                    if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
+                        waypointsOrder.AddRange(directions.Routes.First().WaypointOrder);
                     warnings.AddRange(directions.Routes.First().Warnings);
                 }
             }
@@ -316,7 +345,7 @@ namespace RGA.Helpers
         private byte[] getImageBytes()
         {
             var locations = new List<Location> { BaseAddress };
-            locations.AddRange(Addresses.Select(address => (Location) address));
+            locations.AddRange(Addresses.Select(address => (Location)address));
 
             locations.Add(BaseAddress);
 
