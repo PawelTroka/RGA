@@ -392,6 +392,7 @@
     <Content Include="Views\Routes\EditorTemplates\Shipments.cshtml" />
     <Content Include="Views\Routes\EditorTemplates\Shipment.cshtml" />
     <Content Include="Views\Routes\Route.cshtml" />
+    <Content Include="Views\Routes\RoutesList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -467,8 +468,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>call "$(VS120COMNTOOLS)..\tools\vsvars32.bat"
-editbin /largeaddressaware $(TargetPath)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

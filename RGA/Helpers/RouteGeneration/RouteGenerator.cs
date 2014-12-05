@@ -128,7 +128,7 @@ namespace RGA.Helpers
                 }
                 );
 
-
+            route.Segments = segments;
             route.Image = getImageBytes();
 
             return route;

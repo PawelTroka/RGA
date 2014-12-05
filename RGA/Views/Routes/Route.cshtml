@@ -54,13 +54,14 @@
         <dt>
             @Html.DisplayNameFor(model => model.Shipments)
         </dt>
-        
-        @foreach (Shipment shipment in Model.Shipments)
-        {
-            <dd>
-                @Html.DisplayFor(m => shipment.DestinationAddress)
-            </dd>
-        }
+        <dd>
+            <ul>
+                @foreach (var shipment in Model.Shipments)
+                {
+                    <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
+                }
+            </ul>
+        </dd>
         
 
 
@@ -130,6 +131,15 @@
         <dd>
             @Html.DisplayFor(model => model.State)
         </dd>
+        
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.DistanceMatrixProvider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistanceMatrixProvider)
+        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.RouteOptimizationAlgorithm)
@@ -155,9 +165,42 @@
             @Html.DisplayFor(model => model.RouteOptimizationType)
         </dd>
 
+        
+        <dt>
+            Szczegółowy opis trasy
+        </dt>
+
+        <dd>
+            <ol>
+                @foreach (var segment in Model.Segments)
+                {
+                    <li>Odcinek z @segment.StartAddress do @segment.EndAddress
+                        <br/>
+                        (długość: @segment.Distance metrów, czas: @segment.Duaration)
+                        <br/><br />
+                        <ol>
+                            @foreach (var step in segment.Steps)
+                            {
+                                <li>
+                                    Krok z @step.StartLocation do @step.EndLocation
+                                    <br />
+                                    (długość: @step.Distance metrów, czas: @step.Duaration)
+                                    <br /><br />
+                                    @Html.DisplayFor(s => step.HtmlInstructions)
+                                </li>
+                            }
+                        </ol>
+                    </li>
+                }
+            </ol>
+
+        </dd>
+        
+
     </dl>
 </div>
+
 <p>
-    @*Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
 </p>

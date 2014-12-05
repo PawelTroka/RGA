@@ -1,0 +1,81 @@
+﻿@model IEnumerable<RGA.Models.Route>
+
+@{
+    ViewBag.Title = "RoutesList";
+}
+
+<h2>RoutesList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartDateTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EndAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duaration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DuarationTicks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Distance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DynamicMapHtml)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Summary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartDateTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EndAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duaration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DuarationTicks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Distance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DynamicMapHtml)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

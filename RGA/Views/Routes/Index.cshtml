@@ -8,53 +8,151 @@
 <h2>Wygenerowane trasy</h2>
 
 
-<table border="1">
-    <thead>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.StartDateTime)
+        </th>
+        <th>
+            Pracownik
+        </th>
+        <th>
+            Kierowca
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.State)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.Summary)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.StartAddress)
+        </th>
+        
+
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.Shipments)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.EndAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.Duaration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.Distance)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.DistanceMatrixProvider)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.RouteOptimizationProvider)
+        </th>
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.RouteOptimizationType)
+        </th>
+ 
+        <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.RouteOptimizationAlgorithm)
+        </th>
+        <th> </th>
+        <th> </th>
+        <th> </th>
+    </tr>
+
+    @foreach (var item in Model.AllRoutes)
+    {
         <tr>
-            <td>Data</td>
-            <td>Pracownik</td>
-            <td>Kierowca</td>
-            <td>Podsumowanie</td>
-            <td>Długość</td>
-            <td>Czas trwania</td>
-            <td> </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateTime)
+            </td>
+            
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Worker.UserName)
+            </td>
+            
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.UserName)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.StartAddress)
+            </td>
+            
+            <td>
+                <ul>
+                @foreach (var shipment in item.Shipments)
+                {
+                    <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
+                }
+                </ul>
+            </td>
+
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EndAddress)
+            </td>
+            
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Duaration)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance) m
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceMatrixProvider)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteOptimizationProvider)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteOptimizationType)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteOptimizationAlgorithm)
+            </td>
+            
+            
+            <td>
+                
+                @Html.ActionLink("Modyfikuj", "Edit", new { id = item.Id }) |
+            </td>
+            <td>
+
+                @Html.ActionLink("Szczegóły", "Route", new { item.Id })
+
+            </td>
+            
+            <td>
+                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        @if (Model.AllRoutes != null)
-        {
-            foreach (Route route in Model.AllRoutes)
-            {
-                <tr>
-                    <td>
-                        @Html.Encode(route.StartDateTime)
-                    </td>
+    }
 
-
-                    <td>
-                        @Html.Encode(route.Worker.UserName)
-                    </td>
-
-                    <td>
-                        @Html.Encode(route.Driver.UserName)
-                    </td>
-                    <td>
-                        @Html.Encode(route.Summary)
-                    </td>
-                    <td>
-                        @Html.Encode((route.Distance/1000.0))km
-                    </td>
-
-                    <td>
-                        @Html.Encode(route.Duaration)
-                    </td>
-
-                    <td>
-                        @Html.ActionLink("Szczegóły", "Route", new {route.Id})
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
 </table>
-}
