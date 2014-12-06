@@ -8,45 +8,36 @@
 <h2>Kierowcy z którymi współpracujesz</h2>
 
 
-<table border="1">
-    <thead>
+<table class="table">
+    <tr>
+        <th>Nazwa</th>
+        <th>E-mail</th>
+        <th>Numer telefonu</th>
+        <th> </th>
+    </tr>
+
+    @foreach (User item in Model.drivers)
+    {
         <tr>
-            <td>Id</td>
-            <td>Nazwa</td>
-            <td>E-mail</td>
-            <td>Numer telefonu</td>
-            <td> </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+
+            <td>
+                @Html.ActionLink("Kalendarz", "Calendar", new { item.Id })
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        @if (Model.drivers != null)
-        {
-            foreach (User item in Model.drivers)
-            {
-                <tr>
-                    <td>
-                        @Html.Encode(item.Id)
-                    </td>
+    }
 
-                    <td>
-                        @Html.Encode(item.UserName)
-                    </td>
-
-                    <td>
-                        @Html.Encode(item.Email)
-                    </td>
-
-                    <td>
-                        @Html.Encode(item.PhoneNumber)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Kalendarz", "Calendar", new {item.Id})
-                    </td>
-                </tr>
-            }
-        }
-    </tbody>
 </table>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

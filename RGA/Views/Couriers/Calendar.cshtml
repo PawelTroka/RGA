@@ -1,4 +1,4 @@
-﻿@model RGA.Models.ViewModels.CouriersViewModel
+﻿@model RGA.Models.ViewModels.CourierCalendarViewModel
 
 @{
     ViewBag.Title = "Kalendarz kierowcy " + Model.SelectedDriver.UserName;
@@ -6,39 +6,113 @@
 
 <h2>Kalendarz dla kierowcy @Model.SelectedDriver.UserName</h2>
 
-
+<style>
+    .bolddate a {
+        font-weight: bold !important;
+        color: #000000 !important;
+    }
+</style>
 
 
 
 <div id="datepicker"></div>
+<br />
+<p>
+    @Html.ActionLink("Zobacz trasę dzienną", "ShowDailyRoute", "Routes", new { Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString() }, new { id = "showDailyRoute", @class = "btn btn-default" })
+</p>
 
 <br />
 <p>
-    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new {Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString()}, new {id = "generateRoute", @class = "btn btn-primary btn-lg"})
+    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new { Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString() }, new { id = "generateRoute", @class = "btn btn-primary btn-lg" })
 </p>
+
+
+
 
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(document).ready(function() {
+        var workDatesArrayNnNu32gf23gih9f3 = new Array(@Html.Raw(Model.WorkDatesForDriver));
+
+        $(document).ready(function () {
 
             $('#datepicker').datepicker({
                 regional: "pl",
                 dateFormat: 'yy-mm-dd',
-                minDate: 0,
+                //minDate: 0,
                 showWeek: true,
                 firstDay: 1,
                 showButtonPanel: true,
-                onSelect: function(date) {
-                    // Your CSS changes, just in case you still need them
-                    $('#generateRoute').prop("href", $('#generateRoute').prop("href").substr(0, $('#generateRoute').prop("href").indexOf("?date=")) + "?date=" + date);
-                    //alert(date);
-                }
+                beforeShowDay: bolddates,
+                onSelect: setVisualsAccordingToSelectedDate
             });
 
             $("#datepicker").css({ 'font-size': 24 });
+
+            setVisualsAccordingToSelectedDate("@DateTime.Today.ToShortDateString()");
         });
+
+
+        function setVisualsAccordingToSelectedDate(date) {
+            $('#generateRoute').prop("href", $('#generateRoute').prop("href").substr(0, $('#generateRoute').prop("href").indexOf("?date=")) + "?date=" + date);
+            $('#showDailyRoute').prop("href", $('#showDailyRoute').prop("href").substr(0, $('#showDailyRoute').prop("href").indexOf("?date=")) + "?date=" + date);
+
+            var dt = new Date(date);
+            dt.setHours(0, 0, 0, 0);
+
+            var nowdt = new Date(Date.now());
+            nowdt.setHours(0, 0, 0, 0);
+
+            var indexOfDateInWorkDatesArray = $.inArray(date, workDatesArrayNnNu32gf23gih9f3);
+
+            if (indexOfDateInWorkDatesArray == -1) {
+                $('#showDailyRoute').hide();
+
+                if (dt >= nowdt)
+                    $('#generateRoute').show();
+
+            } else {
+                $('#showDailyRoute').show();
+                $('#generateRoute').hide();
+            }
+        }
+
+
+        function bolddates(date) {
+
+
+            var dt = new Date(date);
+            dt.setHours(0, 0, 0, 0);
+
+            var xday = date.getDate();
+            var xmonth = date.getMonth() + 1; //jan is 0
+            var xyear = date.getFullYear();
+
+
+            var xfulldate = xyear + "-";
+
+            if (xmonth < 10)
+                xfulldate += "0" + xmonth + "-";
+            else
+                xfulldate += xmonth + "-";
+
+            if (xday < 10)
+                xfulldate += "0" + xday;
+            else
+                xfulldate += xday;
+                
+            var xboldthese = workDatesArrayNnNu32gf23gih9f3;
+            var xcssflg = "";
+            for (var i = 0; i < xboldthese.length; i++) {
+                if (xfulldate == xboldthese[i]) {
+                    xcssflg = "bolddate";
+                } else {
+                    //maybe some other css class
+                }
+            }
+            return [true, xcssflg];
+        }
     </script>
 }

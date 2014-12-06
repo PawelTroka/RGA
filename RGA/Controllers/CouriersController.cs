@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Text;
+using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using RGA.Models;
@@ -23,9 +25,32 @@ namespace RGA.Controllers
         {
             var store = new UserStore<User>(new ApplicationDbContext());
             var userManager = new UserManager<User>(store);
-            model.SelectedDriver = userManager.FindByIdAsync(id).Result;
 
-            return View(model);
+            var model2 = new CourierCalendarViewModel();
+
+
+            model2.SelectedDriver = userManager.FindById(id);
+
+
+            var dbContext = ApplicationDbContext.Create();
+
+            var allRoutes = dbContext.Routes.ToList();
+
+            var thisDriverRoutes = allRoutes.FindAll(r => r.Driver.Id == model2.SelectedDriver.Id);
+
+            model2.WorkDatesForDriver = "";
+
+            var sb = new StringBuilder();
+
+            foreach (var driverRoute in thisDriverRoutes)
+            {
+                sb.AppendFormat(@" ""{0}"",", driverRoute.StartDateTime.ToShortDateString());
+            }
+            sb.Remove(sb.Length - 1, 1);
+
+            model2.WorkDatesForDriver = sb.ToString();
+
+            return View(model2);
         }
     }
 }

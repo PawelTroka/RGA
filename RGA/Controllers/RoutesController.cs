@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -172,6 +173,18 @@ namespace RGA.Controllers
         {
             ApplicationDbContext db = ApplicationDbContext.Create();
             Route route = db.Routes.Find(id);
+
+            return View("Route", route);
+        }
+
+        [Authorize(Roles = "Pracownik")]
+        public ActionResult ShowDailyRoute(string id, DateTime date)
+        {
+            ApplicationDbContext db = ApplicationDbContext.Create();
+
+            var routes = db.Routes.ToList();
+
+            Route route = routes.Find(r => ( r.Driver.Id == id  && r.StartDateTime.Date==date.Date));
 
             return View("Route", route);
         }
