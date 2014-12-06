@@ -395,6 +395,7 @@
     <Content Include="Views\Routes\Route.cshtml" />
     <Content Include="Views\Routes\RoutesList.cshtml" />
     <Content Include="Views\Calendar\Index.cshtml" />
+    <Content Include="Views\Routes\RoutePrintVersion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

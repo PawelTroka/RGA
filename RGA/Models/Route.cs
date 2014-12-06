@@ -88,12 +88,14 @@ namespace RGA.Models
         {
             get
             {
+                if (Shipments == null)
+                    return "";
                 if (Shipments.Count > 8)
                 {
                     var template = new StringBuilder(@"<style>
     #map-canvas425321423y78ydgf23dqd1d21f12t87 {
-        height: 400px;
-        width: 500px;
+        height: 500px;
+        width: 800px;
     }
 </style>
 <script src=""https://maps.googleapis.com/maps/api/js?sensor=false&language=pl""></script>
@@ -258,8 +260,8 @@ namespace RGA.Models
                 {
                     var template = new StringBuilder(@"<style>
     #map-canvas425321423y78ydgf23t87 {
-        height: 400px;
-        width: 500px;
+        height: 500px;
+        width: 800px;
     }
 </style>
 <script src=""https://maps.googleapis.com/maps/api/js?sensor=false&language=pl""></script>

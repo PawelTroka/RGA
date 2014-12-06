@@ -1,0 +1,106 @@
+﻿@model RGA.Models.Route
+
+@{
+    Layout = null;
+    ViewBag.Title = "Trasa na dzień "+Model.StartDateTime.ToShortDateString() + " - wersja do druku";
+}
+
+@Styles.Render("~/Content/css")
+@Styles.Render("~/Content/themes/base/css")
+@Scripts.Render("~/bundles/modernizr")
+
+
+<h2>@ViewBag.Title</h2>
+
+
+
+<div>
+    <h4>Szczegóły trasy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+
+        <dd>
+            Wygenerował(a) @Html.DisplayFor(model => model.Worker.UserName) (@Html.DisplayFor(model => model.Worker.PhoneNumber))
+        </dd>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.DynamicMapHtml)
+        </dd>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.StartAddress)
+        </dd>
+
+        <dd>
+            <ul>
+                @foreach (var shipment in Model.Shipments)
+                {
+                    <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
+                }
+            </ul>
+        </dd>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.EndAddress)
+        </dd>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+     
+
+        <dd>
+            @Html.DisplayFor(model => model.Duaration)
+        </dd>
+
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance) m
+        </dd>
+
+        <dt>
+            Szczegółowy opis trasy
+        </dt>
+
+        <dd>
+            <ul>
+                @foreach (var segment in Model.Segments)
+                {
+                    <li>
+                        Odcinek z @segment.StartAddress do @segment.EndAddress
+                        <br />
+                        (długość: @segment.Distance metrów, czas: @segment.Duaration)
+                        <br /><br />
+                        <ol>
+                            @foreach (var step in segment.Steps)
+                            {
+                                <li>
+                                    Krok z @step.StartLocation do @step.EndLocation
+                                    (długość: @step.Distance metrów, czas: @step.Duaration)
+                                    <br />
+                                    @Html.DisplayFor(s => step.HtmlInstructions)
+                                    <br /><br />
+                                </li>
+                            }
+                        </ol>
+                        <hr />
+                    </li>
+                }
+            </ul>
+
+        </dd>
+
+
+    </dl>
+</div>
+
+<script>
+    
+</script>

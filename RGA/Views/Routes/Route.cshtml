@@ -10,6 +10,10 @@
 
 <div>
     <h4>Szczegóły trasy</h4>
+    @if (User.IsInRole("Kierowca"))
+    {
+        @Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new { Model.Id }, new { @class = "btn btn-default" });
+    }
     <hr />
     <dl class="dl-horizontal">
         
@@ -176,7 +180,7 @@
         </dt>
 
         <dd>
-            <ol>
+            <ul>
                 @foreach (var segment in Model.Segments)
                 {
                     <li>Odcinek z @segment.StartAddress do @segment.EndAddress
@@ -188,16 +192,17 @@
                             {
                                 <li>
                                     Krok z @step.StartLocation do @step.EndLocation
-                                    <br />
                                     (długość: @step.Distance metrów, czas: @step.Duaration)
-                                    <br /><br />
+                                    <br />
                                     @Html.DisplayFor(s => step.HtmlInstructions)
+                                    <br /><br />
                                 </li>
                             }
                         </ol>
+                    <hr />
                     </li>
                 }
-            </ol>
+            </ul>
 
         </dd>
         
@@ -207,7 +212,10 @@
 
 <p>
  
-@if (User.IsInRole("Pracownik"))
+    
+
+
+    @if (User.IsInRole("Pracownik"))
 {
     @Html.ActionLink("Edit", "Edit", new {id = Model.Id})
 }
@@ -218,12 +226,12 @@
     
     @if (User.IsInRole("Kierowca") && Model.State == RouteState.New)
     {
-        @Html.ActionLink("Rozpocznij trasę!", "StartRoute","Routes",Model.Id,new {@class="btn btn-primary btn-lg"});
+        @Html.ActionLink("Rozpocznij trasę!", "StartRoute","Routes",new{ Model.Id},new {@class="btn btn-primary btn-lg"});
     }
     
     @if (User.IsInRole("Kierowca") && Model.State == RouteState.InProgress)
     {
-        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", Model.Id, new { @class = "btn btn-primary btn-lg" });
+        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", new{ Model.Id}, new { @class = "btn btn-primary btn-lg" });
     }
     
     @if (User.IsInRole("Kierowca") && Model.State == RouteState.Completed)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Web.Mvc;
@@ -207,13 +208,34 @@ namespace RGA.Controllers
             return View("Route", route);
         }
 
+         [Authorize(Roles = "Kierowca")]
+
+
+
+        public ActionResult RoutePrintVersion(string id)
+        {
+            ApplicationDbContext db = ApplicationDbContext.Create();
+            var route = db.Routes.Find(id);
+            route.State = RouteState.InProgress;
+
+
+            return View("RoutePrintVersion", route);
+        }
+
+
+
         public ActionResult StartRoute(string id)
         {
             ApplicationDbContext db = ApplicationDbContext.Create();
             var route = db.Routes.Find(id);
             route.State = RouteState.InProgress;
+             
+             db.Entry(route).State = EntityState.Modified;
+
             db.SaveChanges();
-            return RedirectToAction("ShowMyDailyRoute", new {date = route.StartDateTime});
+           // return RedirectToAction("ShowMyDailyRoute", new {date = route.StartDateTime});
+
+            return View("RoutePrintVersion", route);
         }
 
         public ActionResult EndRoute(string id)
@@ -221,6 +243,9 @@ namespace RGA.Controllers
             ApplicationDbContext db = ApplicationDbContext.Create();
             var route = db.Routes.Find(id);
             route.State = RouteState.Completed;
+
+            db.Entry(route).State = EntityState.Modified;
+
             db.SaveChanges();
 
             return RedirectToAction("Index","Home");
