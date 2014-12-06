@@ -238,6 +238,7 @@
     <Compile Include="Helpers\RouteGeneration\MapQuestAPI.cs" />
     <Compile Include="Helpers\RouteGeneration\RouteState.cs" />
     <Compile Include="Helpers\RouteGeneration\TSP\BruteForceTSPSolver.cs" />
+    <Compile Include="Models\CalendarViewModel.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Segment.cs" />
     <Compile Include="Models\Shipment.cs" />
@@ -393,10 +394,10 @@
     <Content Include="Views\Routes\EditorTemplates\Shipment.cshtml" />
     <Content Include="Views\Routes\Route.cshtml" />
     <Content Include="Views\Routes\RoutesList.cshtml" />
+    <Content Include="Views\Calendar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Calendar\" />
     <Folder Include="Views\Shared\EditorTemplate\" />
   </ItemGroup>
   <ItemGroup>

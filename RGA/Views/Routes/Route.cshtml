@@ -1,4 +1,5 @@
-﻿@using RGA.Models
+﻿@using RGA.Helpers
+@using RGA.Models
 @model RGA.Models.Route
 
 @{
@@ -12,24 +13,26 @@
     <hr />
     <dl class="dl-horizontal">
         
-        <dt>
-            @Html.DisplayNameFor(model => model.Worker)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Worker.UserName)
-        </dd>
-        
+            <dt>
+                @Html.DisplayNameFor(model => model.Worker)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Driver)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Worker.UserName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Driver.UserName)
-        </dd>
+        @if (!User.IsInRole("Kierowca"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Driver)
+            </dt>
 
+            <dd>
+                @Html.DisplayFor(model => model.Driver.UserName)
+            </dd>
 
+        }
 
 
 
@@ -73,15 +76,16 @@
             @Html.DisplayFor(model => model.EndAddress)
         </dd>
         
+@if (!User.IsInRole("Kierowca"))
+{
+    <dt>
+        @Html.DisplayNameFor(model => model.Image)
+    </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-
-        <dd>
-            <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(Model.Image))"/>
-        </dd>
-
+    <dd>
+        <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(Model.Image))"/>
+    </dd>
+}
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -132,39 +136,40 @@
             @Html.DisplayFor(model => model.State)
         </dd>
         
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.DistanceMatrixProvider)
-        </dt>
+        @if (!User.IsInRole("Kierowca"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.DistanceMatrixProvider)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DistanceMatrixProvider)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DistanceMatrixProvider)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RouteOptimizationAlgorithm)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.RouteOptimizationAlgorithm)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RouteOptimizationAlgorithm)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.RouteOptimizationAlgorithm)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RouteOptimizationProvider)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.RouteOptimizationProvider)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RouteOptimizationProvider)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.RouteOptimizationProvider)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RouteOptimizationType)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.RouteOptimizationType)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RouteOptimizationType)
-        </dd>
-
+            <dd>
+                @Html.DisplayFor(model => model.RouteOptimizationType)
+            </dd>
+        }
         
         <dt>
             Szczegółowy opis trasy
@@ -201,6 +206,29 @@
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+ 
+@if (User.IsInRole("Pracownik"))
+{
+    @Html.ActionLink("Edit", "Edit", new {id = Model.Id})
+}
+    @if (User.IsInRole("Admin"))
+    {
+        @Html.ActionLink("Back to List", "Index")
+    }
+    
+    @if (User.IsInRole("Kierowca") && Model.State == RouteState.New)
+    {
+        @Html.ActionLink("Rozpocznij trasę!", "StartRoute","Routes",Model.Id,new {@class="btn btn-primary btn-lg"});
+    }
+    
+    @if (User.IsInRole("Kierowca") && Model.State == RouteState.InProgress)
+    {
+        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", Model.Id, new { @class = "btn btn-primary btn-lg" });
+    }
+    
+    @if (User.IsInRole("Kierowca") && Model.State == RouteState.Completed)
+    {
+        @Html.Encode("Trasa została zakończona.") 
+    }
+
 </p>

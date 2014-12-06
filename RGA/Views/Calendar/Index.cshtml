@@ -1,0 +1,103 @@
+﻿@model RGA.Models.ViewModels.CalendarViewModel
+
+@{
+    ViewBag.Title = "Twój kalendarz";
+}
+
+<h2>Twój kalendarz @Model.User.UserName !</h2>
+
+<style>
+    .bolddate a {
+        font-weight: bold !important;
+        color: #000000 !important;
+    }
+</style>
+
+
+
+<div id="datepicker"></div>
+<br />
+<p>
+    @Html.ActionLink("Zobacz trasę dzienną", "ShowMyDailyRoute", "Routes", new{ date=DateTime.Today.ToShortDateString() }, new { id = "showDailyRoute", @class = "btn btn-default" })
+</p>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        var workDatesArrayNnNu32gf23gih9f3 = new Array(@Html.Raw(Model.WorkDatesForUser));
+
+        $(document).ready(function () {
+
+            $('#datepicker').datepicker({
+                regional: "pl",
+                dateFormat: 'yy-mm-dd',
+                //minDate: 0,
+                showWeek: true,
+                firstDay: 1,
+                showButtonPanel: true,
+                beforeShowDay: bolddates,
+                onSelect: setVisualsAccordingToSelectedDate
+            });
+
+            $("#datepicker").css({ 'font-size': 24 });
+
+            setVisualsAccordingToSelectedDate("@DateTime.Today.ToShortDateString()");
+        });
+
+
+        function setVisualsAccordingToSelectedDate(date) {
+
+            $('#showDailyRoute').prop("href", $('#showDailyRoute').prop("href").substr(0, $('#showDailyRoute').prop("href").indexOf("?date=")) + "?date=" + date);
+
+
+            var indexOfDateInWorkDatesArray = $.inArray(date, workDatesArrayNnNu32gf23gih9f3);
+
+            if (indexOfDateInWorkDatesArray == -1) {
+                $('#showDailyRoute').hide();
+
+            } else {
+                $('#showDailyRoute').show();
+            }
+        }
+
+
+        function bolddates(date) {
+
+
+            var dt = new Date(date);
+            dt.setHours(0, 0, 0, 0);
+
+            var xday = date.getDate();
+            var xmonth = date.getMonth() + 1; //jan is 0
+            var xyear = date.getFullYear();
+
+
+            var xfulldate = xyear + "-";
+
+            if (xmonth < 10)
+                xfulldate += "0" + xmonth + "-";
+            else
+                xfulldate += xmonth + "-";
+
+            if (xday < 10)
+                xfulldate += "0" + xday;
+            else
+                xfulldate += xday;
+
+            var xboldthese = workDatesArrayNnNu32gf23gih9f3;
+            var xcssflg = "";
+            for (var i = 0; i < xboldthese.length; i++) {
+                if (xfulldate == xboldthese[i]) {
+                    xcssflg = "bolddate";
+                } else {
+                    //maybe some other css class
+                }
+            }
+            return [true, xcssflg];
+        }
+    </script>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -187,6 +188,42 @@ namespace RGA.Controllers
             Route route = routes.Find(r => ( r.Driver.Id == id  && r.StartDateTime.Date==date.Date));
 
             return View("Route", route);
+        }
+
+
+        [Authorize(Roles = "Kierowca")]
+        public ActionResult ShowMyDailyRoute(DateTime date)
+        {
+            ApplicationDbContext db = ApplicationDbContext.Create();
+
+            var store = new UserStore<User>(db);
+            var userManager = new UserManager<User>(store);
+            var user = userManager.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
+
+            var routes = db.Routes.ToList();
+
+            Route route = routes.Find(r => (r.Driver.Id == user.Id && r.StartDateTime.Date == date.Date));
+
+            return View("Route", route);
+        }
+
+        public ActionResult StartRoute(string id)
+        {
+            ApplicationDbContext db = ApplicationDbContext.Create();
+            var route = db.Routes.Find(id);
+            route.State = RouteState.InProgress;
+            db.SaveChanges();
+            return RedirectToAction("ShowMyDailyRoute", new {date = route.StartDateTime});
+        }
+
+        public ActionResult EndRoute(string id)
+        {
+            ApplicationDbContext db = ApplicationDbContext.Create();
+            var route = db.Routes.Find(id);
+            route.State = RouteState.Completed;
+            db.SaveChanges();
+
+            return RedirectToAction("Index","Home");
         }
     }
 }
