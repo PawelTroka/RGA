@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -23,6 +24,48 @@ namespace RGA.Models.ViewModels
 
         public User Driver { get; set; }
         public DateTime Date { get; set; }
+    }
+
+    public class EditRouteViewModel : GenerateRouteViewModel
+    {
+        public EditRouteViewModel()
+        {
+            Shipments = new List<Shipment>
+            {
+                new Shipment {DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString()},
+                new Shipment {DestinationAddress = "", Number = "", Id = Guid.NewGuid().ToString()}
+            };
+        }
+
+        public EditRouteViewModel(Route route)
+        {
+            Id = route.Id;
+            WorkerId = route.Worker.Id;
+            Description = route.Description;
+            DistanceMatrixProvider = route.DistanceMatrixProvider;
+            DriverName = route.Driver.UserName;
+            Note = (route.Notes != null && route.Notes.Count>0) ? route.Notes.First().Content : null;
+            Shipments = new List<Shipment>(route.Shipments);
+            StartAddress = route.StartAddress;
+            WorkerId = route.Worker.Id;
+            StartDate = route.StartDateTime;
+            RouteOptimizationAlgorithm = route.RouteOptimizationAlgorithm;
+            RouteOptimizationProvider = route.RouteOptimizationProvider;
+            RouteOptimizationType = route.RouteOptimizationType;
+            State = route.State;
+            init();
+        }
+
+
+        [HiddenInput(DisplayValue = false)]
+        [Required]
+        public string Id { get; set; }
+
+                [Display(Name = "Adres końcowy")]
+        public string EndAddress { get; set; }
+
+        [Display(Name = "Stan")]
+        public RouteState State { get; set; }
     }
 
 

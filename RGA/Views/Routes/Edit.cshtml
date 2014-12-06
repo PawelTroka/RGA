@@ -1,0 +1,180 @@
+﻿@model RGA.Models.ViewModels.EditRouteViewModel
+
+@{
+    ViewBag.Title = "Edytuj trasę";
+}
+
+<style>
+    .map_canvas {
+        height: 150px;
+        width: 400px;
+    }
+</style>
+
+<h2>Edytuj trasę</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Szczegóły trasy</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.WorkerId)
+        
+
+        <div class="col-md-6 form-group">
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.State, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DriverName, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.DriverName, Model.MyDriversList, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DriverName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartAddress, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartAddress, new { htmlAttributes = new { id = "startAddress", @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartAddress, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 form-group">
+            <div id="base_map" class="map_canvas"></div>
+        </div>
+        <br style="clear: both" />
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Shipments, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Shipments, "Shipments", new { htmlAttributes = new { id = "addresses" } })
+                @Html.ValidationMessageFor(model => model.Shipments, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RouteOptimizationType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.RouteOptimizationType, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RouteOptimizationType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DistanceMatrixProvider, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.DistanceMatrixProvider, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DistanceMatrixProvider, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RouteOptimizationProvider, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.RouteOptimizationProvider, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RouteOptimizationProvider, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RouteOptimizationAlgorithm, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.RouteOptimizationAlgorithm, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.RouteOptimizationAlgorithm, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { id = "addresses", @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Note, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @*Html.ActionLink("Back to List", "Index")*@
+    @*Html.ActionLink("Zapisz jako nową trasę", "SaveAsNewRoute",new{}, new { @class = "btn btn-default" })*@
+</div>
+
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>
+
+
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;language=pl&amp;libraries=places"></script>
+    @Scripts.Render("~/bundles/jquerygeocomplete")
+
+    <script type="text/javascript">
+        function deleteContainer(evt) {
+            evt = evt || window.event;
+            var target = evt.target || evt.srcElement;
+            target.parentNode.parentNode.removeChild(target.parentNode);
+        }
+
+
+        function addGeocomplete() {
+            $(".addressable").each(function () {
+                var element = $(this);
+                element.geocomplete({
+                    map: element.closest('.findableclosest').find('.mappable'),
+                    mapOptions: {
+                        scrollwheel: true
+                    }
+                });
+            });
+        }
+
+        $(document).ready(function () {
+
+            $("#startAddress").geocomplete({
+                map: "#base_map",
+                mapOptions: {
+                    scrollwheel: true
+                }
+                //country: 'pl'
+            });
+            addGeocomplete();
+        });
+
+    </script>
+}

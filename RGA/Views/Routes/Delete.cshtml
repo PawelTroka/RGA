@@ -1,0 +1,144 @@
+﻿@model RGA.Models.Route
+
+@{
+    ViewBag.Title = "Usuń trasę";
+}
+
+<h2>Usuń trasę</h2>
+
+<h3>Czy na pewno chcesz usunąć tę trasę?</h3>
+<div>
+    <h4>Szczegóły trasy</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Worker.UserName)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Driver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Driver.UserName)
+        </dd>
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Summary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Summary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartAddress)
+        </dd>
+        
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Shipments)
+        </dt>
+        <dd>
+            <ul>
+                @foreach (var shipment in Model.Shipments)
+                {
+                    <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
+                }
+            </ul>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndAddress)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.State)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DistanceMatrixProvider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DistanceMatrixProvider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteOptimizationAlgorithm)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteOptimizationAlgorithm)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteOptimizationProvider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteOptimizationProvider)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RouteOptimizationType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RouteOptimizationType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń trasę" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót do kalendarza kierowcy", "Calendar","Couriers",new{id=Model.Driver.Id}, new{@class="btn btn-default"})
+        </div>
+    }
+</div>

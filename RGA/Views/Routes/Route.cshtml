@@ -8,12 +8,40 @@
 
 <h2>Trasa</h2>
 
+
+@if (User.IsInRole("Kierowca"))
+{
+    @Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new { Model.Id }, new { @class = "btn btn-default" }) 
+
+    if (Model.State == RouteState.New)
+    {
+        @Html.ActionLink("Rozpocznij trasę!", "StartRoute", "Routes", new { Model.Id }, new { @class = "btn btn-primary btn-lg" }) 
+    }
+
+    if (Model.State == RouteState.InProgress)
+    {
+        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", new { Model.Id }, new { @class = "btn btn-primary btn-lg" }) 
+    }
+
+    if (Model.State == RouteState.Completed)
+    {
+        @Html.Encode(" Trasa została zakończona.") 
+    }
+}
+
+
+@if (User.IsInRole("Pracownik"))
+{
+    @*Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new { Model.Id }, new { @class = "btn btn-default" })
+    @Html.Encode(" | ")*@
+    @Html.ActionLink("Edytuj trasę", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+    @Html.Encode(" | ")
+    @Html.ActionLink("Usuń trasę", "Delete", new { id = Model.Id }, new { @class = "btn btn-default" })
+}
+
 <div>
     <h4>Szczegóły trasy</h4>
-    @if (User.IsInRole("Kierowca"))
-    {
-        @Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new { Model.Id }, new { @class = "btn btn-default" });
-    }
+
     <hr />
     <dl class="dl-horizontal">
         
@@ -212,31 +240,10 @@
 
 <p>
  
-    
-
-
-    @if (User.IsInRole("Pracownik"))
-{
-    @Html.ActionLink("Edit", "Edit", new {id = Model.Id})
-}
+   
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Back to List", "Index")
-    }
-    
-    @if (User.IsInRole("Kierowca") && Model.State == RouteState.New)
-    {
-        @Html.ActionLink("Rozpocznij trasę!", "StartRoute","Routes",new{ Model.Id},new {@class="btn btn-primary btn-lg"});
-    }
-    
-    @if (User.IsInRole("Kierowca") && Model.State == RouteState.InProgress)
-    {
-        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", new{ Model.Id}, new { @class = "btn btn-primary btn-lg" });
-    }
-    
-    @if (User.IsInRole("Kierowca") && Model.State == RouteState.Completed)
-    {
-        @Html.Encode("Trasa została zakończona.") 
+        @Html.ActionLink("Wróc do listy", "Index","Routes", new {},new { @class = "btn btn-default" })
     }
 
 </p>
