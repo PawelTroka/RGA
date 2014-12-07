@@ -3,12 +3,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using Google.Maps;
 using Google.Maps.DistanceMatrix;
 using Google.Maps.StaticMaps;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
 using GoogleMapsApi.Entities.Directions.Response;
+using Microsoft.Ajax.Utilities;
 using OsmSharp.Osm;
 using OsmSharp.Osm.API;
 using OsmSharp.Osm.Streams;
@@ -40,7 +42,7 @@ namespace RGA.Helpers
             Addresses = new List<string>();
             this.route = route;
             BaseAddress = route.StartAddress;
-            route.Shipments.ForEach(s => Addresses.Add(s.DestinationAddress));
+            ListExtensions.ForEach(route.Shipments, s => Addresses.Add(s.DestinationAddress));
             routeOptimizationAlgorithm = route.RouteOptimizationAlgorithm;
             routeOptimizationProvider = route.RouteOptimizationProvider;
             routeOptimizationType = route.RouteOptimizationType;
@@ -84,8 +86,8 @@ namespace RGA.Helpers
                 SortThingsAccordingToWaypointOrder(responseRoute.WaypointOrder);
 
 
-            responseRoute.Legs.ForEach(leg => route.Duaration += leg.Duration.Value);
-            responseRoute.Legs.ForEach(leg => route.Distance += leg.Distance.Value);
+            ListExtensions.ForEach(responseRoute.Legs, leg => route.Duaration += leg.Duration.Value);
+            ListExtensions.ForEach(responseRoute.Legs, leg => route.Distance += leg.Distance.Value);
 
             //route.Shipments// = Addresses;
 
@@ -103,8 +105,7 @@ namespace RGA.Helpers
 
 
             var segments = new List<Segment>();
-            responseRoute.Legs.ForEach(
-                l =>
+            ListExtensions.ForEach(responseRoute.Legs, l =>
                 {
                     segments.Add(new Segment()
                     {
@@ -116,7 +117,7 @@ namespace RGA.Helpers
                         Steps = new List<Step>()
                     });
 
-                    l.Steps.ForEach(s => segments.Last().Steps.Add(new Step()
+                    ListExtensions.ForEach(l.Steps, s => segments.Last().Steps.Add(new Step()
                     {
                         Id = Guid.NewGuid().ToString(),
                         Distance = s.Distance.Value,
@@ -143,7 +144,7 @@ namespace RGA.Helpers
             switch (distanceMatrixProvider)
             {
                 case DistanceMatrixProvider.GoogleMaps:
-                    var response = getDistanceMatrix();
+                    /*var response = getDistanceMatrix();
 
                     for (int i = 0; i < response.Rows.Length; i++)
                         for (int j = 0; j < response.Rows[i].Elements.Length; j++)
@@ -153,7 +154,8 @@ namespace RGA.Helpers
 
                             else if (routeOptimizationType == RouteOptimizationType.Distance)
                                 costs[i, j] = long.Parse(response.Rows[i].Elements[j].distance.Value);
-                        }
+                        }*/
+                    costs = getCostDistanceMatrix();
                     break;
 
 
@@ -214,6 +216,78 @@ namespace RGA.Helpers
             orderOfSections.Add(0);
             //   route.Sections.Sort(
             //   (s1, s2) => orderOfSections[route.Sections.IndexOf(s1)].CompareTo(orderOfSections[route.Sections.IndexOf(s2)]));
+        }
+
+
+        private double[,] getCostDistanceMatrix()
+        {
+            var allWaypoints = new SortedList<int, Waypoint> { { 0, new Waypoint { Address = BaseAddress } } };
+
+            for (int i = 0; i < Addresses.Count; i++)
+            {
+                allWaypoints.Add(i + 1, new Waypoint { Address = Addresses[i] });
+            }
+
+            
+            var cost = new double[allWaypoints.Count, allWaypoints.Count];
+
+
+            /*
+             * Users of the free API:
+            100 elements per query.
+            100 elements per 10 seconds.
+            2 500 elements per 24 hour period.       
+             */
+
+            int howMuchRequests = allWaypoints.Count/10 + ((allWaypoints.Count%10 > 0) ? 1 : 0);
+
+            if (allWaypoints.Count > 100 || howMuchRequests>2500)
+                throw new Exception("Wygenerowanie trasy z użyciem wybranego dostawcy macierzy odległości (GoogleMaps) nie jest możliwe z powodu zbyt dużej liczby adresów punktów doręczenia przesyłek");
+
+
+            DistanceMatrixRequest request = null;
+            DistanceMatrixResponse response = null;
+
+
+            int sliceWidth = allWaypoints.Count/howMuchRequests;
+            int sliceEnd = allWaypoints.Count%howMuchRequests;
+            int startIndex, endIndex;
+
+            for(int i=0;i<howMuchRequests;i++)
+            {
+                if(i>0)
+                    Thread.Sleep(10000);//sleep 10s to avoid free Google DistanceMatrix API limitations (100 elements per 10 seconds)
+
+                startIndex = i*sliceWidth;
+                endIndex = Math.Min(allWaypoints.Count - 1, (i + 1) * sliceWidth - 1);
+
+                var waypointsOrigin = allWaypoints.Slice(startIndex, endIndex+1);
+
+                request = new DistanceMatrixRequest
+                {
+                    Language = "pl",
+                    Avoid = Avoid.tolls, //| Avoid.ferries,
+                    WaypointsOrigin = waypointsOrigin,
+                    WaypointsDestination = allWaypoints,
+                    Units = Units.metric,
+                    Mode = TravelMode.driving,
+                    Sensor = false
+                };
+
+
+                response = new DistanceMatrixService().GetResponse(request);
+
+                if (response.Status != ServiceResponseStatus.Ok)
+                    throw new Exception("Nie udało się wygenerować trasy!\nPowód: " + response.Status);
+
+                for (int j = 0; j <= endIndex - startIndex; j++)
+                    for(int k=0;k<allWaypoints.Count;k++)
+                        if (routeOptimizationType == RouteOptimizationType.Time)
+                            cost[j + startIndex, k] = double.Parse(response.Rows[j].Elements[k].duration.Value);
+                        else if (routeOptimizationType == RouteOptimizationType.Distance)
+                            cost[j + startIndex, k] = double.Parse(response.Rows[j].Elements[k].distance.Value);
+            }
+            return cost;
         }
 
 
@@ -366,6 +440,70 @@ namespace RGA.Helpers
             //route.Sections.First().Steps.First().
 
             return (new StaticMapService()).GetImageBytes(mapRequest);
+        }
+    }
+
+
+    public static class IEnumerableExtensions
+    {
+        /// <summary>
+        /// Get the array slice between the two indexes.
+        /// ... Inclusive for start index, exclusive for end index.
+        /// </summary>
+        public static T[] Slice<T>(this T[] source, int start, int end)
+        {
+            // Handles negative ends.
+            if (end < 0)
+            {
+                end = source.Length + end;
+            }
+            int len = end - start;
+
+            // Return new array.
+            T[] res = new T[len];
+            for (int i = 0; i < len; i++)
+            {
+                res[i] = source[i + start];
+            }
+            return res;
+        }
+
+
+        public static List<T> Slice<T>(this List<T> source, int start, int end)
+        {
+            // Handles negative ends.
+            if (end < 0)
+            {
+                end = source.Count + end;
+            }
+            int len = end - start;
+
+            // Return new array.
+            var res = new List<T>(len);
+            for (int i = 0; i < len; i++)
+            {
+                res.Add(source[i + start]);
+            }
+            return res;
+        }
+
+
+        public static SortedList<int, Waypoint> Slice(this SortedList<int, Waypoint> source, int start, int end)
+        {
+            // Handles negative ends.
+            if (end < 0)
+            {
+                end = source.Count + end;
+            }
+            int len = end - start;
+
+            // Return new array.
+            var res = new SortedList<int, Waypoint>(len);
+            for (int i = 0; i < len; i++)
+            {
+                res.Add(i + start, source[i + start]);
+            }
+            return res;
         }
     }
 }
