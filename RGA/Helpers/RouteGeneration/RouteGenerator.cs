@@ -239,7 +239,7 @@ namespace RGA.Helpers
             2 500 elements per 24 hour period.       
              */
 
-            int howMuchRequests = allWaypoints.Count/10 + ((allWaypoints.Count%10 > 0) ? 1 : 0);
+            int howMuchRequests = (allWaypoints.Count * allWaypoints.Count) / 100 + (((allWaypoints.Count * allWaypoints.Count) % 100 > 0) ? 1 : 0);
 
             if (allWaypoints.Count > 100 || howMuchRequests>2500)
                 throw new Exception("Wygenerowanie trasy z użyciem wybranego dostawcy macierzy odległości (GoogleMaps) nie jest możliwe z powodu zbyt dużej liczby adresów punktów doręczenia przesyłek");
@@ -249,8 +249,7 @@ namespace RGA.Helpers
             DistanceMatrixResponse response = null;
 
 
-            int sliceWidth = allWaypoints.Count/howMuchRequests;
-            int sliceEnd = allWaypoints.Count%howMuchRequests;
+            int sliceWidth = 100 / allWaypoints.Count;
             int startIndex, endIndex;
 
             for(int i=0;i<howMuchRequests;i++)
@@ -261,7 +260,7 @@ namespace RGA.Helpers
                 startIndex = i*sliceWidth;
                 endIndex = Math.Min(allWaypoints.Count - 1, (i + 1) * sliceWidth - 1);
 
-                var waypointsOrigin = allWaypoints.Slice(startIndex, endIndex+1);
+                var waypointsOrigin = allWaypoints.Slice(startIndex, endIndex);
 
                 request = new DistanceMatrixRequest
                 {
@@ -448,46 +447,8 @@ namespace RGA.Helpers
     {
         /// <summary>
         /// Get the array slice between the two indexes.
-        /// ... Inclusive for start index, exclusive for end index.
+        /// ... Inclusive for start index, inclusive for end index.
         /// </summary>
-        public static T[] Slice<T>(this T[] source, int start, int end)
-        {
-            // Handles negative ends.
-            if (end < 0)
-            {
-                end = source.Length + end;
-            }
-            int len = end - start;
-
-            // Return new array.
-            T[] res = new T[len];
-            for (int i = 0; i < len; i++)
-            {
-                res[i] = source[i + start];
-            }
-            return res;
-        }
-
-
-        public static List<T> Slice<T>(this List<T> source, int start, int end)
-        {
-            // Handles negative ends.
-            if (end < 0)
-            {
-                end = source.Count + end;
-            }
-            int len = end - start;
-
-            // Return new array.
-            var res = new List<T>(len);
-            for (int i = 0; i < len; i++)
-            {
-                res.Add(source[i + start]);
-            }
-            return res;
-        }
-
-
         public static SortedList<int, Waypoint> Slice(this SortedList<int, Waypoint> source, int start, int end)
         {
             // Handles negative ends.
@@ -495,7 +456,7 @@ namespace RGA.Helpers
             {
                 end = source.Count + end;
             }
-            int len = end - start;
+            int len = end - start+1;
 
             // Return new array.
             var res = new SortedList<int, Waypoint>(len);
