@@ -1,4 +1,5 @@
-﻿@model RGA.Models.Route
+﻿@using RGA.Models
+@model RGA.Models.Route
 
 @{
     ViewBag.Title = "Usuń trasę";
@@ -67,7 +68,7 @@
         </dt>
         <dd>
             <ul>
-                @foreach (var shipment in Model.Shipments)
+                @foreach (Shipment shipment in Model.Shipments)
                 {
                     <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
                 }
@@ -91,6 +92,16 @@
             @Html.DisplayFor(model => model.Distance)
         </dd>
 
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowTollRoads)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowTollRoads)
+        </dd>
+        
+
         <dt>
             @Html.DisplayNameFor(model => model.State)
         </dt>
@@ -98,6 +109,8 @@
         <dd>
             @Html.DisplayFor(model => model.State)
         </dd>
+        
+        
 
         <dt>
             @Html.DisplayNameFor(model => model.DistanceMatrixProvider)
@@ -133,12 +146,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
             <input type="submit" value="Usuń trasę" class="btn btn-default" /> |
-            @Html.ActionLink("Powrót do kalendarza kierowcy", "Calendar","Couriers",new{id=Model.Driver.Id}, new{@class="btn btn-default"})
+            @Html.ActionLink("Powrót do kalendarza kierowcy", "Calendar", "Couriers", new {id = Model.Driver.Id}, new {@class = "btn btn-default"})
         </div>
     }
 </div>

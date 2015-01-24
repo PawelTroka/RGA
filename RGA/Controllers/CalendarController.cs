@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -14,8 +15,6 @@ namespace RGA.Controllers
         [Authorize(Roles = "Kierowca")]
         public ActionResult Index()
         {
-
-
             var model2 = new CalendarViewModel();
 
 
@@ -23,21 +22,20 @@ namespace RGA.Controllers
 
             var store = new UserStore<User>(db);
             var userManager = new UserManager<User>(store);
-            var user = userManager.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
+            User user = userManager.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
 
             model2.User = user;
 
 
+            List<Route> allRoutes = db.Routes.ToList();
 
-            var allRoutes = db.Routes.ToList();
-
-            var thisDriverRoutes = allRoutes.FindAll(r => r.Driver.Id == model2.User.Id);
+            List<Route> thisDriverRoutes = allRoutes.FindAll(r => r.Driver.Id == model2.User.Id);
 
             model2.WorkDatesForUser = "";
 
             var sb = new StringBuilder();
 
-            foreach (var driverRoute in thisDriverRoutes)
+            foreach (Route driverRoute in thisDriverRoutes)
             {
                 sb.AppendFormat(@" ""{0}"",", driverRoute.StartDateTime.ToShortDateString());
             }
@@ -49,7 +47,5 @@ namespace RGA.Controllers
         }
 
         //<div id="datepicker"></div>
-
-
     }
 }

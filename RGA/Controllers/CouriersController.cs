@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
@@ -32,21 +33,22 @@ namespace RGA.Controllers
             model2.SelectedDriver = userManager.FindById(id);
 
 
-            var dbContext = ApplicationDbContext.Create();
+            ApplicationDbContext dbContext = ApplicationDbContext.Create();
 
-            var allRoutes = dbContext.Routes.ToList();
+            List<Route> allRoutes = dbContext.Routes.ToList();
 
-            var thisDriverRoutes = allRoutes.FindAll(r => r.Driver.Id == model2.SelectedDriver.Id);
+            List<Route> thisDriverRoutes = allRoutes.FindAll(r => r.Driver.Id == model2.SelectedDriver.Id);
 
             model2.WorkDatesForDriver = "";
 
             var sb = new StringBuilder();
 
-            foreach (var driverRoute in thisDriverRoutes)
+            foreach (Route driverRoute in thisDriverRoutes)
             {
                 sb.AppendFormat(@" ""{0}"",", driverRoute.StartDateTime.ToShortDateString());
             }
-            sb.Remove(sb.Length - 1, 1);
+            if (sb.Length > 0)
+                sb.Remove(sb.Length - 1, 1);
 
             model2.WorkDatesForDriver = sb.ToString();
 

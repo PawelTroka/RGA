@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Web;
-using Google.Maps;
-using GoogleMapsApi.Entities.Directions.Response;
 
 namespace RGA.Models
 {
@@ -20,6 +15,7 @@ namespace RGA.Models
     {
         [Key]
         public string Id { get; set; }
+
         //
         // Summary:
         //     distance indicates the total distance covered by this leg

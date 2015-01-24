@@ -1,4 +1,5 @@
-﻿@model IEnumerable<RGA.Models.Route>
+﻿@using Route = RGA.Models.Route
+@model IEnumerable<RGA.Models.Route>
 
 @{
     ViewBag.Title = "RoutesList";
@@ -41,41 +42,42 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Summary)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Duaration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DuarationTicks)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Distance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DynamicMapHtml)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+    @foreach (Route item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duaration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DuarationTicks)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DynamicMapHtml)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+                @Html.ActionLink("Details", "Details", new {id = item.Id}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+            </td>
+        </tr>
+    }
 
 </table>

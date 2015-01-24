@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
 
 namespace RGA.Models
 {
@@ -10,6 +7,7 @@ namespace RGA.Models
     {
         [Key]
         public string Id { get; set; }
+
         // Summary:
         //     distance contains the distance covered by this step until the next step.
         //     (See the discussion of this field in Directions Legs above.) This field may
@@ -39,6 +37,7 @@ namespace RGA.Models
         [Display(Name = "Instrukcja tego kroku")]
         [DataType(DataType.Html)]
         public string HtmlInstructions { get; set; }
+
         //
         // Summary:
         //     start_location contains the location of the starting point of this step,

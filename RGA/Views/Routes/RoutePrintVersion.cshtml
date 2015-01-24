@@ -1,8 +1,9 @@
-﻿@model RGA.Models.Route
+﻿@using RGA.Models
+@model RGA.Models.Route
 
 @{
     Layout = null;
-    ViewBag.Title = "Trasa na dzień "+Model.StartDateTime.ToShortDateString() + " - wersja do druku";
+    ViewBag.Title = "Trasa na dzień " + Model.StartDateTime.ToShortDateString() + " - wersja do druku";
 }
 
 @Styles.Render("~/Content/css")
@@ -37,7 +38,7 @@
 
         <dd>
             <ul>
-                @foreach (var shipment in Model.Shipments)
+                @foreach (Shipment shipment in Model.Shipments)
                 {
                     <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
                 }
@@ -71,7 +72,7 @@
 
         <dd>
             <ul>
-                @foreach (var segment in Model.Segments)
+                @foreach (Segment segment in Model.Segments)
                 {
                     <li>
                         Odcinek z @segment.StartAddress do @segment.EndAddress
@@ -79,7 +80,7 @@
                         (długość: @segment.Distance metrów, czas: @segment.Duaration)
                         <br /><br />
                         <ol>
-                            @foreach (var step in segment.Steps)
+                            @foreach (Step step in segment.Steps)
                             {
                                 <li>
                                     Krok z @step.StartLocation do @step.EndLocation
@@ -102,5 +103,7 @@
 </div>
 
 <script>
-    
+
+
+
 </script>

@@ -65,6 +65,8 @@ namespace RGA.Models
         [Display(Name = "Dystans")]
         public long Distance { get; set; }
 
+        [Display(Name = "Zezwalaj na drogi płatne?")]
+        public bool AllowTollRoads { get; set; }
 
         [Display(Name = "Stan")]
         public RouteState State { get; set; }
@@ -232,13 +234,14 @@ namespace RGA.Models
     google.maps.event.addDomListener(window, 'load', initializeMap425321423y78ydgf23dqd1d21f12t87);
 </script>
 <div id=""map-canvas425321423y78ydgf23dqd1d21f12t87""></div>");
-
+                    if (AllowTollRoads)
+                        template.Replace("avoidTolls: true,", "avoidTolls: false,");
 
                     var waypoints = new StringBuilder();
 
                     const string str = @"'{ADDRESS_HERE}',";
 
-                    waypoints.Append(str.Replace("{ADDRESS_HERE}", this.StartAddress));
+                    waypoints.Append(str.Replace("{ADDRESS_HERE}", StartAddress));
 
                     foreach (Shipment shipment in Shipments)
                     {
@@ -247,8 +250,8 @@ namespace RGA.Models
 
 
                     waypoints.Append(string.IsNullOrEmpty(EndAddress)
-                        ? str.Replace("{ADDRESS_HERE}", this.StartAddress)
-                        : str.Replace("{ADDRESS_HERE}", this.EndAddress));
+                        ? str.Replace("{ADDRESS_HERE}", StartAddress)
+                        : str.Replace("{ADDRESS_HERE}", EndAddress));
 
                     waypoints.Remove(waypoints.Length - 1, 1); //remove last comma
 
@@ -301,6 +304,9 @@ namespace RGA.Models
     google.maps.event.addDomListener(window, 'load', initializeMap425321423y78ydgf23t87);
 </script>
 <div id=""map-canvas425321423y78ydgf23t87""></div>");
+
+                    if (AllowTollRoads)
+                        template.Replace("avoidTolls: true,", "avoidTolls: false,");
 
                     template.Replace(@"{START_ADDRESS_STRING}", StartAddress);
 

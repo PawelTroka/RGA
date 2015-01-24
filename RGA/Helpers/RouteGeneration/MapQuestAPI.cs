@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Script.Serialization;
-using System.Web.UI.WebControls;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,44 +16,42 @@ namespace RGA.Helpers.RouteGeneration
     {
         private const string key = "Fmjtd%7Cluurn16anq%2C85%3Do5-9wtsga";
 
-        private string distanceMatrixUrl = "http://www.mapquestapi.com/directions/v2/routematrix?key=" + key + "&avoids=Toll road&locale=pl";
+        private string distanceMatrixUrl = "http://www.mapquestapi.com/directions/v2/routematrix?key=" + key +
+                                           "&avoids=Toll road&locale=pl";
 
-        private string optimizeRouteUrl = "http://www.mapquestapi.com/directions/v2/optimizedroute?key=" + key + "&avoids=Toll road&locale=pl" + "&outFormat=" + "xml";
-
-        public MapQuestAPI()
-        {
-        }
+        private string optimizeRouteUrl = "http://www.mapquestapi.com/directions/v2/optimizedroute?key=" + key +
+                                          "&avoids=Toll road&locale=pl" + "&outFormat=" + "xml";
 
 
         public double[,] getDistanceMatrix(List<string> addresses, RouteOptimizationType type)
         {
-            var request = (HttpWebRequest)WebRequest.Create(distanceMatrixUrl);
+            var request = (HttpWebRequest) WebRequest.Create(distanceMatrixUrl);
             request.ContentType = "application/json";
             request.Method = "POST";
-          
-            var arr = addresses.ToArray();
+
+            string[] arr = addresses.ToArray();
             for (int i = 0; i < arr.Length; i++)
                 arr[i] =
-                    System.Text.Encoding.UTF8.GetString(
-                        System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(arr[i]));//RemoveDiacritics(arr[i]);
+                    Encoding.UTF8.GetString(
+                        Encoding.GetEncoding("ISO-8859-8").GetBytes(arr[i])); //RemoveDiacritics(arr[i]);
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
                 string json = new JavaScriptSerializer().Serialize(new
                 {
                     locations = arr,
-                    options = new {allToAll=true}
+                    options = new {allToAll = true}
                 });
 
                 streamWriter.Write(json);
             }
 
-            var response = (HttpWebResponse)request.GetResponse();
+            var response = (HttpWebResponse) request.GetResponse();
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
-                var result = streamReader.ReadToEnd();
+                string result = streamReader.ReadToEnd();
 
-                double[,] ret = new double[addresses.Count, addresses.Count];
+                var ret = new double[addresses.Count, addresses.Count];
 
                 var dictionary = JsonConvert.DeserializeObject<Dictionary<string, dynamic>>(result);
 
@@ -76,7 +69,7 @@ namespace RGA.Helpers.RouteGeneration
                     var jarray = (jarrayOfJArrays as JArray)[i] as JArray;
 
                     for (int j = 0; j < addresses.Count; j++)
-                        ret[i, j] = (double)jarray[j].ToObject(typeof(double));
+                        ret[i, j] = (double) jarray[j].ToObject(typeof (double));
                 }
 
                 //ret = convertTo2DArray((double[][])JsonConvert.DeserializeObject<double[][]>(jarray),addresses.Count,addresses.Count);
@@ -86,21 +79,20 @@ namespace RGA.Helpers.RouteGeneration
         }
 
 
-
         public int[] getOptimalRoute(List<string> addresses)
         {
-            var request = (HttpWebRequest)WebRequest.Create(optimizeRouteUrl);
+            var request = (HttpWebRequest) WebRequest.Create(optimizeRouteUrl);
             request.ContentType = "application/json";
             request.Method = "POST";
 
             using (var streamWriter = new StreamWriter(request.GetRequestStream()))
             {
-                var arr = addresses.ToArray();
+                string[] arr = addresses.ToArray();
 
                 for (int i = 0; i < arr.Length; i++)
                     arr[i] =
-                        System.Text.Encoding.UTF8.GetString(
-                            System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(arr[i]));//RemoveDiacritics(arr[i]);
+                        Encoding.UTF8.GetString(
+                            Encoding.GetEncoding("ISO-8859-8").GetBytes(arr[i])); //RemoveDiacritics(arr[i]);
 
                 string json = new JavaScriptSerializer().Serialize(new
                 {
@@ -110,30 +102,26 @@ namespace RGA.Helpers.RouteGeneration
                 streamWriter.Write(json);
             }
 
-            var response = (HttpWebResponse)request.GetResponse();
+            var response = (HttpWebResponse) request.GetResponse();
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
-                var result = streamReader.ReadToEnd();
-                XmlDocument xml = new XmlDocument();
+                string result = streamReader.ReadToEnd();
+                var xml = new XmlDocument();
                 xml.LoadXml(result); // suppose that myXmlString contains "<Names>...</Names>"
 
-                var sequence = xml.GetElementsByTagName("locationSequence")[0].InnerText;
+                string sequence = xml.GetElementsByTagName("locationSequence")[0].InnerText;
 
-                var elementsStr = sequence.Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries);
+                string[] elementsStr = sequence.Split(new[] {','}, StringSplitOptions.RemoveEmptyEntries);
 
                 var optimalSequence = new List<int>();
                 elementsStr.ForEach(s => optimalSequence.Add(int.Parse(s)));
 
                 return optimalSequence.ToArray();
             }
-
-            
-
-
         }
 
         /// <summary>
-        /// Converts the contents of a Jagged Array into a multidimensional array
+        ///     Converts the contents of a Jagged Array into a multidimensional array
         /// </summary>
         /// <param name="jaggedArray">The Jagged Array you wish to convert into a Multidimensional Array</param>
         /// <param name="numOfColumns">number of columns</param>
@@ -141,7 +129,7 @@ namespace RGA.Helpers.RouteGeneration
         /// <returns>Multidimensional Array representation of Jagged Array passed</returns>
         private T[,] convertTo2DArray<T>(T[][] jaggedArray, int numOfColumns, int numOfRows)
         {
-            T[,] temp2DArray = new T[numOfColumns, numOfRows];
+            var temp2DArray = new T[numOfColumns, numOfRows];
 
             for (int c = 0; c < numOfColumns; c++)
             {
@@ -152,12 +140,12 @@ namespace RGA.Helpers.RouteGeneration
             }
 
             return temp2DArray;
-        } 
+        }
 
         public static string RemoveDiacritics(string stIn)
         {
             string stFormD = stIn.Normalize(NormalizationForm.FormD);
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
 
             for (int ich = 0; ich < stFormD.Length; ich++)
             {

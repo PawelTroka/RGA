@@ -8,8 +8,8 @@
 
 <style>
     .bolddate a {
-        font-weight: bold !important;
         color: #000000 !important;
+        font-weight: bold !important;
     }
 </style>
 
@@ -18,12 +18,12 @@
 <div id="datepicker"></div>
 <br />
 <p>
-    @Html.ActionLink("Zobacz trasę dzienną", "ShowDailyRoute", "Routes", new { Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString() }, new { id = "showDailyRoute", @class = "btn btn-default" })
+    @Html.ActionLink("Zobacz trasę dzienną", "ShowDailyRoute", "Routes", new {Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString()}, new {id = "showDailyRoute", @class = "btn btn-default"})
 </p>
 
 <br />
 <p>
-    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new { Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString() }, new { id = "generateRoute", @class = "btn btn-primary btn-lg" })
+    @Html.ActionLink("Generuj trasę dzienną", "GenerateRoute", "Routes", new {Model.SelectedDriver.Id, date = DateTime.Today.ToShortDateString()}, new {id = "generateRoute", @class = "btn btn-primary btn-lg"})
 </p>
 
 
@@ -36,7 +36,7 @@
     <script>
         var workDatesArrayNnNu32gf23gih9f3 = new Array(@Html.Raw(Model.WorkDatesForDriver));
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             $('#datepicker').datepicker({
                 regional: "pl",
@@ -102,7 +102,7 @@
                 xfulldate += "0" + xday;
             else
                 xfulldate += xday;
-                
+
             var xboldthese = workDatesArrayNnNu32gf23gih9f3;
             var xcssflg = "";
             for (var i = 0; i < xboldthese.length; i++) {

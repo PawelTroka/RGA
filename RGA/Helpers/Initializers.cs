@@ -31,6 +31,7 @@ namespace RGA.Helpers
 
             var users = new List<User>
             {
+                //all users have password "!Abc123"
                 new User
                 {
                     UserName = "Pawel",

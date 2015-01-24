@@ -1,5 +1,4 @@
 ﻿extern alias OSM;
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +9,6 @@ using Google.Maps.StaticMaps;
 using GoogleMapsApi;
 using GoogleMapsApi.Entities.Directions.Request;
 using GoogleMapsApi.Entities.Directions.Response;
-using Microsoft.Ajax.Utilities;
-using OsmSharp.Osm;
-using OsmSharp.Osm.API;
-using OsmSharp.Osm.Streams;
-using OsmSharp.Routing;
-using OsmSharp.Routing.Osm.Interpreter;
-using OsmSharp.Routing.TSP;
 using RGA.Helpers.RouteGeneration;
 using RGA.Helpers.TSP;
 using RGA.Models;
@@ -32,10 +24,9 @@ namespace RGA.Helpers
     {
         private readonly Route route;
         private string browserAPIKey = "AIzaSyCBup_64x3U1wfm3NTiu1mO_8tyz1GAM6Q";
+        private string mapQuestAPIKey = "Fmjtd%7Cluurn16anq%2C85%3Do5-9wtsga";
         private string serverAPIKey = "AIzaSyDPhoaf5psgGK27m6FWKTyLiTf-aIiHiWs";
         private TspSolver tspSolver;
-
-        private string mapQuestAPIKey = "Fmjtd%7Cluurn16anq%2C85%3Do5-9wtsga";
 
         public RouteGenerator(Route route)
         {
@@ -64,10 +55,10 @@ namespace RGA.Helpers
             else if (routeOptimizationProvider == RouteOptimizationProvider.MapQuest)
             {
                 var mapQuest = new MapQuestAPI();
-                var listOfAllAddresses = new List<string>() { BaseAddress };
+                var listOfAllAddresses = new List<string> {BaseAddress};
                 listOfAllAddresses.AddRange(Addresses);
                 listOfAllAddresses.Add(BaseAddress);
-                var optimalRoute = mapQuest.getOptimalRoute(listOfAllAddresses);
+                int[] optimalRoute = mapQuest.getOptimalRoute(listOfAllAddresses);
                 var waypointOrder = new List<int>();
 
                 for (int i = 1; i < optimalRoute.Length - 1; i++)
@@ -77,7 +68,7 @@ namespace RGA.Helpers
 
 
             //DirectionsResponse directions = getDirections();
-            var responseRoute = getRoute();
+            GoogleMapsApi.Entities.Directions.Response.Route responseRoute = getRoute();
 
             route.Summary = responseRoute.Summary;
             //   route.Sections = new List<Leg>(directions.Routes.First().Legs);
@@ -106,27 +97,27 @@ namespace RGA.Helpers
 
             var segments = new List<Segment>();
             ListExtensions.ForEach(responseRoute.Legs, l =>
+            {
+                segments.Add(new Segment
                 {
-                    segments.Add(new Segment()
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        Distance = l.Distance.Value,
-                        Duaration = l.Duration.Value,
-                        StartAddress = l.StartAddress,
-                        EndAddress = l.EndAddress,
-                        Steps = new List<Step>()
-                    });
+                    Id = Guid.NewGuid().ToString(),
+                    Distance = l.Distance.Value,
+                    Duaration = l.Duration.Value,
+                    StartAddress = l.StartAddress,
+                    EndAddress = l.EndAddress,
+                    Steps = new List<Step>()
+                });
 
-                    ListExtensions.ForEach(l.Steps, s => segments.Last().Steps.Add(new Step()
-                    {
-                        Id = Guid.NewGuid().ToString(),
-                        Distance = s.Distance.Value,
-                        Duaration = s.Duration.Value,
-                        EndLocation = s.EndLocation.LocationString,
-                        HtmlInstructions = s.HtmlInstructions,
-                        StartLocation = s.StartLocation.LocationString
-                    }));
-                }
+                ListExtensions.ForEach(l.Steps, s => segments.Last().Steps.Add(new Step
+                {
+                    Id = Guid.NewGuid().ToString(),
+                    Distance = s.Distance.Value,
+                    Duaration = s.Duration.Value,
+                    EndLocation = s.EndLocation.LocationString,
+                    HtmlInstructions = s.HtmlInstructions,
+                    StartLocation = s.StartLocation.LocationString
+                }));
+            }
                 );
 
             route.Segments = segments;
@@ -138,7 +129,7 @@ namespace RGA.Helpers
         private void SortThingsAccordingToCost()
         {
             var costs = new double[Addresses.Count + 1, Addresses.Count + 1];
-            var indices = Enumerable.Range(0, Addresses.Count + 1).ToArray();
+            int[] indices = Enumerable.Range(0, Addresses.Count + 1).ToArray();
 
 
             switch (distanceMatrixProvider)
@@ -161,22 +152,24 @@ namespace RGA.Helpers
 
                 case DistanceMatrixProvider.MapQuest:
                     var mapQuest = new MapQuestAPI();
-                    var listOfAllAddresses = new List<string>() { BaseAddress };
+                    var listOfAllAddresses = new List<string> {BaseAddress};
                     listOfAllAddresses.AddRange(Addresses);
                     //listOfAllAddresses.Add(BaseAddress);
                     costs = mapQuest.getDistanceMatrix(listOfAllAddresses, routeOptimizationType);
                     break;
 
                 case DistanceMatrixProvider.BingMaps:
-                    throw new NotImplementedException("DistanceMatrixProvider.BingMaps" + " nie jest jeszcze zaimplementowany");
+                    throw new NotImplementedException("DistanceMatrixProvider.BingMaps" +
+                                                      " nie jest jeszcze zaimplementowany");
                     break;
 
                 case DistanceMatrixProvider.OpenStreetMap:
-                    throw new NotImplementedException("DistanceMatrixProvider.OpenStreetMap" + " nie jest jeszcze zaimplementowany");
+                    throw new NotImplementedException("DistanceMatrixProvider.OpenStreetMap" +
+                                                      " nie jest jeszcze zaimplementowany");
                     break;
 
                 default:
-                    throw new NotImplementedException(distanceMatrixProvider.ToString() + " nie jest jeszcze zaimplementowany");
+                    throw new NotImplementedException(distanceMatrixProvider + " nie jest jeszcze zaimplementowany");
                     break;
             }
 
@@ -199,7 +192,7 @@ namespace RGA.Helpers
 
             IEnumerable<int> optimalRoute = tspSolver.Solve(out cost);
 
-            var tmpAddress = (from item in optimalRoute where item != 0 select Addresses[item - 1]).ToList();
+            List<string> tmpAddress = (from item in optimalRoute where item != 0 select Addresses[item - 1]).ToList();
 
             Addresses = tmpAddress;
         }
@@ -209,7 +202,7 @@ namespace RGA.Helpers
             var copyOfAddresses = new List<string>(Addresses);
             Addresses.Sort((a1, a2) => order[copyOfAddresses.IndexOf(a1)].CompareTo(order[copyOfAddresses.IndexOf(a2)]));
 
-            var orderOfSections = new List<int> { 0 };
+            var orderOfSections = new List<int> {0};
             orderOfSections.AddRange(order);
             for (int i = 1; i < orderOfSections.Count; i++)
                 orderOfSections[i]++;
@@ -221,14 +214,14 @@ namespace RGA.Helpers
 
         private double[,] getCostDistanceMatrix()
         {
-            var allWaypoints = new SortedList<int, Waypoint> { { 0, new Waypoint { Address = BaseAddress } } };
+            var allWaypoints = new SortedList<int, Waypoint> {{0, new Waypoint {Address = BaseAddress}}};
 
             for (int i = 0; i < Addresses.Count; i++)
             {
-                allWaypoints.Add(i + 1, new Waypoint { Address = Addresses[i] });
+                allWaypoints.Add(i + 1, new Waypoint {Address = Addresses[i]});
             }
 
-            
+
             var cost = new double[allWaypoints.Count, allWaypoints.Count];
 
 
@@ -239,33 +232,36 @@ namespace RGA.Helpers
             2 500 elements per 24 hour period.       
              */
 
-            int howMuchRequests = (allWaypoints.Count * allWaypoints.Count) / 100 + (((allWaypoints.Count * allWaypoints.Count) % 100 > 0) ? 1 : 0);
+            int howMuchRequests = (allWaypoints.Count*allWaypoints.Count)/100 +
+                                  (((allWaypoints.Count*allWaypoints.Count)%100 > 0) ? 1 : 0);
 
-            if (allWaypoints.Count > 100 || howMuchRequests>2500)
-                throw new Exception("Wygenerowanie trasy z użyciem wybranego dostawcy macierzy odległości (GoogleMaps) nie jest możliwe z powodu zbyt dużej liczby adresów punktów doręczenia przesyłek");
+            if (allWaypoints.Count > 100 || howMuchRequests > 2500)
+                throw new Exception(
+                    "Wygenerowanie trasy z użyciem wybranego dostawcy macierzy odległości (GoogleMaps) nie jest możliwe z powodu zbyt dużej liczby adresów punktów doręczenia przesyłek");
 
 
             DistanceMatrixRequest request = null;
             DistanceMatrixResponse response = null;
 
 
-            int sliceWidth = 100 / allWaypoints.Count;
+            int sliceWidth = 100/allWaypoints.Count;
             int startIndex, endIndex;
 
-            for(int i=0;i<howMuchRequests;i++)
+            for (int i = 0; i < howMuchRequests; i++)
             {
-                if(i>0)
-                    Thread.Sleep(10000);//sleep 10s to avoid free Google DistanceMatrix API limitations (100 elements per 10 seconds)
+                if (i > 0)
+                    Thread.Sleep(10000);
+                        //sleep 10s to avoid free Google DistanceMatrix API limitations (100 elements per 10 seconds)
 
                 startIndex = i*sliceWidth;
-                endIndex = Math.Min(allWaypoints.Count - 1, (i + 1) * sliceWidth - 1);
+                endIndex = Math.Min(allWaypoints.Count - 1, (i + 1)*sliceWidth - 1);
 
-                var waypointsOrigin = allWaypoints.Slice(startIndex, endIndex);
+                SortedList<int, Waypoint> waypointsOrigin = allWaypoints.Slice(startIndex, endIndex);
 
                 request = new DistanceMatrixRequest
                 {
                     Language = "pl",
-                    Avoid = Avoid.tolls, //| Avoid.ferries,
+                    //Avoid = Avoid.tolls, //| Avoid.ferries,
                     WaypointsOrigin = waypointsOrigin,
                     WaypointsDestination = allWaypoints,
                     Units = Units.metric,
@@ -273,6 +269,8 @@ namespace RGA.Helpers
                     Sensor = false
                 };
 
+                if (!route.AllowTollRoads)
+                    request.Avoid = Avoid.tolls;
 
                 response = new DistanceMatrixService().GetResponse(request);
 
@@ -280,7 +278,7 @@ namespace RGA.Helpers
                     throw new Exception("Nie udało się wygenerować trasy!\nPowód: " + response.Status);
 
                 for (int j = 0; j <= endIndex - startIndex; j++)
-                    for(int k=0;k<allWaypoints.Count;k++)
+                    for (int k = 0; k < allWaypoints.Count; k++)
                         if (routeOptimizationType == RouteOptimizationType.Time)
                             cost[j + startIndex, k] = double.Parse(response.Rows[j].Elements[k].duration.Value);
                         else if (routeOptimizationType == RouteOptimizationType.Distance)
@@ -292,11 +290,11 @@ namespace RGA.Helpers
 
         private DistanceMatrixResponse getDistanceMatrix()
         {
-            var waypoints = new SortedList<int, Waypoint> { { 0, new Waypoint { Address = BaseAddress } } };
+            var waypoints = new SortedList<int, Waypoint> {{0, new Waypoint {Address = BaseAddress}}};
 
             for (int i = 0; i < Addresses.Count; i++)
             {
-                waypoints.Add(i + 1, new Waypoint { Address = Addresses[i] });
+                waypoints.Add(i + 1, new Waypoint {Address = Addresses[i]});
             }
 
             /*
@@ -308,7 +306,7 @@ namespace RGA.Helpers
             var request = new DistanceMatrixRequest
             {
                 Language = "pl",
-                Avoid = Avoid.tolls, //| Avoid.ferries,
+                //Avoid = Avoid.tolls, //| Avoid.ferries,
                 WaypointsOrigin = waypoints,
                 WaypointsDestination = waypoints,
                 Units = Units.metric,
@@ -316,6 +314,8 @@ namespace RGA.Helpers
                 Sensor = false
             };
 
+            if (!route.AllowTollRoads)
+                request.Avoid = Avoid.tolls;
 
             DistanceMatrixResponse response = new DistanceMatrixService().GetResponse(request);
 
@@ -328,53 +328,52 @@ namespace RGA.Helpers
 
         private GoogleMapsApi.Entities.Directions.Response.Route getRoute()
         {
-
             GoogleMapsApi.Entities.Directions.Response.Route responseRoute = null;
             DirectionsRequest directionsRequest = null;
             DirectionsResponse directions = null;
 
-            var summaries = "";
+            string summaries = "";
             var legs = new List<Leg>();
             var waypointsOrder = new List<int>();
             var warnings = new List<string>();
 
 
-            var allAddresses = new List<string>() { BaseAddress };
+            var allAddresses = new List<string> {BaseAddress};
             allAddresses.AddRange(Addresses);
             allAddresses.Add(BaseAddress);
 
 
-            for (int i = 0; i < allAddresses.Count - 1; i += 9) //because free version of GoogleMaps Directions API is limited to maximum 8 waypoints per request
+            for (int i = 0; i < allAddresses.Count - 1; i += 9)
+                //because free version of GoogleMaps Directions API is limited to maximum 8 waypoints per request
             {
-
                 directionsRequest = new DirectionsRequest
                 {
                     Origin = allAddresses[i],
                     Destination = (i + 9 < allAddresses.Count) ? allAddresses[i + 9] : allAddresses.Last(),
                     Waypoints = allAddresses.GetRange(i + 1, Math.Min(8, allAddresses.Count - i - 2)).ToArray(),
                     Language = "pl",
-                    Avoid = AvoidWay.Tolls,
+                    //Avoid = AvoidWay.Tolls,
                 };
 
+                if (!route.AllowTollRoads)
+                    directionsRequest.Avoid = AvoidWay.Tolls;
+
                 if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
-                    directionsRequest.OptimizeWaypoints = true;//solves TSP for us, but is limited to 8 points
+                    directionsRequest.OptimizeWaypoints = true; //solves TSP for us, but is limited to 8 points
 
                 directions = GoogleMaps.Directions.Query(directionsRequest);
 
                 if (directions.Status != DirectionsStatusCodes.OK)
                     throw new Exception("Nie udało się wygenerować trasy!\nPowód: " + directions.StatusStr);
-                else
-                {
-                    legs.AddRange(directions.Routes.First().Legs);
-                    summaries += directions.Routes.First().Summary + Environment.NewLine;
-                    if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
-                        waypointsOrder.AddRange(directions.Routes.First().WaypointOrder);
-                    warnings.AddRange(directions.Routes.First().Warnings);
-                }
+                legs.AddRange(directions.Routes.First().Legs);
+                summaries += directions.Routes.First().Summary + Environment.NewLine;
+                if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
+                    waypointsOrder.AddRange(directions.Routes.First().WaypointOrder);
+                warnings.AddRange(directions.Routes.First().Warnings);
             }
 
 
-            responseRoute = new GoogleMapsApi.Entities.Directions.Response.Route()
+            responseRoute = new GoogleMapsApi.Entities.Directions.Response.Route
             {
                 Legs = legs,
                 Summary = summaries,
@@ -397,9 +396,11 @@ namespace RGA.Helpers
                 Destination = BaseAddress,
                 Waypoints = Addresses.ToArray(),
                 Language = "pl",
-                Avoid = AvoidWay.Tolls,
+                //Avoid = AvoidWay.Tolls,
             };
 
+            if (!route.AllowTollRoads)
+                directionsRequest.Avoid = AvoidWay.Tolls;
 
             if (routeOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
                 directionsRequest.OptimizeWaypoints = true;
@@ -417,8 +418,8 @@ namespace RGA.Helpers
 
         private byte[] getImageBytes()
         {
-            var locations = new List<Location> { BaseAddress };
-            locations.AddRange(Addresses.Select(address => (Location)address));
+            var locations = new List<Location> {BaseAddress};
+            locations.AddRange(Addresses.Select(address => (Location) address));
 
             locations.Add(BaseAddress);
 
@@ -446,8 +447,8 @@ namespace RGA.Helpers
     public static class IEnumerableExtensions
     {
         /// <summary>
-        /// Get the array slice between the two indexes.
-        /// ... Inclusive for start index, inclusive for end index.
+        ///     Get the array slice between the two indexes.
+        ///     ... Inclusive for start index, inclusive for end index.
         /// </summary>
         public static SortedList<int, Waypoint> Slice(this SortedList<int, Waypoint> source, int start, int end)
         {
@@ -456,7 +457,7 @@ namespace RGA.Helpers
             {
                 end = source.Count + end;
             }
-            int len = end - start+1;
+            int len = end - start + 1;
 
             // Return new array.
             var res = new SortedList<int, Waypoint>(len);

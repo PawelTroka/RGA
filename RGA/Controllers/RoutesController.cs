@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -17,9 +16,9 @@ namespace RGA.Controllers
 {
     public class RoutesController : Controller
     {
+        private readonly ApplicationDbContext db = ApplicationDbContext.Create();
         private readonly RoutesViewModel routesViewModel = new RoutesViewModel();
-        private ApplicationDbContext db = ApplicationDbContext.Create();
-        
+
 
         [Authorize(Roles = "Admin")]
         public ActionResult Index()
@@ -53,29 +52,30 @@ namespace RGA.Controllers
         public ActionResult Edit(EditRouteViewModel model)
         {
             if (model.Shipments.Count > 8 && model.RouteOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
-                ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (GoogleMaps) przyjmuje maksymalnie 8 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+                ModelState.AddModelError("RouteOptimizationProvider",
+                    "Wybrany dostawca optymalizacji trasy (GoogleMaps) przyjmuje maksymalnie 8 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
             if (model.Shipments.Count > 25 && model.RouteOptimizationProvider == RouteOptimizationProvider.MapQuest)
-                ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (MapQuest) przyjmuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+                ModelState.AddModelError("RouteOptimizationProvider",
+                    "Wybrany dostawca optymalizacji trasy (MapQuest) przyjmuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
             if (model.Shipments.Count > 25 && model.DistanceMatrixProvider == DistanceMatrixProvider.MapQuest)
-                ModelState.AddModelError("DistanceMatrixProvider", "Wybrany dostawca macierzy odległości (MapQuest) obsługuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+                ModelState.AddModelError("DistanceMatrixProvider",
+                    "Wybrany dostawca macierzy odległości (MapQuest) obsługuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
 
             for (int i = 0; i < model.Shipments.Count; i++)
             {
                 if (string.IsNullOrEmpty(model.Shipments[i].DestinationAddress))
-                    ModelState.AddModelError("Shipments[" + i.ToString() + "].DestinationAddress", "Pole adres nie może być puste");
+                    ModelState.AddModelError("Shipments[" + i + "].DestinationAddress", "Pole adres nie może być puste");
 
 
                 if (string.IsNullOrEmpty(model.Shipments[i].Number))
-                    ModelState.AddModelError("Shipments[" + i.ToString() + "].Number", "Pole numer nie może być puste");
-
-
+                    ModelState.AddModelError("Shipments[" + i + "].Number", "Pole numer nie może być puste");
             }
 
             //if (model.StartDate.Date < DateTime.Now.Date)
-               // ModelState.AddModelError("StartDate", "Data nie może być wartością w przeszłości");
+            // ModelState.AddModelError("StartDate", "Data nie może być wartością w przeszłości");
 
             var store = new UserStore<User>(db);
             var userManager = new UserManager<User>(store);
@@ -83,9 +83,6 @@ namespace RGA.Controllers
             User creator = userManager.FindById(model.WorkerId);
 
             User driver = userManager.FindByName(model.DriverName);
-
-
-
 
 
             if (creator == null)
@@ -96,7 +93,7 @@ namespace RGA.Controllers
 
             if (ModelState.IsValid)
             {
-                var isNeededToGenerateAgain = false;
+                bool isNeededToGenerateAgain = false;
 
                 var shipments = new List<Shipment>();
                 model.Shipments.ForEach(
@@ -109,12 +106,11 @@ namespace RGA.Controllers
                         }));
 
 
-
-                var route = db.Routes.Find(model.Id);
+                Route route = db.Routes.Find(model.Id);
 
 
                 route.Description = model.Description;
-                
+
                 route.StartDateTime = model.StartDate;
                 route.Worker = creator;
                 route.Driver = driver;
@@ -124,11 +120,22 @@ namespace RGA.Controllers
                 if (route.Notes == null)
                     route.Notes = new List<Note>();
 
-                 if(!string.IsNullOrEmpty(model.Note) )
-                    route.Notes.Add(new Note() { Creator = creator, DateAdded = DateTime.Now, Id = Guid.NewGuid().ToString(), Content = model.Note, Driver = driver });
-                
+                if (!string.IsNullOrEmpty(model.Note))
+                    route.Notes.Add(new Note
+                    {
+                        Creator = creator,
+                        DateAdded = DateTime.Now,
+                        Id = Guid.NewGuid().ToString(),
+                        Content = model.Note,
+                        Driver = driver
+                    });
 
 
+                if (route.AllowTollRoads != model.AllowTollRoads)
+                {
+                    route.AllowTollRoads = model.AllowTollRoads;
+                    isNeededToGenerateAgain = true;
+                }
                 if (route.StartAddress != model.StartAddress)
                 {
                     route.StartAddress = model.StartAddress;
@@ -159,7 +166,6 @@ namespace RGA.Controllers
                 }
 
 
-
                 if (!Equals(route.Shipments, shipments))
                 {
                     route.Shipments = shipments;
@@ -176,10 +182,12 @@ namespace RGA.Controllers
                     }
                     catch (Exception exception)
                     {
-                        ModelState.AddModelError(string.Empty, "Wystąpił błąd!\n" + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
+                        ModelState.AddModelError(string.Empty,
+                            "Wystąpił błąd!\n" + exception.Message +
+                            ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
                         model.init();
                         return View(model);
-                    }      
+                    }
                 }
 
                 db.Entry(route).State = EntityState.Modified;
@@ -191,11 +199,13 @@ namespace RGA.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
+                    ModelState.AddModelError(string.Empty,
+                        "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.Message +
+                        ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
                     model.init();
                     return View(model);
                 }
-                return RedirectToAction("Route", "Routes", new { id = route.Id });
+                return RedirectToAction("Route", "Routes", new {id = route.Id});
                 //return RedirectToAction("Calendar","Couriers",new{id=route.Driver});
             }
 
@@ -229,29 +239,29 @@ namespace RGA.Controllers
         {
             Route route = db.Routes.Find(id);
 
-            var driverId = route.Driver.Id;
+            string driverId = route.Driver.Id;
 
-            var notes = route.Notes;
+            ICollection<Note> notes = route.Notes;
             route.Notes.Clear();
 
             db.Notes.RemoveRange(notes);
 
-            
-            var segments = route.Segments;
 
-            
+            ICollection<Segment> segments = route.Segments;
+
+
             route.Segments.ForEach(s =>
             {
-                var steps = s.Steps;
+                ICollection<Step> steps = s.Steps;
                 s.Steps.Clear();
                 //db.Steps.RemoveRange(steps);
             });
-            
-            
+
+
             route.Segments.Clear();
             //db.Segments.RemoveRange(segments);
 
-            var shipments = route.Shipments;
+            ICollection<Shipment> shipments = route.Shipments;
             route.Shipments.Clear();
 
             //db.Shipments.RemoveRange(shipments);
@@ -259,7 +269,7 @@ namespace RGA.Controllers
             db.Routes.Remove(route);
             db.SaveChanges();
 
-            return RedirectToAction("Calendar", "Couriers", new { id = driverId });
+            return RedirectToAction("Calendar", "Couriers", new {id = driverId});
         }
 
 
@@ -438,13 +448,10 @@ namespace RGA.Controllers
         }
 
 
-
-
-
         [Authorize(Roles = "Admin, Pracownik")]
         public ActionResult AddAddress()
         {
-            var shipment = new Shipment { Id = Guid.NewGuid().ToString() };
+            var shipment = new Shipment {Id = Guid.NewGuid().ToString()};
 
             return PartialView("EditorTemplates/Shipment", shipment);
         }
@@ -455,25 +462,26 @@ namespace RGA.Controllers
         public ActionResult GenerateRoute(GenerateRouteViewModel model)
         {
             if (model.Shipments.Count > 8 && model.RouteOptimizationProvider == RouteOptimizationProvider.GoogleMaps)
-                ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (GoogleMaps) przyjmuje maksymalnie 8 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+                ModelState.AddModelError("RouteOptimizationProvider",
+                    "Wybrany dostawca optymalizacji trasy (GoogleMaps) przyjmuje maksymalnie 8 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
             if (model.Shipments.Count > 25 && model.RouteOptimizationProvider == RouteOptimizationProvider.MapQuest)
-                ModelState.AddModelError("RouteOptimizationProvider", "Wybrany dostawca optymalizacji trasy (MapQuest) przyjmuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+                ModelState.AddModelError("RouteOptimizationProvider",
+                    "Wybrany dostawca optymalizacji trasy (MapQuest) przyjmuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
             if (model.Shipments.Count > 25 && model.DistanceMatrixProvider == DistanceMatrixProvider.MapQuest)
-                ModelState.AddModelError("DistanceMatrixProvider", "Wybrany dostawca macierzy odległości (MapQuest) obsługuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
+                ModelState.AddModelError("DistanceMatrixProvider",
+                    "Wybrany dostawca macierzy odległości (MapQuest) obsługuje maksymalnie 25 adresów. Zmniejsz liczbę adresów lub wybierz innego dostawcę.");
 
 
             for (int i = 0; i < model.Shipments.Count; i++)
             {
                 if (string.IsNullOrEmpty(model.Shipments[i].DestinationAddress))
-                    ModelState.AddModelError("Shipments[" + i.ToString() + "].DestinationAddress", "Pole adres nie może być puste");
+                    ModelState.AddModelError("Shipments[" + i + "].DestinationAddress", "Pole adres nie może być puste");
 
 
                 if (string.IsNullOrEmpty(model.Shipments[i].Number))
-                    ModelState.AddModelError("Shipments[" + i.ToString() + "].Number", "Pole numer nie może być puste");
-
-
+                    ModelState.AddModelError("Shipments[" + i + "].Number", "Pole numer nie może być puste");
             }
 
             if (model.StartDate.Date < DateTime.Now.Date)
@@ -497,8 +505,6 @@ namespace RGA.Controllers
 
             if (ModelState.IsValid)
             {
-
-
                 var shipments = new List<Shipment>();
                 model.Shipments.ForEach(
                     s =>
@@ -520,6 +526,7 @@ namespace RGA.Controllers
                     RouteOptimizationAlgorithm = model.RouteOptimizationAlgorithm,
                     RouteOptimizationProvider = model.RouteOptimizationProvider,
                     RouteOptimizationType = model.RouteOptimizationType,
+                    AllowTollRoads = model.AllowTollRoads,
                     StartDateTime = model.StartDate,
                     State = RouteState.New,
                     Worker = creator,
@@ -544,7 +551,9 @@ namespace RGA.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, "Wystąpił błąd!\n" + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
+                    ModelState.AddModelError(string.Empty,
+                        "Wystąpił błąd!\n" + exception.Message +
+                        ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
                     model.init();
                     return View(model);
                 }
@@ -558,11 +567,13 @@ namespace RGA.Controllers
                 }
                 catch (Exception exception)
                 {
-                    ModelState.AddModelError(string.Empty, "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.Message + ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
+                    ModelState.AddModelError(string.Empty,
+                        "Nie udało się zapisać wygenerowanej trasy do bazy!\nPowód: " + exception.Message +
+                        ((exception.InnerException != null) ? "\n" + exception.InnerException.Message : ""));
                     model.init();
                     return View(model);
                 }
-                return RedirectToAction("Route", "Routes", new { id = route.Id });
+                return RedirectToAction("Route", "Routes", new {id = route.Id});
             }
             model.init();
             return View(model);
@@ -583,9 +594,9 @@ namespace RGA.Controllers
         {
             //ApplicationDbContext db = ApplicationDbContext.Create();
 
-            var routes = db.Routes.ToList();
+            List<Route> routes = db.Routes.ToList();
 
-            Route route = routes.Find(r => ( r.Driver.Id == id  && r.StartDateTime.Date==date.Date));
+            Route route = routes.Find(r => (r.Driver.Id == id && r.StartDateTime.Date == date.Date));
 
             return View("Route", route);
         }
@@ -598,9 +609,9 @@ namespace RGA.Controllers
 
             var store = new UserStore<User>(db);
             var userManager = new UserManager<User>(store);
-            var user = userManager.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
+            User user = userManager.FindByName(System.Web.HttpContext.Current.User.Identity.Name);
 
-            var routes = db.Routes.ToList();
+            List<Route> routes = db.Routes.ToList();
 
             Route route = routes.Find(r => (r.Driver.Id == user.Id && r.StartDateTime.Date == date.Date));
 
@@ -612,7 +623,7 @@ namespace RGA.Controllers
         public ActionResult RoutePrintVersion(string id)
         {
             //ApplicationDbContext db = ApplicationDbContext.Create();
-            var route = db.Routes.Find(id);
+            Route route = db.Routes.Find(id);
             route.State = RouteState.InProgress;
 
 
@@ -620,17 +631,16 @@ namespace RGA.Controllers
         }
 
 
-
         public ActionResult StartRoute(string id)
         {
             //ApplicationDbContext db = ApplicationDbContext.Create();
-            var route = db.Routes.Find(id);
+            Route route = db.Routes.Find(id);
             route.State = RouteState.InProgress;
-             
-             db.Entry(route).State = EntityState.Modified;
+
+            db.Entry(route).State = EntityState.Modified;
 
             db.SaveChanges();
-           // return RedirectToAction("ShowMyDailyRoute", new {date = route.StartDateTime});
+            // return RedirectToAction("ShowMyDailyRoute", new {date = route.StartDateTime});
 
             return View("RoutePrintVersion", route);
         }
@@ -638,51 +648,46 @@ namespace RGA.Controllers
         public ActionResult EndRoute(string id)
         {
             //ApplicationDbContext db = ApplicationDbContext.Create();
-            var route = db.Routes.Find(id);
+            Route route = db.Routes.Find(id);
             route.State = RouteState.Completed;
 
             db.Entry(route).State = EntityState.Modified;
 
             db.SaveChanges();
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult SaveAsNewRoute(EditRouteViewModel editRouteViewModel)
         {
-            return RedirectToAction("GenerateRoute", editRouteViewModel as GenerateRouteViewModel);
+            return RedirectToAction("GenerateRoute", editRouteViewModel);
         }
-
 
 
         public bool Equals(ICollection<Shipment> shipments1, ICollection<Shipment> shipments2)
         {
             if (shipments1.Count != shipments2.Count)
                 return false;
-            else
+            var comparer = new ShipmentEqualityComparer();
+
+            foreach (Shipment shipment1 in shipments1)
             {
-                var comparer = new ShipmentEqualityComparer();
-
-                foreach (var shipment1 in shipments1)
-                {
-                    if (!shipments2.Contains(shipment1, comparer))
-                        return false;
-                }
-
-                foreach (var shipment2 in shipments2)
-                {
-                    if (!shipments1.Contains(shipment2, comparer))
-                        return false;
-                }
-
-                return true;
+                if (!shipments2.Contains(shipment1, comparer))
+                    return false;
             }
+
+            foreach (Shipment shipment2 in shipments2)
+            {
+                if (!shipments1.Contains(shipment2, comparer))
+                    return false;
+            }
+
+            return true;
         }
     }
 
     public class ShipmentEqualityComparer : IEqualityComparer<Shipment>
     {
-
         public bool Equals(Shipment x, Shipment y)
         {
             return x.DestinationAddress == y.DestinationAddress && x.Number == y.Number;
@@ -693,5 +698,4 @@ namespace RGA.Controllers
             return obj.DestinationAddress.GetHashCode() ^ obj.Number.GetHashCode();
         }
     }
-
 }

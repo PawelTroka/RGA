@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Web;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -26,7 +24,6 @@ namespace RGA.Models.ViewModels
     }
 
 
-
     public class CourierCalendarViewModel
     {
         private readonly User user;
@@ -34,10 +31,9 @@ namespace RGA.Models.ViewModels
 
         public CourierCalendarViewModel()
         {
-
             var store = new UserStore<User>(new ApplicationDbContext());
             var userManager = new UserManager<User>(store);
-            user = userManager.FindByNameAsync(System.Web.HttpContext.Current.User.Identity.Name).Result;
+            user = userManager.FindByNameAsync(HttpContext.Current.User.Identity.Name).Result;
         }
 
 

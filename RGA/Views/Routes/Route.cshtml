@@ -11,21 +11,21 @@
 
 @if (User.IsInRole("Kierowca"))
 {
-    @Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new { Model.Id }, new { @class = "btn btn-default" }) 
+    @Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new {Model.Id}, new {@class = "btn btn-default"})
 
     if (Model.State == RouteState.New)
     {
-        @Html.ActionLink("Rozpocznij trasę!", "StartRoute", "Routes", new { Model.Id }, new { @class = "btn btn-primary btn-lg" }) 
+        @Html.ActionLink("Rozpocznij trasę!", "StartRoute", "Routes", new {Model.Id}, new {@class = "btn btn-primary btn-lg"})
     }
 
     if (Model.State == RouteState.InProgress)
     {
-        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", new { Model.Id }, new { @class = "btn btn-primary btn-lg" }) 
+        @Html.ActionLink("Zakończ trasę!", "EndRoute", "Routes", new {Model.Id}, new {@class = "btn btn-primary btn-lg"})
     }
 
     if (Model.State == RouteState.Completed)
     {
-        @Html.Encode(" Trasa została zakończona.") 
+        @Html.Encode(" Trasa została zakończona.")
     }
 }
 
@@ -34,9 +34,9 @@
 {
     @*Html.ActionLink("Wersja do druku", "RoutePrintVersion", "Routes", new { Model.Id }, new { @class = "btn btn-default" })
     @Html.Encode(" | ")*@
-    @Html.ActionLink("Edytuj trasę", "Edit", new { id = Model.Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Edytuj trasę", "Edit", new {id = Model.Id}, new {@class = "btn btn-default"})
     @Html.Encode(" | ")
-    @Html.ActionLink("Usuń trasę", "Delete", new { id = Model.Id }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Usuń trasę", "Delete", new {id = Model.Id}, new {@class = "btn btn-default"})
 }
 
 <div>
@@ -46,13 +46,13 @@
     <dl class="dl-horizontal">
         
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Worker)
-            </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Worker)
+        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Worker.UserName)
-            </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Worker.UserName)
+        </dd>
 
         @if (!User.IsInRole("Kierowca"))
         {
@@ -63,7 +63,6 @@
             <dd>
                 @Html.DisplayFor(model => model.Driver.UserName)
             </dd>
-
         }
 
 
@@ -91,7 +90,7 @@
         </dt>
         <dd>
             <ul>
-                @foreach (var shipment in Model.Shipments)
+                @foreach (Shipment shipment in Model.Shipments)
                 {
                     <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
                 }
@@ -108,16 +107,16 @@
             @Html.DisplayFor(model => model.EndAddress)
         </dd>
         
-@if (!User.IsInRole("Kierowca"))
-{
-    <dt>
-        @Html.DisplayNameFor(model => model.Image)
-    </dt>
+        @if (!User.IsInRole("Kierowca"))
+        {
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
 
-    <dd>
-        <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(Model.Image))"/>
-    </dd>
-}
+            <dd>
+                <img src="@string.Format("data:image/jpg;base64,{0}", Convert.ToBase64String(Model.Image))"/>
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
@@ -168,6 +167,14 @@
             @Html.DisplayFor(model => model.State)
         </dd>
         
+        <dt>
+            @Html.DisplayNameFor(model => model.AllowTollRoads)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AllowTollRoads)
+        </dd>
+
         @if (!User.IsInRole("Kierowca"))
         {
             <dt>
@@ -209,14 +216,14 @@
 
         <dd>
             <ul>
-                @foreach (var segment in Model.Segments)
+                @foreach (Segment segment in Model.Segments)
                 {
                     <li>Odcinek z @segment.StartAddress do @segment.EndAddress
                         <br/>
                         (długość: @segment.Distance metrów, czas: @segment.Duaration)
                         <br/><br />
                         <ol>
-                            @foreach (var step in segment.Steps)
+                            @foreach (Step step in segment.Steps)
                             {
                                 <li>
                                     Krok z @step.StartLocation do @step.EndLocation
@@ -227,7 +234,7 @@
                                 </li>
                             }
                         </ol>
-                    <hr />
+                        <hr />
                     </li>
                 }
             </ul>
@@ -243,7 +250,7 @@
    
     @if (User.IsInRole("Admin"))
     {
-        @Html.ActionLink("Wróc do listy", "Index","Routes", new {},new { @class = "btn btn-default" })
+        @Html.ActionLink("Wróc do listy", "Index", "Routes", new {}, new {@class = "btn btn-default"})
     }
 
 </p>

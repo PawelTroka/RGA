@@ -44,7 +44,7 @@ namespace RGA.Models.ViewModels
             Description = route.Description;
             DistanceMatrixProvider = route.DistanceMatrixProvider;
             DriverName = route.Driver.UserName;
-            Note = (route.Notes != null && route.Notes.Count>0) ? route.Notes.First().Content : null;
+            Note = (route.Notes != null && route.Notes.Count > 0) ? route.Notes.First().Content : null;
             Shipments = new List<Shipment>(route.Shipments);
             StartAddress = route.StartAddress;
             WorkerId = route.Worker.Id;
@@ -53,6 +53,7 @@ namespace RGA.Models.ViewModels
             RouteOptimizationProvider = route.RouteOptimizationProvider;
             RouteOptimizationType = route.RouteOptimizationType;
             State = route.State;
+            AllowTollRoads = route.AllowTollRoads;
             init();
         }
 
@@ -61,7 +62,7 @@ namespace RGA.Models.ViewModels
         [Required]
         public string Id { get; set; }
 
-                [Display(Name = "Adres końcowy")]
+        [Display(Name = "Adres końcowy")]
         public string EndAddress { get; set; }
 
         [Display(Name = "Stan")]
@@ -142,6 +143,10 @@ namespace RGA.Models.ViewModels
         [Required]
         [Display(Name = "Kryterium optymalizacji")]
         public RouteOptimizationType RouteOptimizationType { get; set; }
+
+
+        [Display(Name = "Zezwalaj na drogi płatne?")]
+        public bool AllowTollRoads { get; set; }
 
         public void init()
         {

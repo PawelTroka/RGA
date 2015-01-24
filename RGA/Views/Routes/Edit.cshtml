@@ -16,11 +16,11 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Szczegóły trasy</h4>
         <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
 
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.WorkerId)
@@ -28,34 +28,34 @@
 
         <div class="col-md-6 form-group">
             <div class="form-group">
-                @Html.LabelFor(model => model.State, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.State, new {@class = "control-label col-md-2"})
                 <div class="col-md-10">
-                    @Html.EnumDropDownListFor(model => model.State, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+                    @Html.EnumDropDownListFor(model => model.State, new {@class = "form-control"})
+                    @Html.ValidationMessageFor(model => model.State, "", new {@class = "text-danger"})
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.StartDate, new {@class = "control-label col-md-2"})
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.StartDate, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new {@class = "text-danger"})
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.DriverName, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.DriverName, new {@class = "control-label col-md-2"})
                 <div class="col-md-10">
-                    @Html.DropDownListFor(model => model.DriverName, Model.MyDriversList, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.DriverName, "", new { @class = "text-danger" })
+                    @Html.DropDownListFor(model => model.DriverName, Model.MyDriversList, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.DriverName, "", new {@class = "text-danger"})
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.StartAddress, new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.StartAddress, new {@class = "control-label col-md-2"})
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.StartAddress, new { htmlAttributes = new { id = "startAddress", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.StartAddress, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.StartAddress, new {htmlAttributes = new {id = "startAddress", @class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.StartAddress, "", new {@class = "text-danger"})
                 </div>
             </div>
         </div>
@@ -67,58 +67,66 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Shipments, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Shipments, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Shipments, "Shipments", new { htmlAttributes = new { id = "addresses" } })
-                @Html.ValidationMessageFor(model => model.Shipments, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Shipments, "Shipments", new {htmlAttributes = new {id = "addresses"}})
+                @Html.ValidationMessageFor(model => model.Shipments, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.AllowTollRoads, new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.CheckBoxFor(model => model.AllowTollRoads, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.AllowTollRoads, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RouteOptimizationType, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RouteOptimizationType, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.RouteOptimizationType, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RouteOptimizationType, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.RouteOptimizationType, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.RouteOptimizationType, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DistanceMatrixProvider, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DistanceMatrixProvider, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.DistanceMatrixProvider, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DistanceMatrixProvider, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.DistanceMatrixProvider, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.DistanceMatrixProvider, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RouteOptimizationProvider, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RouteOptimizationProvider, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.RouteOptimizationProvider, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RouteOptimizationProvider, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.RouteOptimizationProvider, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.RouteOptimizationProvider, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.RouteOptimizationAlgorithm, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.RouteOptimizationAlgorithm, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.RouteOptimizationAlgorithm, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RouteOptimizationAlgorithm, "", new { @class = "text-danger" })
+                @Html.EnumDropDownListFor(model => model.RouteOptimizationAlgorithm, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.RouteOptimizationAlgorithm, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Description, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { id = "addresses", @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Description, new {htmlAttributes = new {id = "addresses", @class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Description, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Note, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Note, new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.TextAreaFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                @Html.TextAreaFor(model => model.Note, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Note, "", new {@class = "text-danger"})
             </div>
         </div>
 
@@ -153,7 +161,7 @@
 
 
         function addGeocomplete() {
-            $(".addressable").each(function () {
+            $(".addressable").each(function() {
                 var element = $(this);
                 element.geocomplete({
                     map: element.closest('.findableclosest').find('.mappable'),
@@ -164,7 +172,7 @@
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             $("#startAddress").geocomplete({
                 map: "#base_map",

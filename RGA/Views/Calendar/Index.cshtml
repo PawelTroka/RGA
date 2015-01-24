@@ -8,8 +8,8 @@
 
 <style>
     .bolddate a {
-        font-weight: bold !important;
         color: #000000 !important;
+        font-weight: bold !important;
     }
 </style>
 
@@ -18,7 +18,7 @@
 <div id="datepicker"></div>
 <br />
 <p>
-    @Html.ActionLink("Zobacz trasę dzienną", "ShowMyDailyRoute", "Routes", new{ date=DateTime.Today.ToShortDateString() }, new { id = "showDailyRoute", @class = "btn btn-default" })
+    @Html.ActionLink("Zobacz trasę dzienną", "ShowMyDailyRoute", "Routes", new {date = DateTime.Today.ToShortDateString()}, new {id = "showDailyRoute", @class = "btn btn-default"})
 </p>
 
 
@@ -30,7 +30,7 @@
     <script>
         var workDatesArrayNnNu32gf23gih9f3 = new Array(@Html.Raw(Model.WorkDatesForUser));
 
-        $(document).ready(function () {
+        $(document).ready(function() {
 
             $('#datepicker').datepicker({
                 regional: "pl",

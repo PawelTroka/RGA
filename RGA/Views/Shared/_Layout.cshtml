@@ -26,24 +26,24 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             if (User.IsInRole("Kierowca"))
-                             {
-                                 <li>@Html.ActionLink("Twój kalendarz", "Index", "Calendar")</li>
-                             }
+                            {
+                                <li>@Html.ActionLink("Twój kalendarz", "Index", "Calendar")</li>
+                            }
 
                             if (User.IsInRole("Admin"))
-                             {
-                                 <li>@Html.ActionLink("Wygenerowane trasy", "Index", "Routes")</li>
-                             }
+                            {
+                                <li>@Html.ActionLink("Wygenerowane trasy", "Index", "Routes")</li>
+                            }
 
                             if (User.IsInRole("Pracownik"))
-                             {
-                                 <li>@Html.ActionLink("Twoi kierowcy", "Index", "Couriers")</li>
-                             }
+                            {
+                                <li>@Html.ActionLink("Twoi kierowcy", "Index", "Couriers")</li>
+                            }
 
                             if (User.IsInRole("Admin"))
-                             {
-                                 <li>@Html.ActionLink("Zarządzaj użytkownikami", "Index", "Users")</li>
-                             }
+                            {
+                                <li>@Html.ActionLink("Zarządzaj użytkownikami", "Index", "Users")</li>
+                            }
                         }
                         
 

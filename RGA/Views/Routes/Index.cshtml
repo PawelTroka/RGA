@@ -1,4 +1,5 @@
-﻿@using Route = RGA.Models.Route
+﻿@using RGA.Models
+@using Route = RGA.Models.Route
 @model RGA.Models.ViewModels.RoutesViewModel
 
 @{
@@ -51,6 +52,10 @@
         </th>
 
         <th>
+            @Html.DisplayNameFor(modelItem => Model.Route.AllowTollRoads)
+        </th>
+
+        <th>
             @Html.DisplayNameFor(modelItem => Model.Route.DistanceMatrixProvider)
         </th>
         <th>
@@ -68,7 +73,7 @@
         <th> </th>
     </tr>
 
-    @foreach (var item in Model.AllRoutes)
+    @foreach (Route item in Model.AllRoutes)
     {
         <tr>
             
@@ -103,10 +108,10 @@
             
             <td>
                 <ul>
-                @foreach (var shipment in item.Shipments)
-                {
-                    <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
-                }
+                    @foreach (Shipment shipment in item.Shipments)
+                    {
+                        <li>Nr: @shipment.Number | Adres: @shipment.DestinationAddress</li>
+                    }
                 </ul>
             </td>
 
@@ -122,6 +127,10 @@
 
             <td>
                 @Html.DisplayFor(modelItem => item.Distance) m
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.AllowTollRoads)
             </td>
 
             <td>
@@ -141,16 +150,16 @@
             
             <td>
                 
-                @Html.ActionLink("Modyfikuj", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Modyfikuj", "Edit", new {id = item.Id}) |
             </td>
             <td>
 
-                @Html.ActionLink("Szczegóły", "Route", new { item.Id })
+                @Html.ActionLink("Szczegóły", "Route", new {item.Id})
 
             </td>
             
             <td>
-                @Html.ActionLink("Usuń", "Delete", new { id = item.Id })
+                @Html.ActionLink("Usuń", "Delete", new {id = item.Id})
             </td>
         </tr>
     }

@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
+
 <response>
   <info>
     <statusCode>0</statusCode>
-    <messages/>
+    <messages />
     <copyright>
       <imageUrl>http://api.mqcdn.com/res/mqlogo.gif</imageUrl>
       <imageAltText>© 2014 MapQuest, Inc.</imageAltText>
@@ -65,7 +66,7 @@
               <lat>54.3475</lat>
               <lng>18.6572</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.14</distance>
             <time>37</time>
             <formattedTime>00:00:37</formattedTime>
@@ -78,9 +79,9 @@
             <streets>
               <street>Chmielna</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-2,54.347518,18.657245,0,0|purple-3,54.345745,18.655765,0,0|&center=54.3466315,18.656505&zoom=12&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -88,7 +89,7 @@
               <lat>54.3457</lat>
               <lng>18.6558</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.432</distance>
             <time>57</time>
             <formattedTime>00:00:57</formattedTime>
@@ -102,9 +103,9 @@
               <street>501</street>
               <street>Podwale Przedmiejskie</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-3,54.345745,18.655765,0,0|purple-4,54.347728,18.64569,0,0|&center=54.3467365,18.6507275&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -112,7 +113,7 @@
               <lat>54.3477</lat>
               <lng>18.6457</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.205</distance>
             <time>31</time>
             <formattedTime>00:00:31</formattedTime>
@@ -125,9 +126,9 @@
             <streets>
               <street>Okopowa</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-4,54.347728,18.64569,0,0|purple-5,54.345119,18.645191,0,0|&center=54.3464235,18.6454405&zoom=12&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -135,7 +136,7 @@
               <lat>54.3451</lat>
               <lng>18.6452</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>3.302</distance>
             <time>292</time>
             <formattedTime>00:04:52</formattedTime>
@@ -149,9 +150,9 @@
               <street>91</street>
               <street>E75</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-5,54.345119,18.645191,0,0|purple-6,54.299411,18.631912,0,0|&center=54.322265,18.6385515&zoom=8&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -159,7 +160,7 @@
               <lat>54.2994</lat>
               <lng>18.6319</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.199</distance>
             <time>28</time>
             <formattedTime>00:00:28</formattedTime>
@@ -169,10 +170,10 @@
             <narrative>Turn left onto ramp.</narrative>
             <directionName>South</directionName>
             <index>4</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-6,54.299411,18.631912,0,0|purple-7,54.298435,18.634075,0,0|&center=54.298923,18.632993499999998&zoom=13&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -180,7 +181,7 @@
               <lat>54.2984</lat>
               <lng>18.6341</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.886</distance>
             <time>97</time>
             <formattedTime>00:01:37</formattedTime>
@@ -195,9 +196,9 @@
               <street>E28</street>
               <street>E77</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-7,54.298435,18.634075,0,0|purple-8,54.290153,18.591033,0,0|&center=54.294293999999994,18.612554&zoom=9&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -205,7 +206,7 @@
               <lat>54.2902</lat>
               <lng>18.591</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.138</distance>
             <time>13</time>
             <formattedTime>00:00:13</formattedTime>
@@ -215,10 +216,10 @@
             <narrative>Take the S7 exit on the left.</narrative>
             <directionName>West</directionName>
             <index>6</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitleft_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-8,54.290153,18.591033,0,0|purple-9,54.290153,18.587614,0,0|&center=54.290153,18.5893235&zoom=13&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -226,7 +227,7 @@
               <lat>54.2902</lat>
               <lng>18.5876</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.052</distance>
             <time>5</time>
             <formattedTime>00:00:05</formattedTime>
@@ -236,10 +237,10 @@
             <narrative>Keep straight to take the S7 ramp.</narrative>
             <directionName>West</directionName>
             <index>7</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-9,54.290153,18.587614,0,0|purple-10,54.290119,18.58633,0,0|&center=54.290136,18.586972&zoom=15&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -247,7 +248,7 @@
               <lat>54.2901</lat>
               <lng>18.5863</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.238</distance>
             <time>26</time>
             <formattedTime>00:00:26</formattedTime>
@@ -257,10 +258,10 @@
             <narrative>Keep straight to take the S7 ramp.</narrative>
             <directionName>South</directionName>
             <index>8</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-10,54.290119,18.58633,0,0|purple-11,54.287872,18.585577999999998,0,0|&center=54.2889955,18.585954&zoom=12&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -268,7 +269,7 @@
               <lat>54.2879</lat>
               <lng>18.5856</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.697</distance>
             <time>68</time>
             <formattedTime>00:01:08</formattedTime>
@@ -278,10 +279,10 @@
             <narrative>Keep straight to take the S7 ramp.</narrative>
             <directionName>South</directionName>
             <index>9</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-11,54.287872,18.585577999999998,0,0|purple-12,54.278864999999996,18.591966,0,0|&center=54.283368499999995,18.588772&zoom=10&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -289,7 +290,7 @@
               <lat>54.2789</lat>
               <lng>18.592</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.326</distance>
             <time>25</time>
             <formattedTime>00:00:25</formattedTime>
@@ -299,10 +300,10 @@
             <narrative>Keep left at the fork in the ramp.</narrative>
             <directionName>South</directionName>
             <index>10</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_left2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-12,54.278864999999996,18.591966,0,0|purple-13,54.274291,18.59383,0,0|&center=54.276578,18.592897999999998&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -310,7 +311,7 @@
               <lat>54.2743</lat>
               <lng>18.5938</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>3.067</distance>
             <time>177</time>
             <formattedTime>00:02:57</formattedTime>
@@ -323,9 +324,9 @@
             <streets>
               <street>E28</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-13,54.274291,18.59383,0,0|purple-14,54.233675999999996,18.60914,0,0|&center=54.2539835,18.601485&zoom=8&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -333,7 +334,7 @@
               <lat>54.2337</lat>
               <lng>18.6091</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>14.905</distance>
             <time>650</time>
             <formattedTime>00:10:50</formattedTime>
@@ -347,9 +348,9 @@
               <street>A1</street>
               <street>E75</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-14,54.233675999999996,18.60914,0,0|purple-15,54.033138,18.671079,0,0|&center=54.133407,18.6401095&zoom=6&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -357,7 +358,7 @@
               <lat>54.0331</lat>
               <lng>18.6711</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.672</distance>
             <time>70</time>
             <formattedTime>00:01:10</formattedTime>
@@ -367,7 +368,7 @@
             <narrative>Take EXIT 25.</narrative>
             <directionName>North</directionName>
             <index>13</index>
-            <streets/>
+            <streets />
             <signs>
               <sign>
                 <type>1001</type>
@@ -378,7 +379,7 @@
               </sign>
             </signs>
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-15,54.033138,18.671079,0,0|purple-16,54.033924,18.674277999999997,0,0|&center=54.033530999999996,18.672678499999996&zoom=13&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -386,7 +387,7 @@
               <lat>54.0339</lat>
               <lng>18.6743</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.271</distance>
             <time>50</time>
             <formattedTime>00:00:50</formattedTime>
@@ -396,10 +397,10 @@
             <narrative>Keep left at the fork in the ramp.</narrative>
             <directionName>North</directionName>
             <index>14</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_left2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-16,54.033924,18.674277999999997,0,0|purple-17,54.037814999999995,18.675065,0,0|&center=54.0358695,18.6746715&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -407,7 +408,7 @@
               <lat>54.0378</lat>
               <lng>18.6751</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>7.344</distance>
             <time>564</time>
             <formattedTime>00:09:24</formattedTime>
@@ -420,9 +421,9 @@
             <streets>
               <street>22</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-17,54.037814999999995,18.675065,0,0|purple-18,53.971725,18.544828,0,0|&center=54.00476999999999,18.6099465&zoom=7&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -430,7 +431,7 @@
               <lat>53.9717</lat>
               <lng>18.5448</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.281</distance>
             <time>42</time>
             <formattedTime>00:00:42</formattedTime>
@@ -444,9 +445,9 @@
               <street>22</street>
               <street>Adama Mickiewicza</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-18,53.971725,18.544828,0,0|purple-19,53.971579999999996,18.538085,0,0|&center=53.9716525,18.5414565&zoom=12&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -454,7 +455,7 @@
               <lat>53.9716</lat>
               <lng>18.5381</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.794</distance>
             <time>255</time>
             <formattedTime>00:04:15</formattedTime>
@@ -467,9 +468,9 @@
             <streets>
               <street>22</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-19,53.971579999999996,18.538085,0,0|purple-20,53.961783999999994,18.507284,0,0|&center=53.96668199999999,18.522684499999997&zoom=9&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -477,7 +478,7 @@
               <lat>53.9618</lat>
               <lng>18.5073</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.555</distance>
             <time>84</time>
             <formattedTime>00:01:24</formattedTime>
@@ -491,9 +492,9 @@
               <street>22</street>
               <street>Zblewska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-20,53.961783999999994,18.507284,0,0|purple-21,53.959049,18.4946,0,0|&center=53.960416499999994,18.500942&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -501,7 +502,7 @@
               <lat>53.959</lat>
               <lng>18.4946</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>100.839</distance>
             <time>8306</time>
             <formattedTime>02:18:26</formattedTime>
@@ -514,9 +515,9 @@
             <streets>
               <street>22</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-21,53.959049,18.4946,0,0|purple-22,53.275279,16.479906,0,0|&center=53.617164,17.487253&zoom=4&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -524,7 +525,7 @@
               <lat>53.2753</lat>
               <lng>16.4799</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.209</distance>
             <time>25</time>
             <formattedTime>00:00:25</formattedTime>
@@ -538,9 +539,9 @@
               <street>22</street>
               <street>Wojska Polskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-22,53.275279,16.479906,0,0|purple-23,53.273677,16.475839,0,0|&center=53.274478,16.4778725&zoom=12&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -548,7 +549,7 @@
               <lat>53.2737</lat>
               <lng>16.4758</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.282</distance>
             <time>41</time>
             <formattedTime>00:00:41</formattedTime>
@@ -563,9 +564,9 @@
               <street>22</street>
               <street>Kościuszki</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-23,53.273677,16.475839,0,0|purple-24,53.277190999999995,16.472901999999998,0,0|&center=53.275434,16.4743705&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -573,7 +574,7 @@
               <lat>53.2772</lat>
               <lng>16.4729</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.387</distance>
             <time>47</time>
             <formattedTime>00:00:47</formattedTime>
@@ -587,9 +588,9 @@
               <street>10</street>
               <street>Aleja Marszałka Józefa Piłsudskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-24,53.277190999999995,16.472901999999998,0,0|purple-25,53.276953999999996,16.463639999999998,0,0|&center=53.277072499999996,16.468270999999998&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -597,7 +598,7 @@
               <lat>53.277</lat>
               <lng>16.4636</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.452</distance>
             <time>69</time>
             <formattedTime>00:01:09</formattedTime>
@@ -610,9 +611,9 @@
             <streets>
               <street>22</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-25,53.276953999999996,16.463639999999998,0,0|purple-26,53.271834999999996,16.468996999999998,0,0|&center=53.2743945,16.4663185&zoom=11&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -620,7 +621,7 @@
               <lat>53.2718</lat>
               <lng>16.469</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>63.42</distance>
             <time>5067</time>
             <formattedTime>01:24:27</formattedTime>
@@ -633,9 +634,9 @@
             <streets>
               <street>22</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-26,53.271834999999996,16.468996999999998,0,0|purple-27,52.765888,15.280166,0,0|&center=53.0188615,15.874581499999998&zoom=4&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -643,7 +644,7 @@
               <lat>52.7659</lat>
               <lng>15.2802</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.796</distance>
             <time>77</time>
             <formattedTime>00:01:17</formattedTime>
@@ -656,9 +657,9 @@
             <streets>
               <street>Franciszka Walczaka</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-27,52.765888,15.280166,0,0|purple-28,52.757011,15.268073999999999,0,0|&center=52.7614495,15.27412&zoom=10&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -666,7 +667,7 @@
               <lat>52.757</lat>
               <lng>15.2681</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.007</distance>
             <time>2</time>
             <formattedTime>00:00:02</formattedTime>
@@ -680,9 +681,9 @@
               <street>22</street>
               <street>Rondo Gdańskie</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-28,52.757011,15.268073999999999,0,0|purple-29,52.756935,15.267966999999999,0,0|&center=52.756973,15.268020499999999&zoom=15&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -690,7 +691,7 @@
               <lat>52.7569</lat>
               <lng>15.268</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.017</distance>
             <time>282</time>
             <formattedTime>00:04:42</formattedTime>
@@ -703,9 +704,9 @@
             <streets>
               <street>Franciszka Walczaka</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-29,52.756935,15.267966999999999,0,0|purple-30,52.733726,15.243295,0,0|&center=52.745330499999994,15.255631&zoom=8&rand=-1318493937&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -713,7 +714,7 @@
               <lat>52.7337</lat>
               <lng>15.2433</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.026</distance>
             <time>4</time>
             <formattedTime>00:00:04</formattedTime>
@@ -723,10 +724,10 @@
             <narrative>Turn slight right.</narrative>
             <directionName>South</directionName>
             <index>28</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-30,52.733726,15.243295,0,0|purple-31,52.733348,15.243226,0,0|&center=52.733537,15.2432605&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -734,7 +735,7 @@
               <lat>52.7333</lat>
               <lng>15.2432</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.293</distance>
             <time>47</time>
             <formattedTime>00:00:47</formattedTime>
@@ -747,9 +748,9 @@
             <streets>
               <street>Władysława Jagiełły</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-31,52.733348,15.243226,0,0|purple-32,52.732681,15.236562999999999,0,0|&center=52.733014499999996,15.239894499999998&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -757,7 +758,7 @@
               <lat>52.7327</lat>
               <lng>15.2366</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.016</distance>
             <time>4</time>
             <formattedTime>00:00:04</formattedTime>
@@ -770,9 +771,9 @@
             <streets>
               <street>Józefa Wybickiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-32,52.732681,15.236562999999999,0,0|purple-33,52.732765,15.236218,0,0|&center=52.732723,15.236390499999999&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -780,7 +781,7 @@
               <lat>52.7328</lat>
               <lng>15.2362</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.066</distance>
             <time>31</time>
             <formattedTime>00:00:31</formattedTime>
@@ -790,10 +791,10 @@
             <narrative>Turn slight right.</narrative>
             <directionName>West</directionName>
             <index>31</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-33,52.732765,15.236218,0,0|purple-34,52.732994,15.235199999999999,0,0|&center=52.732879499999996,15.235709&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -801,7 +802,7 @@
               <lat>52.733</lat>
               <lng>15.2352</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.053</distance>
             <time>11</time>
             <formattedTime>00:00:11</formattedTime>
@@ -814,9 +815,9 @@
             <streets>
               <street>Józefa Wybickiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-34,52.732994,15.235199999999999,0,0|purple-35,52.732665999999995,15.236329999999999,0,0|&center=52.73282999999999,15.235764999999999&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -824,7 +825,7 @@
               <lat>52.7327</lat>
               <lng>15.2363</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.01</distance>
             <time>1</time>
             <formattedTime>00:00:01</formattedTime>
@@ -834,15 +835,15 @@
             <narrative>Turn slight right.</narrative>
             <directionName>Southeast</directionName>
             <index>33</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-35,52.732665999999995,15.236329999999999,0,0|purple-36,52.732582,15.236521,0,0|&center=52.732624,15.2364255&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
-            <startPoint/>
-            <maneuverNotes/>
+            <startPoint />
+            <maneuverNotes />
             <distance>0.0</distance>
             <time>0</time>
             <formattedTime>00:00:00</formattedTime>
@@ -852,9 +853,9 @@
             <narrative>Welcome to GORZOW WIELKOPOLSKI, LUBUSZ VOIVODESHIP.</narrative>
             <directionName></directionName>
             <index>34</index>
-            <streets/>
-            <signs/>
-            <linkIds/>
+            <streets />
+            <signs />
+            <linkIds />
             <mapUrl><![CDATA[]]></mapUrl>
           </maneuver>
         </maneuvers>
@@ -876,7 +877,7 @@
               <lat>52.7326</lat>
               <lng>15.2365</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.269</distance>
             <time>44</time>
             <formattedTime>00:00:44</formattedTime>
@@ -889,9 +890,9 @@
             <streets>
               <street>Bolesława Chrobrego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-37,52.732582,15.236521,0,0|purple-38,52.729549,15.240171,0,0|&center=52.7310655,15.238346&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -899,7 +900,7 @@
               <lat>52.7295</lat>
               <lng>15.2402</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.082</distance>
             <time>10</time>
             <formattedTime>00:00:10</formattedTime>
@@ -912,9 +913,9 @@
             <streets>
               <street>Most Staromiejski</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-38,52.729549,15.240171,0,0|purple-39,52.728462,15.240902,0,0|&center=52.7290055,15.240536500000001&zoom=13&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -922,7 +923,7 @@
               <lat>52.7285</lat>
               <lng>15.2409</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.483</distance>
             <time>65</time>
             <formattedTime>00:01:05</formattedTime>
@@ -935,9 +936,9 @@
             <streets>
               <street>Grobla</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-39,52.728462,15.240902,0,0|purple-40,52.724502,15.247390999999999,0,0|&center=52.726482000000004,15.2441465&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -945,7 +946,7 @@
               <lat>52.7245</lat>
               <lng>15.2474</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.193</distance>
             <time>20</time>
             <formattedTime>00:00:20</formattedTime>
@@ -955,10 +956,10 @@
             <narrative>Stay straight to go onto ramp.</narrative>
             <directionName>Southeast</directionName>
             <index>38</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-40,52.724502,15.247390999999999,0,0|purple-41,52.721987999999996,15.249291999999999,0,0|&center=52.723245,15.248341499999999&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -966,7 +967,7 @@
               <lat>52.722</lat>
               <lng>15.2493</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.827</distance>
             <time>186</time>
             <formattedTime>00:03:06</formattedTime>
@@ -979,9 +980,9 @@
             <streets>
               <street>22</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-41,52.721987999999996,15.249291999999999,0,0|purple-42,52.698516,15.231698,0,0|&center=52.710252,15.240495&zoom=8&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -989,7 +990,7 @@
               <lat>52.6985</lat>
               <lng>15.2317</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.247</distance>
             <time>27</time>
             <formattedTime>00:00:27</formattedTime>
@@ -999,10 +1000,10 @@
             <narrative>Turn left onto ramp.</narrative>
             <directionName>East</directionName>
             <index>40</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-42,52.698516,15.231698,0,0|purple-43,52.699295,15.236913,0,0|&center=52.698905499999995,15.2343055&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1010,7 +1011,7 @@
               <lat>52.6993</lat>
               <lng>15.2369</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>25.509</distance>
             <time>1682</time>
             <formattedTime>00:28:02</formattedTime>
@@ -1023,9 +1024,9 @@
             <streets>
               <street>S3</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-43,52.699295,15.236913,0,0|purple-44,52.441814,15.558423,0,0|&center=52.5705545,15.397668&zoom=5&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1033,7 +1034,7 @@
               <lat>52.4418</lat>
               <lng>15.5584</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>88.936</distance>
             <time>6041</time>
             <formattedTime>01:40:41</formattedTime>
@@ -1046,9 +1047,9 @@
             <streets>
               <street>E65</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-44,52.441814,15.558423,0,0|purple-45,51.390384,16.219919,0,0|&center=51.916099,15.889171000000001&zoom=3&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1056,7 +1057,7 @@
               <lat>51.3904</lat>
               <lng>16.2199</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.241</distance>
             <time>39</time>
             <formattedTime>00:00:39</formattedTime>
@@ -1070,9 +1071,9 @@
               <street>3</street>
               <street>E65</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-45,51.390384,16.219919,0,0|purple-46,51.390513999999996,16.214354999999998,0,0|&center=51.390449,16.217137&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1080,7 +1081,7 @@
               <lat>51.3905</lat>
               <lng>16.2144</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.638</distance>
             <time>85</time>
             <formattedTime>00:01:25</formattedTime>
@@ -1095,9 +1096,9 @@
               <street>Aleja Komisji Edukacji Narodowej</street>
               <street>E65</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-46,51.390513999999996,16.214354999999998,0,0|purple-47,51.389778,16.199870999999998,0,0|&center=51.390146,16.207113&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1105,7 +1106,7 @@
               <lat>51.3898</lat>
               <lng>16.1999</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>18.231</distance>
             <time>1540</time>
             <formattedTime>00:25:40</formattedTime>
@@ -1119,9 +1120,9 @@
               <street>3</street>
               <street>E65</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-47,51.389778,16.199870999999998,0,0|purple-48,51.159751,16.172971,0,0|&center=51.2747645,16.186421&zoom=5&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1129,7 +1130,7 @@
               <lat>51.1598</lat>
               <lng>16.173</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.214</distance>
             <time>21</time>
             <formattedTime>00:00:21</formattedTime>
@@ -1139,10 +1140,10 @@
             <narrative>Turn right onto ramp.</narrative>
             <directionName>West</directionName>
             <index>46</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-48,51.159751,16.172971,0,0|purple-49,51.160757999999994,16.171352,0,0|&center=51.16025449999999,16.1721615&zoom=13&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1150,7 +1151,7 @@
               <lat>51.1608</lat>
               <lng>16.1714</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>202.648</distance>
             <time>9376</time>
             <formattedTime>02:36:16</formattedTime>
@@ -1164,9 +1165,9 @@
               <street>A4</street>
               <street>E40</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-49,51.160757999999994,16.171352,0,0|purple-50,50.000899999999994,19.934749,0,0|&center=50.580828999999994,18.053050499999998&zoom=3&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1174,7 +1175,7 @@
               <lat>50.0009</lat>
               <lng>19.9347</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.464</distance>
             <time>51</time>
             <formattedTime>00:00:51</formattedTime>
@@ -1184,7 +1185,7 @@
             <narrative>Take EXIT 419.</narrative>
             <directionName>Northeast</directionName>
             <index>48</index>
-            <streets/>
+            <streets />
             <signs>
               <sign>
                 <type>1001</type>
@@ -1195,7 +1196,7 @@
               </sign>
             </signs>
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-50,50.000899999999994,19.934749,0,0|purple-51,50.002905999999996,19.941865,0,0|&center=50.001903,19.938307000000002&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1203,7 +1204,7 @@
               <lat>50.0029</lat>
               <lng>19.9419</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.884</distance>
             <time>95</time>
             <formattedTime>00:01:35</formattedTime>
@@ -1216,9 +1217,9 @@
             <streets>
               <street>Zbigniewa Herberta</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-51,50.002905999999996,19.941865,0,0|purple-52,50.014778,19.945489,0,0|&center=50.008842,19.943677&zoom=9&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1226,7 +1227,7 @@
               <lat>50.0148</lat>
               <lng>19.9455</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.038</distance>
             <time>95</time>
             <formattedTime>00:01:35</formattedTime>
@@ -1239,9 +1240,9 @@
             <streets>
               <street>Jerzego Turowicza</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-52,50.014778,19.945489,0,0|purple-53,50.029692999999995,19.944986,0,0|&center=50.022235499999994,19.945237499999998&zoom=9&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1249,7 +1250,7 @@
               <lat>50.0297</lat>
               <lng>19.945</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.272</distance>
             <time>35</time>
             <formattedTime>00:00:35</formattedTime>
@@ -1262,9 +1263,9 @@
             <streets>
               <street>Księdza Józefa Tischnera</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-53,50.029692999999995,19.944986,0,0|purple-54,50.033477,19.946507999999998,0,0|&center=50.03158499999999,19.945746999999997&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1272,7 +1273,7 @@
               <lat>50.0335</lat>
               <lng>19.9465</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.772</distance>
             <time>58</time>
             <formattedTime>00:00:58</formattedTime>
@@ -1286,9 +1287,9 @@
               <street>776</street>
               <street>Aleja Powstańców Śląskich</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-54,50.033477,19.946507999999998,0,0|purple-55,50.041179,19.958406,0,0|&center=50.037328,19.952457&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1296,7 +1297,7 @@
               <lat>50.0412</lat>
               <lng>19.9584</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.185</distance>
             <time>136</time>
             <formattedTime>00:02:16</formattedTime>
@@ -1309,9 +1310,9 @@
             <streets>
               <street>776</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_right2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-55,50.041179,19.958406,0,0|purple-56,50.04887,19.981728999999998,0,0|&center=50.0450245,19.9700675&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1319,7 +1320,7 @@
               <lat>50.0489</lat>
               <lng>19.9817</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.279</distance>
             <time>50</time>
             <formattedTime>00:00:50</formattedTime>
@@ -1332,9 +1333,9 @@
             <streets>
               <street>Saska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-56,50.04887,19.981728999999998,0,0|purple-57,50.045196,19.983625,0,0|&center=50.047033,19.982677&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1342,7 +1343,7 @@
               <lat>50.0452</lat>
               <lng>19.9836</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.016</distance>
             <time>13</time>
             <formattedTime>00:00:13</formattedTime>
@@ -1355,9 +1356,9 @@
             <streets>
               <street>Przewóz</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-57,50.045196,19.983625,0,0|purple-58,50.045154,19.98397,0,0|&center=50.045175,19.9837975&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1365,7 +1366,7 @@
               <lat>50.0452</lat>
               <lng>19.984</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.467</distance>
             <time>104</time>
             <formattedTime>00:01:44</formattedTime>
@@ -1378,9 +1379,9 @@
             <streets>
               <street>Myśliwska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-58,50.045154,19.98397,0,0|purple-59,50.045111999999996,19.993927,0,0|&center=50.04513299999999,19.9889485&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1388,7 +1389,7 @@
               <lat>50.0451</lat>
               <lng>19.9939</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.132</distance>
             <time>20</time>
             <formattedTime>00:00:20</formattedTime>
@@ -1401,14 +1402,14 @@
             <streets>
               <street>Lasówka</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-59,50.045111999999996,19.993927,0,0|purple-60,50.046966,19.994450999999998,0,0|&center=50.04603899999999,19.994189&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
-            <startPoint/>
-            <maneuverNotes/>
+            <startPoint />
+            <maneuverNotes />
             <distance>0.0</distance>
             <time>0</time>
             <formattedTime>00:00:00</formattedTime>
@@ -1418,9 +1419,9 @@
             <narrative>Welcome to KRAKóW, LESSER POLAND VOIVODESHIP.</narrative>
             <directionName></directionName>
             <index>58</index>
-            <streets/>
-            <signs/>
-            <linkIds/>
+            <streets />
+            <signs />
+            <linkIds />
             <mapUrl><![CDATA[]]></mapUrl>
           </maneuver>
         </maneuvers>
@@ -1442,7 +1443,7 @@
               <lat>50.047</lat>
               <lng>19.9945</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.132</distance>
             <time>26</time>
             <formattedTime>00:00:26</formattedTime>
@@ -1455,9 +1456,9 @@
             <streets>
               <street>Lasówka</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-61,50.046966,19.994450999999998,0,0|purple-62,50.045111999999996,19.993927,0,0|&center=50.04603899999999,19.994189&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1465,7 +1466,7 @@
               <lat>50.0451</lat>
               <lng>19.9939</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.467</distance>
             <time>95</time>
             <formattedTime>00:01:35</formattedTime>
@@ -1478,9 +1479,9 @@
             <streets>
               <street>Myśliwska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-62,50.045111999999996,19.993927,0,0|purple-63,50.045154,19.98397,0,0|&center=50.04513299999999,19.9889485&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1488,7 +1489,7 @@
               <lat>50.0452</lat>
               <lng>19.984</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.016</distance>
             <time>16</time>
             <formattedTime>00:00:16</formattedTime>
@@ -1501,9 +1502,9 @@
             <streets>
               <street>Przewóz</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-63,50.045154,19.98397,0,0|purple-64,50.045196,19.983625,0,0|&center=50.045175,19.9837975&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1511,7 +1512,7 @@
               <lat>50.0452</lat>
               <lng>19.9836</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.321</distance>
             <time>64</time>
             <formattedTime>00:01:04</formattedTime>
@@ -1524,9 +1525,9 @@
             <streets>
               <street>Saska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-64,50.045196,19.983625,0,0|purple-65,50.040592,19.982978,0,0|&center=50.042894,19.9833015&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1534,7 +1535,7 @@
               <lat>50.0406</lat>
               <lng>19.983</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.963</distance>
             <time>100</time>
             <formattedTime>00:01:40</formattedTime>
@@ -1547,9 +1548,9 @@
             <streets>
               <street>Lipska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-65,50.040592,19.982978,0,0|purple-66,50.039161,20.004490999999998,0,0|&center=50.0398765,19.9937345&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1557,7 +1558,7 @@
               <lat>50.0392</lat>
               <lng>20.0045</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.638</distance>
             <time>70</time>
             <formattedTime>00:01:10</formattedTime>
@@ -1570,9 +1571,9 @@
             <streets>
               <street>Jana Surzyckiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-66,50.039161,20.004490999999998,0,0|purple-67,50.037631,20.018615,0,0|&center=50.038396,20.011553&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1580,7 +1581,7 @@
               <lat>50.0376</lat>
               <lng>20.0186</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.37</distance>
             <time>42</time>
             <formattedTime>00:00:42</formattedTime>
@@ -1593,9 +1594,9 @@
             <streets>
               <street>Rybitwy</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-67,50.037631,20.018615,0,0|purple-68,50.037890999999995,20.02692,0,0|&center=50.037760999999996,20.0227675&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1603,7 +1604,7 @@
               <lat>50.0379</lat>
               <lng>20.0269</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.697</distance>
             <time>84</time>
             <formattedTime>00:01:24</formattedTime>
@@ -1616,9 +1617,9 @@
             <streets>
               <street>Christo Botewa</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-68,50.037890999999995,20.02692,0,0|purple-69,50.038326,20.042509,0,0|&center=50.03810849999999,20.0347145&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1626,7 +1627,7 @@
               <lat>50.0383</lat>
               <lng>20.0425</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.927</distance>
             <time>99</time>
             <formattedTime>00:01:39</formattedTime>
@@ -1639,9 +1640,9 @@
             <streets>
               <street>Tadeusza Śliwiaka</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-69,50.038326,20.042509,0,0|purple-70,50.037036,20.063236,0,0|&center=50.037681,20.0528725&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1649,7 +1650,7 @@
               <lat>50.037</lat>
               <lng>20.0632</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.041</distance>
             <time>5</time>
             <formattedTime>00:00:05</formattedTime>
@@ -1659,10 +1660,10 @@
             <narrative>Take the S7 ramp.</narrative>
             <directionName>South</directionName>
             <index>68</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-70,50.037036,20.063236,0,0|purple-71,50.03646,20.062997,0,0|&center=50.036748,20.0631165&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1670,7 +1671,7 @@
               <lat>50.0365</lat>
               <lng>20.063</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.338</distance>
             <time>74</time>
             <formattedTime>00:01:14</formattedTime>
@@ -1683,9 +1684,9 @@
             <streets>
               <street>S7</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-71,50.03646,20.062997,0,0|purple-72,50.01715,20.061581999999998,0,0|&center=50.026804999999996,20.0622895&zoom=9&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1693,7 +1694,7 @@
               <lat>50.0172</lat>
               <lng>20.0616</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.617</distance>
             <time>66</time>
             <formattedTime>00:01:06</formattedTime>
@@ -1703,10 +1704,10 @@
             <narrative>Take the exit on the left.</narrative>
             <directionName>South</directionName>
             <index>70</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitleft_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-72,50.01715,20.061581999999998,0,0|purple-73,50.012454,20.062091,0,0|&center=50.014802,20.0618365&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1714,7 +1715,7 @@
               <lat>50.0125</lat>
               <lng>20.0621</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>88.082</distance>
             <time>3999</time>
             <formattedTime>01:06:39</formattedTime>
@@ -1728,9 +1729,9 @@
               <street>A4</street>
               <street>E40</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-73,50.012454,20.062091,0,0|purple-74,50.105498999999995,21.917476,0,0|&center=50.0589765,20.9897835&zoom=4&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1738,7 +1739,7 @@
               <lat>50.1055</lat>
               <lng>21.9175</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.194</distance>
             <time>21</time>
             <formattedTime>00:00:21</formattedTime>
@@ -1748,10 +1749,10 @@
             <narrative>Take the exit toward Rzeszów/Barwinek.</narrative>
             <directionName>Southeast</directionName>
             <index>72</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-74,50.105498999999995,21.917476,0,0|purple-75,50.103721,21.920514999999998,0,0|&center=50.104609999999994,21.9189955&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1759,7 +1760,7 @@
               <lat>50.1037</lat>
               <lng>21.9205</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>3.063</distance>
             <time>182</time>
             <formattedTime>00:03:02</formattedTime>
@@ -1772,9 +1773,9 @@
             <streets>
               <street>S19</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-75,50.103721,21.920514999999998,0,0|purple-76,50.065055,21.92661,0,0|&center=50.084388000000004,21.9235625&zoom=8&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1782,7 +1783,7 @@
               <lat>50.0651</lat>
               <lng>21.9266</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.053</distance>
             <time>6</time>
             <formattedTime>00:00:06</formattedTime>
@@ -1792,10 +1793,10 @@
             <narrative>Take the exit toward Rzeszów/Tarnów.</narrative>
             <directionName>Southwest</directionName>
             <index>74</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-76,50.065055,21.92661,0,0|purple-77,50.064758,21.9256,0,0|&center=50.0649065,21.926105&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1803,7 +1804,7 @@
               <lat>50.0648</lat>
               <lng>21.9256</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.14</distance>
             <time>42</time>
             <formattedTime>00:00:42</formattedTime>
@@ -1813,10 +1814,10 @@
             <narrative>Keep right to take the ramp toward Rzeszów.</narrative>
             <directionName>East</directionName>
             <index>75</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-77,50.064758,21.9256,0,0|purple-78,50.065807,21.926778,0,0|&center=50.065282499999995,21.926189&zoom=13&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1824,7 +1825,7 @@
               <lat>50.0658</lat>
               <lng>21.9268</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.036</distance>
             <time>7</time>
             <formattedTime>00:00:07</formattedTime>
@@ -1837,9 +1838,9 @@
             <streets>
               <street>94</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-78,50.065807,21.926778,0,0|purple-79,50.065653999999995,21.927543,0,0|&center=50.0657305,21.9271605&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1847,7 +1848,7 @@
               <lat>50.0657</lat>
               <lng>21.9275</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.892</distance>
             <time>318</time>
             <formattedTime>00:05:18</formattedTime>
@@ -1860,9 +1861,9 @@
             <streets>
               <street>94</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-79,50.065653999999995,21.927543,0,0|purple-80,50.045272,21.982128,0,0|&center=50.055462999999996,21.9548355&zoom=9&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1870,7 +1871,7 @@
               <lat>50.0453</lat>
               <lng>21.9821</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.036</distance>
             <time>9</time>
             <formattedTime>00:00:09</formattedTime>
@@ -1884,9 +1885,9 @@
               <street>94</street>
               <street>Rondo Unii Europejskiej</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-80,50.045272,21.982128,0,0|purple-81,50.045024,21.982843,0,0|&center=50.045148,21.9824855&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1894,7 +1895,7 @@
               <lat>50.045</lat>
               <lng>21.9828</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.398</distance>
             <time>56</time>
             <formattedTime>00:00:56</formattedTime>
@@ -1907,9 +1908,9 @@
             <streets>
               <street>Krakowska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-81,50.045024,21.982843,0,0|purple-82,50.043006,21.991077,0,0|&center=50.044015,21.98696&zoom=11&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1917,7 +1918,7 @@
               <lat>50.043</lat>
               <lng>21.9911</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.197</distance>
             <time>23</time>
             <formattedTime>00:00:23</formattedTime>
@@ -1930,9 +1931,9 @@
             <streets>
               <street>Wiadukt Śląski</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-82,50.043006,21.991077,0,0|purple-83,50.042525999999995,21.995435,0,0|&center=50.042766,21.993256000000002&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1940,7 +1941,7 @@
               <lat>50.0425</lat>
               <lng>21.9954</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.183</distance>
             <time>31</time>
             <formattedTime>00:00:31</formattedTime>
@@ -1953,9 +1954,9 @@
             <streets>
               <street>Aleja Józefa Piłsudskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-83,50.042525999999995,21.995435,0,0|purple-84,50.041022999999996,21.998822999999998,0,0|&center=50.041774499999995,21.997129&zoom=13&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1963,7 +1964,7 @@
               <lat>50.041</lat>
               <lng>21.9988</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.024</distance>
             <time>9</time>
             <formattedTime>00:00:09</formattedTime>
@@ -1976,9 +1977,9 @@
             <streets>
               <street>Rondo Romana Dmowskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-84,50.041022999999996,21.998822999999998,0,0|purple-85,50.040881999999996,21.999319999999997,0,0|&center=50.040952499999996,21.9990715&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -1986,7 +1987,7 @@
               <lat>50.0409</lat>
               <lng>21.9993</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.291</distance>
             <time>40</time>
             <formattedTime>00:00:40</formattedTime>
@@ -1999,14 +2000,14 @@
             <streets>
               <street>Aleja Józefa Piłsudskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-85,50.040881999999996,21.999319999999997,0,0|purple-86,50.040541999999995,22.005802,0,0|&center=50.040712,22.002561&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
-            <startPoint/>
-            <maneuverNotes/>
+            <startPoint />
+            <maneuverNotes />
             <distance>0.0</distance>
             <time>0</time>
             <formattedTime>00:00:00</formattedTime>
@@ -2016,9 +2017,9 @@
             <narrative>Welcome to RESOVIA, SUBCARPATHIAN VOIVODESHIP.</narrative>
             <directionName></directionName>
             <index>84</index>
-            <streets/>
-            <signs/>
-            <linkIds/>
+            <streets />
+            <signs />
+            <linkIds />
             <mapUrl><![CDATA[]]></mapUrl>
           </maneuver>
         </maneuvers>
@@ -2040,7 +2041,7 @@
               <lat>50.0405</lat>
               <lng>22.0058</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.29</distance>
             <time>52</time>
             <formattedTime>00:00:52</formattedTime>
@@ -2053,9 +2054,9 @@
             <streets>
               <street>Aleja Józefa Piłsudskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-87,50.040541999999995,22.005802,0,0|purple-88,50.041197999999994,21.999468999999998,0,0|&center=50.04087,22.002635499999997&zoom=12&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2063,7 +2064,7 @@
               <lat>50.0412</lat>
               <lng>21.9995</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.468</distance>
             <time>65</time>
             <formattedTime>00:01:05</formattedTime>
@@ -2076,9 +2077,9 @@
             <streets>
               <street>Marszałkowska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-88,50.041197999999994,21.999468999999998,0,0|purple-89,50.047779,21.999551,0,0|&center=50.0444885,21.99951&zoom=10&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2086,7 +2087,7 @@
               <lat>50.0478</lat>
               <lng>21.9996</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>4.212</distance>
             <time>484</time>
             <formattedTime>00:08:04</formattedTime>
@@ -2099,9 +2100,9 @@
             <streets>
               <street>Warszawska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-89,50.047779,21.999551,0,0|purple-90,50.106441,21.976354,0,0|&center=50.07711,21.9879525&zoom=7&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2109,7 +2110,7 @@
               <lat>50.1064</lat>
               <lng>21.9764</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>18.323</distance>
             <time>1474</time>
             <formattedTime>00:24:34</formattedTime>
@@ -2123,9 +2124,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-90,50.106441,21.976354,0,0|purple-91,50.294948,21.744671999999998,0,0|&center=50.2006945,21.860512999999997&zoom=6&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2133,7 +2134,7 @@
               <lat>50.2949</lat>
               <lng>21.7447</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.0</distance>
             <time>3</time>
             <formattedTime>00:00:03</formattedTime>
@@ -2147,9 +2148,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-91,50.294948,21.744671999999998,0,0|purple-92,50.294948,21.744676,0,0|&center=50.294948,21.744673999999996&zoom=15&rand=-1317339690&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2157,7 +2158,7 @@
               <lat>50.2949</lat>
               <lng>21.7447</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>38.707</distance>
             <time>3034</time>
             <formattedTime>00:50:34</formattedTime>
@@ -2171,9 +2172,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-92,50.294948,21.744676,0,0|purple-93,50.728904,21.49887,0,0|&center=50.511926,21.621772999999997&zoom=5&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2181,7 +2182,7 @@
               <lat>50.7289</lat>
               <lng>21.4989</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>6.877</distance>
             <time>532</time>
             <formattedTime>00:08:52</formattedTime>
@@ -2195,9 +2196,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-93,50.728904,21.49887,0,0|purple-94,50.801628,21.427132999999998,0,0|&center=50.765266,21.463001499999997&zoom=7&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2205,7 +2206,7 @@
               <lat>50.8016</lat>
               <lng>21.4271</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.271</distance>
             <time>60</time>
             <formattedTime>00:01:00</formattedTime>
@@ -2220,9 +2221,9 @@
               <street>Jana Kilińskiego</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_left2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-94,50.801628,21.427132999999998,0,0|purple-95,50.803283,21.421642,0,0|&center=50.8024555,21.424387499999998&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2230,7 +2231,7 @@
               <lat>50.8033</lat>
               <lng>21.4216</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>9.257</distance>
             <time>711</time>
             <formattedTime>00:11:51</formattedTime>
@@ -2244,9 +2245,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-95,50.803283,21.421642,0,0|purple-96,50.924701,21.398418,0,0|&center=50.863991999999996,21.41003&zoom=6&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2254,7 +2255,7 @@
               <lat>50.9247</lat>
               <lng>21.3984</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.896</distance>
             <time>91</time>
             <formattedTime>00:01:31</formattedTime>
@@ -2267,9 +2268,9 @@
             <streets>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-96,50.924701,21.398418,0,0|purple-97,50.932598,21.386415,0,0|&center=50.9286495,21.3924165&zoom=10&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2277,7 +2278,7 @@
               <lat>50.9326</lat>
               <lng>21.3864</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.101</distance>
             <time>13</time>
             <formattedTime>00:00:13</formattedTime>
@@ -2291,9 +2292,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-97,50.932598,21.386415,0,0|purple-98,50.931532999999995,21.386459,0,0|&center=50.93206549999999,21.386437&zoom=13&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2301,7 +2302,7 @@
               <lat>50.9315</lat>
               <lng>21.3865</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>5.255</distance>
             <time>447</time>
             <formattedTime>00:07:27</formattedTime>
@@ -2314,9 +2315,9 @@
             <streets>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-98,50.931532999999995,21.386459,0,0|purple-99,50.961433,21.280794,0,0|&center=50.946483,21.3336265&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2324,7 +2325,7 @@
               <lat>50.9614</lat>
               <lng>21.2808</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>15.802</distance>
             <time>1222</time>
             <formattedTime>00:20:22</formattedTime>
@@ -2338,9 +2339,9 @@
               <street>9</street>
               <street>E371</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-99,50.961433,21.280794,0,0|purple-100,51.163097,21.239864,0,0|&center=51.062265,21.260329&zoom=6&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2348,7 +2349,7 @@
               <lat>51.1631</lat>
               <lng>21.2399</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>16.752</distance>
             <time>1390</time>
             <formattedTime>00:23:10</formattedTime>
@@ -2361,9 +2362,9 @@
             <streets>
               <street>9</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-100,51.163097,21.239864,0,0|purple-101,51.382014999999996,21.180287999999997,0,0|&center=51.272555999999994,21.210076&zoom=5&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2371,7 +2372,7 @@
               <lat>51.382</lat>
               <lng>21.1803</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.545</distance>
             <time>324</time>
             <formattedTime>00:05:24</formattedTime>
@@ -2386,9 +2387,9 @@
               <street>12</street>
               <street>Aleja Wojska Polskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-101,51.382014999999996,21.180287999999997,0,0|purple-102,51.414145999999995,21.203622,0,0|&center=51.39808049999999,21.191955&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2396,7 +2397,7 @@
               <lat>51.4141</lat>
               <lng>21.2036</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.515</distance>
             <time>283</time>
             <formattedTime>00:04:43</formattedTime>
@@ -2409,9 +2410,9 @@
             <streets>
               <street>9</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-102,51.414145999999995,21.203622,0,0|purple-103,51.427974,21.150620999999997,0,0|&center=51.42106,21.1771215&zoom=9&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2419,7 +2420,7 @@
               <lat>51.428</lat>
               <lng>21.1506</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>56.167</distance>
             <time>3731</time>
             <formattedTime>01:02:11</formattedTime>
@@ -2432,9 +2433,9 @@
             <streets>
               <street>E77</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-103,51.427974,21.150620999999997,0,0|purple-104,52.166895999999994,20.934406,0,0|&center=51.79743499999999,21.0425135&zoom=4&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2442,7 +2443,7 @@
               <lat>52.1669</lat>
               <lng>20.9344</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.023</distance>
             <time>11</time>
             <formattedTime>00:00:11</formattedTime>
@@ -2456,9 +2457,9 @@
               <street>7</street>
               <street>E77</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-104,52.166895999999994,20.934406,0,0|purple-105,52.167049,20.933919,0,0|&center=52.1669725,20.9341625&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2466,7 +2467,7 @@
               <lat>52.167</lat>
               <lng>20.9339</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.287</distance>
             <time>27</time>
             <formattedTime>00:00:27</formattedTime>
@@ -2476,10 +2477,10 @@
             <narrative>Take the 7 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>103</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-105,52.167049,20.933919,0,0|purple-106,52.168777,20.927775999999998,0,0|&center=52.167913,20.9308475&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2487,7 +2488,7 @@
               <lat>52.1688</lat>
               <lng>20.9278</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.486</distance>
             <time>46</time>
             <formattedTime>00:00:46</formattedTime>
@@ -2497,10 +2498,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>104</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-106,52.168777,20.927775999999998,0,0|purple-107,52.17192,20.917533,0,0|&center=52.1703485,20.9226545&zoom=11&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2508,7 +2509,7 @@
               <lat>52.1719</lat>
               <lng>20.9175</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.217</distance>
             <time>20</time>
             <formattedTime>00:00:20</formattedTime>
@@ -2518,10 +2519,10 @@
             <narrative>Keep left to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>105</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-107,52.17192,20.917533,0,0|purple-108,52.173282,20.912931,0,0|&center=52.172601,20.915232&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2529,7 +2530,7 @@
               <lat>52.1733</lat>
               <lng>20.9129</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.054</distance>
             <time>5</time>
             <formattedTime>00:00:05</formattedTime>
@@ -2539,10 +2540,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>106</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-108,52.173282,20.912931,0,0|purple-109,52.173618,20.911787,0,0|&center=52.17345,20.912359000000002&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2550,7 +2551,7 @@
               <lat>52.1736</lat>
               <lng>20.9118</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.035</distance>
             <time>4</time>
             <formattedTime>00:00:04</formattedTime>
@@ -2560,10 +2561,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>107</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-109,52.173618,20.911787,0,0|purple-110,52.173828,20.911040999999997,0,0|&center=52.173722999999995,20.911414&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2571,7 +2572,7 @@
               <lat>52.1738</lat>
               <lng>20.911</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.209</distance>
             <time>20</time>
             <formattedTime>00:00:20</formattedTime>
@@ -2581,10 +2582,10 @@
             <narrative>Keep left at the fork in the ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>108</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_left2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-110,52.173828,20.911040999999997,0,0|purple-111,52.175048,20.906549,0,0|&center=52.174437999999995,20.908794999999998&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2592,7 +2593,7 @@
               <lat>52.175</lat>
               <lng>20.9065</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.638</distance>
             <time>51</time>
             <formattedTime>00:00:51</formattedTime>
@@ -2602,10 +2603,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>West</directionName>
             <index>109</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-111,52.175048,20.906549,0,0|purple-112,52.177946999999996,20.892281999999998,0,0|&center=52.176497499999996,20.899415499999996&zoom=11&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2613,7 +2614,7 @@
               <lat>52.1779</lat>
               <lng>20.8923</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.041</distance>
             <time>3</time>
             <formattedTime>00:00:03</formattedTime>
@@ -2623,10 +2624,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>110</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-112,52.177946999999996,20.892281999999998,0,0|purple-113,52.178194999999995,20.891395,0,0|&center=52.178070999999996,20.8918385&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2634,7 +2635,7 @@
               <lat>52.1782</lat>
               <lng>20.8914</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.176</distance>
             <time>15</time>
             <formattedTime>00:00:15</formattedTime>
@@ -2644,10 +2645,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>111</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-113,52.178194999999995,20.891395,0,0|purple-114,52.179331999999995,20.887695,0,0|&center=52.178763499999995,20.889545&zoom=13&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2655,7 +2656,7 @@
               <lat>52.1793</lat>
               <lng>20.8877</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.16</distance>
             <time>15</time>
             <formattedTime>00:00:15</formattedTime>
@@ -2665,10 +2666,10 @@
             <narrative>Keep left to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>112</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-114,52.179331999999995,20.887695,0,0|purple-115,52.18045,20.884401,0,0|&center=52.179891,20.886048000000002&zoom=13&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2676,7 +2677,7 @@
               <lat>52.1804</lat>
               <lng>20.8844</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.07</distance>
             <time>6</time>
             <formattedTime>00:00:06</formattedTime>
@@ -2686,10 +2687,10 @@
             <narrative>Keep straight to take the S2 ramp.</narrative>
             <directionName>Northwest</directionName>
             <index>113</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-115,52.18045,20.884401,0,0|purple-116,52.180988,20.88301,0,0|&center=52.180718999999996,20.883705499999998&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2697,7 +2698,7 @@
               <lat>52.181</lat>
               <lng>20.883</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.059</distance>
             <time>136</time>
             <formattedTime>00:02:16</formattedTime>
@@ -2710,9 +2711,9 @@
             <streets>
               <street>S2</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-116,52.180988,20.88301,0,0|purple-117,52.199923999999996,20.846254,0,0|&center=52.190456,20.864632&zoom=9&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2720,7 +2721,7 @@
               <lat>52.1999</lat>
               <lng>20.8463</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>3.199</distance>
             <time>171</time>
             <formattedTime>00:02:51</formattedTime>
@@ -2733,9 +2734,9 @@
             <streets>
               <street>S8</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-117,52.199923999999996,20.846254,0,0|purple-118,52.237491,20.886257,0,0|&center=52.218707499999994,20.8662555&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2743,7 +2744,7 @@
               <lat>52.2375</lat>
               <lng>20.8863</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.228</distance>
             <time>35</time>
             <formattedTime>00:00:35</formattedTime>
@@ -2753,10 +2754,10 @@
             <narrative>Take the exit.</narrative>
             <directionName>Northeast</directionName>
             <index>116</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-118,52.237491,20.886257,0,0|purple-119,52.240192,20.889324,0,0|&center=52.2388415,20.8877905&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2764,7 +2765,7 @@
               <lat>52.2402</lat>
               <lng>20.8893</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>3.737</distance>
             <time>443</time>
             <formattedTime>00:07:23</formattedTime>
@@ -2778,14 +2779,14 @@
               <street>580</street>
               <street>Warszawska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_left_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-119,52.240192,20.889324,0,0|purple-120,52.253253,20.804616,0,0|&center=52.246722500000004,20.84697&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
-            <startPoint/>
-            <maneuverNotes/>
+            <startPoint />
+            <maneuverNotes />
             <distance>0.0</distance>
             <time>0</time>
             <formattedTime>00:00:00</formattedTime>
@@ -2795,9 +2796,9 @@
             <narrative>Welcome to ZIELONKI WIEś, MASOVIAN VOIVODESHIP.</narrative>
             <directionName></directionName>
             <index>118</index>
-            <streets/>
-            <signs/>
-            <linkIds/>
+            <streets />
+            <signs />
+            <linkIds />
             <mapUrl><![CDATA[]]></mapUrl>
           </maneuver>
         </maneuvers>
@@ -2819,7 +2820,7 @@
               <lat>52.2533</lat>
               <lng>20.8046</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.852</distance>
             <time>201</time>
             <formattedTime>00:03:21</formattedTime>
@@ -2833,9 +2834,9 @@
               <street>580</street>
               <street>Warszawska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-121,52.253253,20.804616,0,0|purple-122,52.247797999999996,20.847091,0,0|&center=52.250525499999995,20.8258535&zoom=9&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2843,7 +2844,7 @@
               <lat>52.2478</lat>
               <lng>20.8471</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.845</distance>
             <time>244</time>
             <formattedTime>00:04:04</formattedTime>
@@ -2857,9 +2858,9 @@
               <street>580</street>
               <street>Warszawska</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-122,52.247797999999996,20.847091,0,0|purple-123,52.240127,20.888347,0,0|&center=52.243962499999995,20.867719&zoom=9&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2867,7 +2868,7 @@
               <lat>52.2401</lat>
               <lng>20.8883</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.191</distance>
             <time>22</time>
             <formattedTime>00:00:22</formattedTime>
@@ -2877,10 +2878,10 @@
             <narrative>Turn right onto ramp.</narrative>
             <directionName>Southwest</directionName>
             <index>121</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-123,52.240127,20.888347,0,0|purple-124,52.237711999999995,20.88615,0,0|&center=52.238919499999994,20.8872485&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2888,7 +2889,7 @@
               <lat>52.2377</lat>
               <lng>20.8862</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.947</distance>
             <time>95</time>
             <formattedTime>00:01:35</formattedTime>
@@ -2901,9 +2902,9 @@
             <streets>
               <street>S8</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-124,52.237711999999995,20.88615,0,0|purple-125,52.214141,20.861064,0,0|&center=52.2259265,20.873607&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2911,7 +2912,7 @@
               <lat>52.2141</lat>
               <lng>20.8611</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.929</distance>
             <time>54</time>
             <formattedTime>00:00:54</formattedTime>
@@ -2924,9 +2925,9 @@
             <streets>
               <street>Trasa Powązki-Konotopa</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-125,52.214141,20.861064,0,0|purple-126,52.203810999999995,20.847158,0,0|&center=52.20897599999999,20.854111&zoom=10&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2934,7 +2935,7 @@
               <lat>52.2038</lat>
               <lng>20.8472</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.759</distance>
             <time>53</time>
             <formattedTime>00:00:53</formattedTime>
@@ -2944,10 +2945,10 @@
             <narrative>Take the exit on the left toward Poznań/Łódź.</narrative>
             <directionName>Southwest</directionName>
             <index>124</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitleft_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-126,52.203810999999995,20.847158,0,0|purple-127,52.1982,20.831958,0,0|&center=52.201005499999994,20.839558&zoom=10&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2955,7 +2956,7 @@
               <lat>52.1982</lat>
               <lng>20.832</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>55.803</distance>
             <time>2368</time>
             <formattedTime>00:39:28</formattedTime>
@@ -2969,9 +2970,9 @@
               <street>A2</street>
               <street>E30</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-127,52.1982,20.831958,0,0|purple-128,51.89376,19.653432,0,0|&center=52.04598,20.242694999999998&zoom=4&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -2979,7 +2980,7 @@
               <lat>51.8938</lat>
               <lng>19.6534</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.069</distance>
             <time>9</time>
             <formattedTime>00:00:09</formattedTime>
@@ -2989,7 +2990,7 @@
             <narrative>Take EXIT 364 toward Gdańsk.</narrative>
             <directionName>West</directionName>
             <index>126</index>
-            <streets/>
+            <streets />
             <signs>
               <sign>
                 <type>1001</type>
@@ -3000,7 +3001,7 @@
               </sign>
             </signs>
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-128,51.89376,19.653432,0,0|purple-129,51.893516,19.651857,0,0|&center=51.893637999999996,19.6526445&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3008,7 +3009,7 @@
               <lat>51.8935</lat>
               <lng>19.6519</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.191</distance>
             <time>100</time>
             <formattedTime>00:01:40</formattedTime>
@@ -3018,10 +3019,10 @@
             <narrative>Keep straight to take the ramp toward Gdańsk.</narrative>
             <directionName>Northwest</directionName>
             <index>127</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_ramp_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-129,51.893516,19.651857,0,0|purple-130,51.899307,19.629362,0,0|&center=51.8964115,19.6406095&zoom=10&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3029,7 +3030,7 @@
               <lat>51.8993</lat>
               <lng>19.6294</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>182.078</distance>
             <time>7817</time>
             <formattedTime>02:10:17</formattedTime>
@@ -3042,9 +3043,9 @@
             <streets>
               <street>A1</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-130,51.899307,19.629362,0,0|purple-131,54.245127999999994,18.60917,0,0|&center=53.072217499999994,19.119266&zoom=2&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3052,7 +3053,7 @@
               <lat>54.2451</lat>
               <lng>18.6092</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.591</distance>
             <time>127</time>
             <formattedTime>00:02:07</formattedTime>
@@ -3066,9 +3067,9 @@
               <street>S6</street>
               <street>E28</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-131,54.245127999999994,18.60917,0,0|purple-132,54.278822999999996,18.592409,0,0|&center=54.26197549999999,18.600789499999998&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3076,7 +3077,7 @@
               <lat>54.2788</lat>
               <lng>18.5924</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.2</distance>
             <time>21</time>
             <formattedTime>00:00:21</formattedTime>
@@ -3086,10 +3087,10 @@
             <narrative>Take the exit.</narrative>
             <directionName>North</directionName>
             <index>130</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_gr_exitright_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-132,54.278822999999996,18.592409,0,0|purple-133,54.281669,18.591666999999998,0,0|&center=54.280246,18.592038&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3097,7 +3098,7 @@
               <lat>54.2817</lat>
               <lng>18.5917</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.495</distance>
             <time>46</time>
             <formattedTime>00:00:46</formattedTime>
@@ -3107,10 +3108,10 @@
             <narrative>Keep left at the fork in the ramp.</narrative>
             <directionName>North</directionName>
             <index>131</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_left2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-133,54.281669,18.591666999999998,0,0|purple-134,54.288562,18.588355999999997,0,0|&center=54.2851155,18.590011499999996&zoom=10&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3118,7 +3119,7 @@
               <lat>54.2886</lat>
               <lng>18.5884</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.163</distance>
             <time>21</time>
             <formattedTime>00:00:21</formattedTime>
@@ -3128,10 +3129,10 @@
             <narrative>Keep right at the fork in the ramp.</narrative>
             <directionName>Northeast</directionName>
             <index>132</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_right2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-134,54.288562,18.588355999999997,0,0|purple-135,54.290008,18.591027999999998,0,0|&center=54.289285,18.589692&zoom=13&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3139,7 +3140,7 @@
               <lat>54.29</lat>
               <lng>18.591</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>4.873</distance>
             <time>249</time>
             <formattedTime>00:04:09</formattedTime>
@@ -3154,9 +3155,9 @@
               <street>E28</street>
               <street>E77</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_merge_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-135,54.290008,18.591027999999998,0,0|purple-136,54.317465999999996,18.698051,0,0|&center=54.303737,18.6445395&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3164,7 +3165,7 @@
               <lat>54.3175</lat>
               <lng>18.6981</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>2.433</distance>
             <time>176</time>
             <formattedTime>00:02:56</formattedTime>
@@ -3177,9 +3178,9 @@
             <streets>
               <street>Majora Henryka Sucharskiego</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-136,54.317465999999996,18.698051,0,0|purple-137,54.347224999999995,18.697986,0,0|&center=54.332345499999995,18.6980185&zoom=8&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3187,7 +3188,7 @@
               <lat>54.3472</lat>
               <lng>18.698</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.095</distance>
             <time>10</time>
             <formattedTime>00:00:10</formattedTime>
@@ -3197,10 +3198,10 @@
             <narrative>Stay straight to go onto ramp.</narrative>
             <directionName>North</directionName>
             <index>135</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_straight_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-137,54.347224999999995,18.697986,0,0|purple-138,54.348541,18.698605999999998,0,0|&center=54.347882999999996,18.698296&zoom=13&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3208,7 +3209,7 @@
               <lat>54.3485</lat>
               <lng>18.6986</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.131</distance>
             <time>14</time>
             <formattedTime>00:00:14</formattedTime>
@@ -3218,10 +3219,10 @@
             <narrative>Keep left at the fork in the ramp.</narrative>
             <directionName>North</directionName>
             <index>136</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_left2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-138,54.348541,18.698605999999998,0,0|purple-139,54.350398999999996,18.698259,0,0|&center=54.34947,18.6984325&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3229,7 +3230,7 @@
               <lat>54.3504</lat>
               <lng>18.6983</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.152</distance>
             <time>17</time>
             <formattedTime>00:00:17</formattedTime>
@@ -3239,10 +3240,10 @@
             <narrative>Keep right at the fork in the ramp.</narrative>
             <directionName>East</directionName>
             <index>137</index>
-            <streets/>
-            <signs/>
+            <streets />
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_fork_right2_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-139,54.350398999999996,18.698259,0,0|purple-140,54.350364,18.699458999999997,0,0|&center=54.3503815,18.698859&zoom=15&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3250,7 +3251,7 @@
               <lat>54.3504</lat>
               <lng>18.6995</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>1.918</distance>
             <time>200</time>
             <formattedTime>00:03:20</formattedTime>
@@ -3263,9 +3264,9 @@
             <streets>
               <street>501</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-140,54.350364,18.699458999999997,0,0|purple-141,54.345672,18.656505,0,0|&center=54.348017999999996,18.677982&zoom=9&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
@@ -3273,7 +3274,7 @@
               <lat>54.3457</lat>
               <lng>18.6565</lng>
             </startPoint>
-            <maneuverNotes/>
+            <maneuverNotes />
             <distance>0.141</distance>
             <time>29</time>
             <formattedTime>00:00:29</formattedTime>
@@ -3286,14 +3287,14 @@
             <streets>
               <street>Chmielna</street>
             </streets>
-            <signs/>
+            <signs />
             <iconUrl><![CDATA[http://content.mapquest.com/mqsite/turnsigns/rs_slight_right_sm.gif]]></iconUrl>
-            <linkIds/>
+            <linkIds />
             <mapUrl><![CDATA[http://www.mapquestapi.com/staticmap/v4/getmap?key=Fmjtd|luurn16anq,85=o5-9wtsga&type=map&size=225,160&pois=purple-141,54.345672,18.656505,0,0|purple-142,54.347518,18.657245,0,0|&center=54.346595,18.656875&zoom=12&rand=-1317724439&session=547e7c06-01e5-000c-02b7-655b-00163ec9423e]]></mapUrl>
           </maneuver>
           <maneuver>
-            <startPoint/>
-            <maneuverNotes/>
+            <startPoint />
+            <maneuverNotes />
             <distance>0.0</distance>
             <time>0</time>
             <formattedTime>00:00:00</formattedTime>
@@ -3303,9 +3304,9 @@
             <narrative>Welcome to GDANSK, POMERANIAN VOIVODESHIP.</narrative>
             <directionName></directionName>
             <index>140</index>
-            <streets/>
-            <signs/>
-            <linkIds/>
+            <streets />
+            <signs />
+            <linkIds />
             <mapUrl><![CDATA[]]></mapUrl>
           </maneuver>
         </maneuvers>
@@ -3470,6 +3471,6 @@
       </location>
     </locations>
     <locationSequence>0,2,3,1,4,5</locationSequence>
-    <computedWaypoints/>
+    <computedWaypoints />
   </route>
 </response>

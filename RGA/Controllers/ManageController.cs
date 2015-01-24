@@ -290,7 +290,7 @@ namespace RGA.Controllers
                 return View("Error");
             }
             IList<UserLoginInfo> userLogins = await UserManager.GetLoginsAsync(User.Identity.GetUserId());
-            var otherLogins =
+            List<AuthenticationDescription> otherLogins =
                 AuthenticationManager.GetExternalAuthenticationTypes()
                     .Where(auth => userLogins.All(ul => auth.AuthenticationType != ul.LoginProvider))
                     .ToList();

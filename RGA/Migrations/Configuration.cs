@@ -37,6 +37,7 @@ namespace RGA.Migrations
             {
                 new User
                 {
+                    //all users have password "!Abc123"
                     UserName = "Pawel",
                     Email = "pawtroka@student.pg.gda.pl",
                     PhoneNumber = "+48-725-656-424",
